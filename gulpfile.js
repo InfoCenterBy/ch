@@ -15,15 +15,15 @@ let path = {
   },
   src: {
     html: [source_folder + "/**/*.html"],
-    css: source_folder + "/scss/style.scss",
-    js: [source_folder + "/js/script.js", source_folder + "/js/libs/tailwind.js"],
+    css: source_folder + "/css/tailwind.css",
+    js: source_folder + "/js/script.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
     fonts: [source_folder + "/fonts/*.ttf", source_folder + "/fonts/*.woff", source_folder + "/fonts/*.woff2"],
     audio: source_folder + "/audio/*.mp3",
   },
   watch: {
     html: source_folder + "/**/*.html",
-    css: source_folder + "/scss/**/*.scss",
+    css: source_folder + "/css/**/*.css",
     js: source_folder + "/js/**/*.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
     audio: source_folder + "/audio/*.mp3",
@@ -72,32 +72,32 @@ function html() {
   return src(path.src.html).pipe(fileinclude()).pipe(dest(path.build.html)).pipe(browsersync.stream());
 }
 
+// function css() {
+//   return (
+//     src(path.src.css)
+//       .pipe(
+//         autoprefixer({
+//           overrideBrowserslist: ["last 5 versions"],
+//           cascade: true,
+//         }),
+//       )
+//       .pipe(dest(path.build.css))
+//       // .pipe(lightningcss())
+//       .pipe(
+//         rename({
+//           extname: ".min.css",
+//         }),
+//       )
+//       .pipe(dest(path.build.css))
+//       .pipe(browsersync.stream())
+//   );
+// }
+
 function css() {
-  return (
-    src(path.src.css)
-      .pipe(
-        scss({
-          outputStyle: "expanded",
-          quietDeps: true,
-        }),
-      )
-      // .pipe(group_media())
-      .pipe(
-        autoprefixer({
-          overrideBrowserslist: ["last 5 versions"],
-          cascade: true,
-        }),
-      )
-      .pipe(dest(path.build.css))
-      // .pipe(lightningcss())
-      .pipe(
-        rename({
-          extname: ".min.css",
-        }),
-      )
-      .pipe(dest(path.build.css))
-      .pipe(browsersync.stream())
-  );
+  return src("src/css/style.css")
+    .pipe(rename({ basename: "style", extname: ".css" })) 
+    .pipe(dest(path.build.css))
+    .pipe(browsersync.stream());
 }
 
 function js() {

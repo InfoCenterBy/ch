@@ -1,15 +1,16 @@
 {
-  "name": "skko-redesign",
+  "name": "ch",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d skko-redesign"
+    "deploy": "gh-pages -d ch"
   },
   "author": "",
   "license": "ISC",
-  "description": "swim-federation",
+  "description": "ch",
   "devDependencies": {
+    "autoprefixer": "^10.4.27",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
     "gh-pages": "^4.0.0",
@@ -31,11 +32,15 @@
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^3.0.0",
     "gulp-uglify-es": "^2.0.0",
+    "postcss": "^8.5.8",
     "postcss-css-variables": "^0.19.0",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "tailwindcss": "^4.2.1"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
     "cssnano": "^7.0.6",
+    "daisyui": "^5.5.19",
     "gulp-cheerio": "^1.0.0",
     "gulp-replace": "^1.1.4"
   }

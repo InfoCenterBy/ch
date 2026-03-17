@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes: light --default;
+}
+@plugin "daisyui/theme" {
+  name: 'light';
+  default: true;
+  --color-primary: oklch(0.7372 0.1499 54.45);
+}
+
+@theme {
+  --font-sans: 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --color-primary-hover: #d66510;
+}
+
+.container {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
