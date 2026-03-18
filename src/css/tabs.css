@@ -1,0 +1,7 @@
+.tabs-box .tab {
+  @apply text-neutral-900;
+}
+
+.tabs-box .tab.tab-active {
+  @apply bg-primary text-neutral-50 px-4 py-2 rounded-lg;
+}

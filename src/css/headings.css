@@ -1,0 +1,7 @@
+.heading-1 {
+  @apply font-semibold text-4xl uppercase;
+}
+
+.heading-2 {
+  @apply font-semibold text-[32px] uppercase;
+}

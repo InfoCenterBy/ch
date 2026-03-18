@@ -1,0 +1,15 @@
+.btn-primary {
+  @apply hover:bg-primary-hover shadow-none px-6 py-4 border-none rounded-lg h-[46px] font-normal text-white text-base;
+}
+
+.btn-icon {
+  @apply w-[46px] h-[46px] bg-primary flex items-center justify-center hover:bg-primary-hover shadow-none border-none rounded-lg p-0;
+
+  svg {
+    @apply fill-neutral-50;
+  }
+}
+
+.btn-icon-small {
+  @apply hover:fill-primary-hover;
+}
