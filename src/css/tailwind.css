@@ -17,6 +17,7 @@
 @import './tabs.css';
 @import './buttons.css';
 @import './headings.css';
+@import './links.css';
 
 html {
   @apply bg-neutral-50;
