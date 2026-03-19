@@ -1,0 +1,7 @@
+.mobile-nav-item {
+  @apply flex-1 px-2 py-1 transition-colors flex flex-col items-center justify-center text-center gap-1 text-neutral-500;
+}
+
+.mobile-nav-item--active {
+  @apply text-primary;
+}

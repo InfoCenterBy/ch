@@ -18,6 +18,23 @@
 @import './buttons.css';
 @import './headings.css';
 @import './links.css';
+@import './cards.css';
+@import './mobile-nav.css';
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1 1 auto;
+  }
+}
 
 html {
   @apply bg-neutral-50;

@@ -1,5 +1,5 @@
 .tabs-box .tab {
-  @apply text-neutral-900 h-auto;
+  @apply text-neutral-900 h-auto text-sm md:text-base;
 }
 
 .tabs-box .tab.tab-active {

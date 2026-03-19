@@ -1,3 +1,7 @@
 .link-default {
-  @apply text-neutral-900 hover:text-primary no-underline text-base transition-colors;
+  @apply text-neutral-900 hover:text-primary no-underline transition-colors;
+}
+
+.link-primary {
+  @apply text-primary hover:text-primary-hover no-underline transition-colors;
 }
