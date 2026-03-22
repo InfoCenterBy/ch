@@ -1,13 +1,17 @@
 .btn-primary {
-  @apply hover:bg-primary-hover shadow-none px-6 py-4 border-none rounded-lg h-[46px] font-normal text-white text-base;
+  @apply hover:bg-primary-hover h-[46px] w-full rounded-lg border-none px-6 py-4 text-base font-normal text-white shadow-none sm:w-auto;
 }
 
 .btn-icon {
-  @apply w-[46px] h-[46px] bg-primary flex items-center justify-center hover:bg-primary-hover shadow-none border-none rounded-lg p-0;
+  @apply bg-primary hover:bg-primary-hover flex h-[46px] w-[46px] items-center justify-center rounded-lg border-none p-0 shadow-none transition-all;
 
   svg {
     @apply fill-neutral-50;
   }
+}
+
+.group:hover .btn-icon {
+  @apply bg-primary-hover;
 }
 
 .btn-icon-small {

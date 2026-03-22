@@ -1,11 +1,11 @@
 .input {
-  @apply bg-neutral-50 rounded-lg h-[46px] focus:outline-primary focus:border-neutral-300 focus-within:outline-primary focus-within:border-neutral-300;
+  @apply focus:outline-primary focus-within:outline-primary h-[46px] w-full rounded-lg bg-neutral-50 focus-within:border-neutral-300 focus:border-neutral-300 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-900;
 }
 
 .consent-checkbox {
-  @apply flex cursor-pointer items-start gap-3 pt-2 w-full min-w-0;
+  @apply flex w-full min-w-0 cursor-pointer items-start gap-3 pt-2;
 }
 
 .consent-checkbox span {
-  @apply min-w-0 flex-1 break-words text-sm text-neutral-900 leading-[140%];
+  @apply min-w-0 flex-1 text-sm leading-[140%] wrap-break-word text-neutral-900;
 }

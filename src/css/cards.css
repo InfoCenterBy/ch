@@ -1,3 +1,15 @@
 .card-border {
   @apply bg-primary rounded-3xl p-4 md:p-6 lg:p-8;
 }
+
+.card-status--success {
+  @apply border-l-4 border-l-green-500;
+}
+
+.card-status--error {
+  @apply border-l-4 border-l-red-500;
+}
+
+.card-status--processing {
+  @apply border-l-primary border-l-4;
+}

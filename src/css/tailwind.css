@@ -1,11 +1,12 @@
 @import 'tailwindcss';
-@plugin "daisyui" {
+@plugin 'daisyui' {
   themes: light --default;
 }
-@plugin "daisyui/theme" {
+@plugin 'daisyui/theme' {
   name: 'light';
   default: true;
   --color-primary: oklch(0.7372 0.1499 54.45);
+  --color-neutral-200: oklch(0.9551 0 0);
 }
 
 @theme {
@@ -37,7 +38,7 @@ body {
 }
 
 html {
-  @apply bg-neutral-50;
+  @apply bg-neutral-50 text-neutral-900;
 }
 
 .container {

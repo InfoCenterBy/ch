@@ -16,7 +16,9 @@
                 <form class="mt-8 space-y-4" action="#" method="post" data-register-form>
                   <div class="form-control w-full">
                     <label class="label" for="phone">
-                      <span class="font-medium text-neutral-900">Номер телефона <span class="text-error">*</span></span>
+                      <span class="font-medium text-neutral-900"
+                        >Номер телефона <span class="text-error">*</span></span
+                      >
                     </label>
                     <input
                       id="phone"
@@ -29,7 +31,9 @@
 
                   <div class="form-control w-full">
                     <label class="label" for="password">
-                      <span class="font-medium text-neutral-900">Пароль <span class="text-error">*</span></span>
+                      <span class="font-medium text-neutral-900"
+                        >Пароль <span class="text-error">*</span></span
+                      >
                     </label>
                     <div class="password-input-wrapper mt-2 relative">
                       <input
@@ -44,7 +48,7 @@
                         class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
                         aria-label="Показать пароль">
                         <svg
-                          class="password-icon-crossed size-5"
+                          class="password-icon-crossed size-5 text-neutral-500"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor">
@@ -56,7 +60,7 @@
                             d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
                         </svg>
                         <svg
-                          class="password-icon-normal hidden size-5"
+                          class="password-icon-normal hidden size-5 text-neutral-500"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor">
@@ -89,7 +93,7 @@
                         class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
                         aria-label="Показать пароль">
                         <svg
-                          class="password-icon-crossed size-5"
+                          class="password-icon-crossed size-5 text-neutral-500"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor">
@@ -101,7 +105,7 @@
                             d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
                         </svg>
                         <svg
-                          class="password-icon-normal hidden size-5"
+                          class="password-icon-normal hidden size-5 text-neutral-500"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor">
@@ -120,7 +124,9 @@
                       <input type="checkbox" class="checkbox checkbox-primary checkbox-sm mt-0.5" />
                       <span class="flex-1 text-neutral-900 leading-[140%]">
                         Я даю согласие на обработку своих персональных данных в соответствии с
-                        <a class="link-primary" href="#"> Политикой обработки персональных данных </a>
+                        <a class="link-primary" href="#">
+                          Политикой обработки персональных данных
+                        </a>
                         *
                       </span>
                     </label>
@@ -145,15 +151,5 @@
     </div>
 
     @@include('components/script.html')
-    <script>
-      document.querySelector('[data-register-form]')?.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const phone = document.getElementById('phone')?.value?.trim();
-        const url = phone
-          ? 'register-confirm.html?phone=' + encodeURIComponent(phone)
-          : 'register-confirm.html';
-        location.href = url;
-      });
-    </script>
   </body>
 </html>
