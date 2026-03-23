@@ -153,6 +153,7 @@
                               <div class="mt-4 overflow-hidden rounded-lg bg-black">
                                 <video id="qr-video" class="w-full max-h-[300px]"></video>
                               </div>
+                              <p id="qr-scan-status" class="text-base-content/70 text-xs mt-2"></p>
                               <p id="qr-scan-error" class="hidden text-error text-sm mt-2"></p>
                             </div>
                             <button type="button" class="modal-backdrop" aria-label="Закрыть" data-qr-scan-close></button>
@@ -498,24 +499,7 @@
             setActive(tab.dataset.tab, { focus: true });
           });
 
-          tablist.addEventListener('keydown', (e) => {
-            const current = e.target.closest('[role="tab"][data-tab]');
-            if (!current) return;
 
-            const idx = tabs.indexOf(current);
-            if (idx === -1) return;
-
-            let nextIdx = null;
-            if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
-            if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabs.length) % tabs.length;
-            if (e.key === 'Home') nextIdx = 0;
-            if (e.key === 'End') nextIdx = tabs.length - 1;
-
-            if (nextIdx === null) return;
-
-            e.preventDefault();
-            setActive(tabs[nextIdx].dataset.tab, { focus: true });
-          });
         });
       })();
 
@@ -525,47 +509,77 @@
         const receiptInput = document.querySelector('input[name="receiptId"]');
         const form = document.getElementById('scan-tab-uid');
         const errorEl = document.getElementById('qr-scan-error');
+        const statusEl = document.getElementById('qr-scan-status');
         const RECEIPT_ID_LENGTH = 24;
         let qrScanner = null;
 
-        const closeQrScanner = () => {
+        const setStatus = (text) => {
+          if (statusEl) statusEl.textContent = text;
+        };
+
+        const resetMessages = () => {
+          errorEl.classList.add('hidden');
+          errorEl.textContent = '';
+          setStatus('Ожидание запуска камеры...');
+        };
+
+        const stopScanner = () => {
           if (qrScanner) {
-            qrScanner.stop();
+            qrScanner.stop().catch(() => {});
             qrScanner.destroy();
             qrScanner = null;
           }
-          modal.close();
-          errorEl.classList.add('hidden');
+        };
+
+        const closeQrScanner = () => {
+          stopScanner();
+          if (modal.open) {
+            modal.close();
+          }
+          resetMessages();
         };
 
         const openQrScanner = () => {
-          if (!window.QrScanner) return;
-          errorEl.classList.add('hidden');
-          errorEl.textContent = '';
-          if (qrScanner) {
-            qrScanner.stop();
-            qrScanner.destroy();
-            qrScanner = null;
+          if (!window.QrScanner) {
+            errorEl.textContent = 'Библиотека сканера не загружена';
+            errorEl.classList.remove('hidden');
+            return;
           }
+          resetMessages();
+          stopScanner();
           qrScanner = new window.QrScanner(
             videoEl,
             (result) => {
               const text = String(typeof result === 'string' ? result : (result?.data ?? '')).trim();
+              setStatus(`Распознан QR: ${text.length} символов`);
               if (text.length !== RECEIPT_ID_LENGTH) {
                 errorEl.textContent = `Ожидается ${RECEIPT_ID_LENGTH} символов, получено ${text.length}`;
                 errorEl.classList.remove('hidden');
                 return;
               }
               receiptInput.value = text;
+              setStatus('Код успешно считан');
               closeQrScanner();
             },
-            { highlightScanRegion: true, highlightCodeOutline: true }
+            {
+              highlightScanRegion: true,
+              highlightCodeOutline: true,
+              preferredCamera: 'environment',
+              maxScansPerSecond: 10,
+              returnDetailedScanResult: true
+            }
           );
           modal.showModal();
-          qrScanner.start().catch((err) => {
-            errorEl.textContent = 'Не удалось запустить камеру: ' + (err?.message || err);
-            errorEl.classList.remove('hidden');
-          });
+          setStatus('Запрос доступа к камере...');
+          qrScanner.start()
+            .then(() => {
+              setStatus('Камера запущена. Наведите на QR-код.');
+            })
+            .catch((err) => {
+              errorEl.textContent = 'Не удалось запустить камеру: ' + (err?.message || err);
+              errorEl.classList.remove('hidden');
+              setStatus('Ошибка запуска камеры');
+            });
         };
 
         document.querySelectorAll('[data-qr-scan-trigger]').forEach((btn) => {
@@ -574,7 +588,10 @@
         document.querySelectorAll('[data-qr-scan-close]').forEach((btn) => {
           btn.addEventListener('click', closeQrScanner);
         });
-        modal.addEventListener('close', closeQrScanner);
+        modal.addEventListener('close', () => {
+          stopScanner();
+          resetMessages();
+        });
 
         const checkBtn = document.querySelector('[data-check-receipt-btn]');
         if (checkBtn && form) {
