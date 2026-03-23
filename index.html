@@ -525,7 +525,8 @@
 
         const stopScanner = () => {
           if (qrScanner) {
-            qrScanner.stop().catch(() => {});
+            const p = qrScanner.stop();
+            if (p && typeof p.catch === 'function') p.catch(() => {});
             qrScanner.destroy();
             qrScanner = null;
           }
