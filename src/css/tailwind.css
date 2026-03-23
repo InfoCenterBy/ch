@@ -21,6 +21,7 @@
 @import './links.css';
 @import './cards.css';
 @import './mobile-nav.css';
+@import './pagination.css';
 
 html,
 body {

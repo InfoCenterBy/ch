@@ -7,7 +7,7 @@
 }
 
 .card-status--error {
-  @apply border-l-4 border-l-red-500;
+  @apply border-l-4 border-l-red-600;
 }
 
 .card-status--processing {

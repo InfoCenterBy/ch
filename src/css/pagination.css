@@ -1,0 +1,27 @@
+.pagination-box .btn {
+  @apply bg-neutral-200 text-neutral-900 border-none size-12;
+}
+
+.pagination-box .btn:first-child {
+  @apply rounded-l-lg;
+}
+
+.pagination-box .btn:last-child {
+  @apply rounded-r-lg;
+}
+
+.pagination-box .btn:hover {
+  @apply bg-neutral-300 text-neutral-900;
+}
+
+.pagination-box .btn-active {
+  @apply bg-primary text-white;
+}
+
+.pagination-box .btn-active:hover {
+  @apply bg-primary text-white;
+}
+
+.pagination-box .btn:disabled {
+  @apply bg-neutral-300 text-neutral-900 cursor-not-allowed;
+}

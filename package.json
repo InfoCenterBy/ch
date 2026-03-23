@@ -47,6 +47,8 @@
     "cssnano": "^7.0.6",
     "daisyui": "^5.5.19",
     "gulp-cheerio": "^1.0.0",
-    "gulp-replace": "^1.1.4"
+    "gulp-replace": "^1.1.4",
+    "html5-qrcode": "^2.3.8",
+    "qr-scanner": "^1.4.2"
   }
 }
