@@ -121,7 +121,7 @@
                           <button type="button" class="modal-backdrop" aria-label="Закрыть" data-qr-scan-close></button>
                         </dialog>
                         <div class="flex gap-6 mt-2">
-                          <input name="receiptId" type="text" class="w-full input input-bordered" placeholder="" />
+                          <input name="receiptId" type="text" class="w-full input input-bordered" placeholder="" maxlength="24" data-char-input />
                           <button class="btn btn-icon" type="button" aria-label="Сканировать" data-qr-scan-trigger>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
                               <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
@@ -131,10 +131,10 @@
                             </svg>
                           </button>
                         </div>
-                        <div class="mt-1 text-neutral-500 text-xs">0/0</div>
+                        <div class="mt-1 text-neutral-500 text-xs" data-char-counter data-input-name="receiptId" data-max="24">0/24</div>
                       </div>
 
-                      <button type="button" class="mx-auto btn btn-primary" data-check-receipt-btn>Проверить чек</button>
+                      <button type="button" class="mx-auto btn btn-primary" data-check-receipt-btn disabled>Проверить чек</button>
                     </div>
                   </form>
 
@@ -176,9 +176,9 @@
                           <button type="button" class="modal-backdrop" aria-label="Закрыть" onclick="receiptCashboxExample.close()"></button>
                         </dialog>
                         <div class="flex gap-6 mt-2">
-                          <input name="cashboxNumber" type="text" class="w-full input input-bordered" placeholder="" />
+                          <input name="cashboxNumber" type="text" class="w-full input input-bordered" placeholder="" maxlength="9" data-char-input />
                         </div>
-                        <div class="mt-1 text-neutral-500 text-xs">0/0</div>
+                        <div class="mt-1 text-neutral-500 text-xs" data-char-counter data-input-name="cashboxNumber" data-max="9">0/9</div>
                       </div>
 
                       <div class="w-full form-control">
@@ -210,9 +210,9 @@
                           <button type="button" class="modal-backdrop" aria-label="Закрыть" onclick="receiptPaymentDocumentExample.close()"></button>
                         </dialog>
                         <div class="flex gap-6 mt-2">
-                          <input name="paymentDocumentNumber" type="text" class="w-full input input-bordered" placeholder="" />
+                          <input name="paymentDocumentNumber" type="text" class="w-full input input-bordered" placeholder="" maxlength="10" data-char-input />
                         </div>
-                        <div class="mt-1 text-neutral-500 text-xs">0/0</div>
+                        <div class="mt-1 text-neutral-500 text-xs" data-char-counter data-input-name="paymentDocumentNumber" data-max="10">0/10</div>
                       </div>
 
                       <div class="w-full form-control">
@@ -228,7 +228,7 @@
                         </div>
                       </div>
 
-                      <button type="submit" class="mx-auto btn btn-primary">Проверить чек</button>
+                      <button type="submit" class="mx-auto btn btn-primary" data-check-receipt-other disabled>Проверить чек</button>
                     </div>
                   </form>
                 </div>
@@ -408,6 +408,54 @@
       });
     })();
     (() => {
+      document.querySelectorAll('[data-char-counter]').forEach((el) => {
+        const name = el.dataset.inputName;
+        const max = parseInt(el.dataset.max, 10) || 0;
+        const form = el.closest('form');
+        if (!form || !name) return;
+        const input = form.querySelector(`input[name="${name}"]`);
+        if (!input) return;
+        const update = () => {
+          const len = (input.value || '').length;
+          el.textContent = `${len}/${max}`;
+        };
+        input.addEventListener('input', update);
+        input.addEventListener('change', update);
+        update();
+      });
+
+      const formUid = document.getElementById('scan-tab-uid');
+      const formOther = document.getElementById('scan-tab-other');
+      const btnUid = document.querySelector('[data-check-receipt-btn]');
+      const btnOther = document.querySelector('[data-check-receipt-other]');
+
+      const validateUid = () => {
+        if (!formUid || !btnUid) return;
+        const date = formUid.querySelector('input[name="date"]')?.value?.trim();
+        const receiptId = formUid.querySelector('input[name="receiptId"]')?.value?.trim() || '';
+        const valid = !!date && receiptId.length === 24;
+        btnUid.disabled = !valid;
+      };
+
+      const validateOther = () => {
+        if (!formOther || !btnOther) return;
+        const date = formOther.querySelector('input[name="date"]')?.value?.trim();
+        const cashbox = formOther.querySelector('input[name="cashboxNumber"]')?.value?.trim() || '';
+        const paymentDoc = formOther.querySelector('input[name="paymentDocumentNumber"]')?.value?.trim() || '';
+        const amount = formOther.querySelector('input[name="paymentAmount"]')?.value?.trim();
+        const valid = !!date && cashbox.length === 9 && paymentDoc.length === 10 && !!amount;
+        btnOther.disabled = !valid;
+      };
+
+      [formUid, formOther].forEach((f) => {
+        if (!f) return;
+        f.addEventListener('input', () => { validateUid(); validateOther(); });
+        f.addEventListener('change', () => { validateUid(); validateOther(); });
+      });
+      validateUid();
+      validateOther();
+    })();
+    (() => {
       const modal = document.getElementById('qrScannerModal');
       const videoEl = document.getElementById('qr-video');
       const receiptInput = document.querySelector('input[name="receiptId"]');
@@ -468,6 +516,7 @@
               return;
             }
             receiptInput.value = text;
+            receiptInput.dispatchEvent(new Event('input', { bubbles: true }));
             setStatus('Код успешно считан');
             closeQrScanner();
           },
