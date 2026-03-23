@@ -112,7 +112,9 @@
                             <button type="button" aria-label="Закрыть" class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
                               data-qr-scan-close>✕</button>
                             <h3 class="font-bold text-lg">Сканирование QR-кода</h3>
-                            <div id="qr-reader" class="mt-4 min-h-[200px]"></div>
+                            <div class="bg-black mt-4 rounded-lg overflow-hidden">
+                              <video id="qr-video" class="w-full max-h-[300px]"></video>
+                            </div>
                             <p id="qr-scan-status" class="mt-2 text-xs text-base-content/70"></p>
                             <p id="qr-scan-error" class="hidden mt-2 text-error text-sm"></p>
                           </div>
@@ -363,7 +365,7 @@
 
   </div>
 
-  <script src="js/html5-qrcode.min.js"></script>
+  <script src="js/qr-scanner.umd.min.js"></script>
   <script src="js/script.js"></script>
 
   <script>
@@ -407,13 +409,13 @@
     })();
     (() => {
       const modal = document.getElementById('qrScannerModal');
-      const readerEl = document.getElementById('qr-reader');
+      const videoEl = document.getElementById('qr-video');
       const receiptInput = document.querySelector('input[name="receiptId"]');
       const form = document.getElementById('scan-tab-uid');
       const errorEl = document.getElementById('qr-scan-error');
       const statusEl = document.getElementById('qr-scan-status');
       const RECEIPT_ID_LENGTH = 24;
-      let html5QrScanner = null;
+      let qrScanner = null;
 
       const setStatus = (text) => {
         if (statusEl) statusEl.textContent = text;
@@ -422,43 +424,38 @@
       const resetMessages = () => {
         errorEl.classList.add('hidden');
         errorEl.textContent = '';
-        setStatus('');
+        setStatus('Ожидание запуска камеры...');
       };
 
       const stopScanner = () => {
-        if (html5QrScanner) {
-          const p = html5QrScanner.clear();
-          if (p && typeof p.then === 'function') p.then(() => {}).catch(() => {});
-          html5QrScanner = null;
+        if (qrScanner) {
+          const p = qrScanner.stop();
+          if (p && typeof p.catch === 'function') p.catch(() => { });
+          qrScanner.destroy();
+          qrScanner = null;
         }
-        if (readerEl) readerEl.innerHTML = '';
       };
 
       const closeQrScanner = () => {
         stopScanner();
-        if (modal.open) modal.close();
+        if (modal.open) {
+          modal.close();
+        }
         resetMessages();
       };
 
       const openQrScanner = () => {
-        const Html5QrcodeScanner = window.Html5QrcodeScanner || window.__Html5QrcodeLibrary__?.Html5QrcodeScanner;
-        if (!Html5QrcodeScanner) {
+        if (!window.QrScanner) {
           errorEl.textContent = 'Библиотека сканера не загружена';
           errorEl.classList.remove('hidden');
           return;
         }
         resetMessages();
         stopScanner();
-        modal.showModal();
-        setStatus('Загрузка сканера...');
-        readerEl.innerHTML = '';
-        html5QrScanner = new Html5QrcodeScanner('qr-reader', {
-          fps: 10,
-          qrbox: { width: 250, height: 250 },
-        });
-        html5QrScanner.render(
-          (decodedText) => {
-            const text = String(decodedText || '').trim();
+        qrScanner = new window.QrScanner(
+          videoEl,
+          (result) => {
+            const text = String(typeof result === 'string' ? result : (result?.data ?? '')).trim();
             setStatus(`Распознан QR: ${text.length} символов`);
             if (text.length !== RECEIPT_ID_LENGTH) {
               errorEl.textContent = `Ожидается ${RECEIPT_ID_LENGTH} символов, получено ${text.length}`;
@@ -474,9 +471,25 @@
             setStatus('Код успешно считан');
             closeQrScanner();
           },
-          () => {}
+          {
+            highlightScanRegion: true,
+            highlightCodeOutline: true,
+            preferredCamera: 'environment',
+            maxScansPerSecond: 10,
+            returnDetailedScanResult: true
+          }
         );
-        setStatus('Камера запущена. Наведите на QR-код.');
+        modal.showModal();
+        setStatus('Запрос доступа к камере...');
+        qrScanner.start()
+          .then(() => {
+            setStatus('Камера запущена. Наведите на QR-код.');
+          })
+          .catch((err) => {
+            errorEl.textContent = 'Не удалось запустить камеру: ' + (err?.message || err);
+            errorEl.classList.remove('hidden');
+            setStatus('Ошибка запуска камеры');
+          });
       };
 
       document.querySelectorAll('[data-qr-scan-trigger]').forEach((btn) => {
