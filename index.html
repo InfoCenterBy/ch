@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Проверка чека покупателем</title>
@@ -13,9 +13,9 @@
 </head>
 
 
-  <body>
-    <div class="wrapper">
-      <header class="border-neutral-300 border-b">
+<body>
+  <div class="wrapper">
+    <header class="border-neutral-300 border-b">
   <div class="container">
     <div class="flex justify-between items-center gap-4 py-5">
       <div class="flex items-center gap-3">
@@ -42,333 +42,236 @@
   </div>
 </header>
 
-      <main class="mt-10 mb-10 md:mb-20">
-        <div class="py-10 container">
-          <section class="gap-6 grid grid-cols-1 lg:grid-cols-2">
-            <div class="flex flex-col justify-center bg-neutral-200 p-4 md:p-6 lg:p-8 rounded-3xl">
-              <h1 class="heading-1">Проверка чека покупателем</h1>
-              <p class="hidden md:block mt-2 max-w-[550px] font-medium text-neutral-500 text-xl uppercase">
-                Это <span class="text-primary">официальный</span> сервис налоговых органов для онлайн‑проверки чеков
-                покупателями
-              </p>
-            </div>
+    <main class="mt-10 mb-10 md:mb-20">
+      <div class="py-10 container">
+        <section class="gap-6 grid grid-cols-1 lg:grid-cols-2">
+          <div class="flex flex-col justify-center bg-neutral-200 p-4 md:p-6 lg:p-8 rounded-3xl">
+            <h1 class="heading-1">Проверка чека покупателем</h1>
+            <p class="hidden md:block mt-2 max-w-[550px] font-medium text-neutral-500 text-xl uppercase">
+              Это <span class="text-primary">официальный</span> сервис налоговых органов для онлайн‑проверки чеков
+              покупателями
+            </p>
+          </div>
 
-            <div class="card-border">
-              <div class="bg-neutral-50 p-4 md:p-6 rounded-2xl">
-                <div class="rounded-xl" data-tabs-root>
-                  <div
-                    role="tablist"
-                    class="grid grid-cols-2 bg-neutral-200 p-2 rounded-xl w-full tabs tabs-box"
-                    aria-label="Параметры проверки чека"
-                    data-tabs>
-                    <a
-                      role="tab"
-                      class="justify-center w-full text-center tab tab-active"
-                      href="#scan-tab-uid"
-                      data-tab="uid"
-                      aria-controls="scan-tab-uid"
-                      aria-selected="true">
-                      По уникальному идентификатору
-                    </a>
-                    <a
-                      role="tab"
-                      class="justify-center w-full text-center tab"
-                      href="#scan-tab-other"
-                      data-tab="other"
-                      aria-controls="scan-tab-other"
-                      aria-selected="false"
-                      tabindex="-1">
-                      По другим параметрам
-                    </a>
-                  </div>
+          <div class="card-border">
+            <div class="bg-neutral-50 p-4 md:p-6 rounded-2xl">
+              <div class="rounded-xl" data-tabs-root>
+                <div role="tablist" class="grid grid-cols-2 bg-neutral-200 p-2 rounded-xl w-full tabs tabs-box" aria-label="Параметры проверки чека" data-tabs>
+                  <a role="tab" class="justify-center w-full text-center tab tab-active" href="#scan-tab-uid" data-tab="uid" aria-controls="scan-tab-uid"
+                    aria-selected="true">
+                    По уникальному идентификатору
+                  </a>
+                  <a role="tab" class="justify-center w-full text-center tab" href="#scan-tab-other" data-tab="other" aria-controls="scan-tab-other"
+                    aria-selected="false" tabindex="-1">
+                    По другим параметрам
+                  </a>
+                </div>
 
-                  <div class="mt-2">
-                    <form id="scan-tab-uid" role="tabpanel" data-tabpanel="uid" class="border-base-300 rounded-xl">
-                      <div class="gap-4 grid mt-5">
-                        <div class="w-full">
-                          <label class="label">
-                            <span class="font-medium text-neutral-900">Дата <span class="text-red-600">*</span></span>
-                          </label>
-                          <div
-                            class="mt-2 cursor-pointer [&:has(input:disabled)]:cursor-not-allowed"
-                            onclick="this.querySelector('input')?.showPicker?.()">
-                            <input name="date" type="date" class="w-full input input-bordered" />
-                          </div>
+                <div class="mt-2">
+                  <form id="scan-tab-uid" role="tabpanel" data-tabpanel="uid" class="border-base-300 rounded-xl">
+                    <div class="gap-4 grid mt-5">
+                      <div class="w-full">
+                        <label class="label">
+                          <span class="font-medium text-neutral-900">Дата <span class="text-red-600">*</span></span>
+                        </label>
+                        <div class="mt-2 cursor-pointer [&:has(input:disabled)]:cursor-not-allowed" onclick="this.querySelector('input')?.showPicker?.()">
+                          <input name="date" type="date" class="w-full input input-bordered" />
                         </div>
+                      </div>
 
-                        <div class="w-full">
-                          <div class="flex items-center gap-1">
-                            <label class="label form-control">
-                              <span class="font-medium text-neutral-900">
-                                Уникальный идентификатор <span class="text-error">*</span>
-                              </span>
-                            </label>
-                            <button
-                              class="text-primary hover:text-primary-hover cursor-pointer"
-                              type="button"
-                              onclick="
+                      <div class="w-full">
+                        <div class="flex items-center gap-1">
+                          <label class="label form-control">
+                            <span class="font-medium text-neutral-900">
+                              Уникальный идентификатор <span class="text-error">*</span>
+                            </span>
+                          </label>
+                          <button class="text-primary hover:text-primary-hover cursor-pointer" type="button" onclick="
                                 event.preventDefault();
                                 receiptIdExample.showModal();
                               ">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                class="size-6">
-                                <path
-                                  fill-rule="evenodd"
-                                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                  clip-rule="evenodd" />
-                              </svg>
-                            </button>
-                          </div>
-                          <dialog id="receiptIdExample" class="modal">
-                            <div class="modal-box">
-                              <button
-                                type="button"
-                                aria-label="Закрыть"
-                                class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
-                                onclick="receiptIdExample.close()">
-                                ✕
-                              </button>
-                              <img
-                                src="./img/receipts/receipt-id-example.png"
-                                alt="Пример чека"
-                                class="w-full max-h-[570px] object-contain" />
-                            </div>
-                            <button
-                              type="button"
-                              class="modal-backdrop"
-                              aria-label="Закрыть"
-                              onclick="receiptIdExample.close()"></button>
-                          </dialog>
-                          <dialog id="qrScannerModal" class="modal">
-                            <div class="modal-box">
-                              <button
-                                type="button"
-                                aria-label="Закрыть"
-                                class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
-                                data-qr-scan-close>✕</button>
-                              <h3 class="font-bold text-lg">Сканирование QR-кода</h3>
-                              <div class="mt-4 overflow-hidden rounded-lg bg-black">
-                                <video id="qr-video" class="w-full max-h-[300px]"></video>
-                              </div>
-                              <p id="qr-scan-status" class="text-base-content/70 text-xs mt-2"></p>
-                              <p id="qr-scan-error" class="hidden text-error text-sm mt-2"></p>
-                            </div>
-                            <button type="button" class="modal-backdrop" aria-label="Закрыть" data-qr-scan-close></button>
-                          </dialog>
-                          <div class="flex gap-6 mt-2">
-                            <input name="receiptId" type="text" class="w-full input input-bordered" placeholder="" />
-                            <button class="btn btn-icon" type="button" aria-label="Сканировать" data-qr-scan-trigger>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                class="size-5">
-                                <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
-                                <path
-                                  fill-rule="evenodd"
-                                  d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                  clip-rule="evenodd" />
-                              </svg>
-                            </button>
-                          </div>
-                          <div class="mt-1 text-neutral-500 text-xs">0/0</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                              <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                                clip-rule="evenodd" />
+                            </svg>
+                          </button>
                         </div>
-
-                        <button type="button" class="mx-auto btn btn-primary" data-check-receipt-btn>Проверить чек</button>
+                        <dialog id="receiptIdExample" class="modal">
+                          <div class="modal-box">
+                            <button type="button" aria-label="Закрыть" class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
+                              onclick="receiptIdExample.close()">
+                              ✕
+                            </button>
+                            <img src="./img/receipts/receipt-id-example.png" alt="Пример чека" class="w-full max-h-[570px] object-contain" />
+                          </div>
+                          <button type="button" class="modal-backdrop" aria-label="Закрыть" onclick="receiptIdExample.close()"></button>
+                        </dialog>
+                        <dialog id="qrScannerModal" class="modal">
+                          <div class="modal-box">
+                            <button type="button" aria-label="Закрыть" class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
+                              data-qr-scan-close>✕</button>
+                            <h3 class="font-bold text-lg">Сканирование QR-кода</h3>
+                            <div id="qr-reader" class="mt-4 min-h-[200px]"></div>
+                            <p id="qr-scan-status" class="mt-2 text-xs text-base-content/70"></p>
+                            <p id="qr-scan-error" class="hidden mt-2 text-error text-sm"></p>
+                          </div>
+                          <button type="button" class="modal-backdrop" aria-label="Закрыть" data-qr-scan-close></button>
+                        </dialog>
+                        <div class="flex gap-6 mt-2">
+                          <input name="receiptId" type="text" class="w-full input input-bordered" placeholder="" />
+                          <button class="btn btn-icon" type="button" aria-label="Сканировать" data-qr-scan-trigger>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                              <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
+                              <path fill-rule="evenodd"
+                                d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                                clip-rule="evenodd" />
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="mt-1 text-neutral-500 text-xs">0/0</div>
                       </div>
-                    </form>
 
-                    <form
-                      id="scan-tab-other"
-                      role="tabpanel"
-                      data-tabpanel="other"
-                      class="hidden border-base-300 rounded-xl">
-                      <div class="gap-4 grid mt-5">
-                        <div class="w-full form-control">
-                          <label class="label">
-                            <span class="font-medium text-neutral-900">Дата <span class="text-red-600">*</span></span>
+                      <button type="button" class="mx-auto btn btn-primary" data-check-receipt-btn>Проверить чек</button>
+                    </div>
+                  </form>
+
+                  <form id="scan-tab-other" role="tabpanel" data-tabpanel="other" class="hidden border-base-300 rounded-xl">
+                    <div class="gap-4 grid mt-5">
+                      <div class="w-full form-control">
+                        <label class="label">
+                          <span class="font-medium text-neutral-900">Дата <span class="text-red-600">*</span></span>
+                        </label>
+                        <input name="date" type="date" class="mt-2 w-full input input-bordered" />
+                      </div>
+
+                      <div class="w-full form-control">
+                        <div class="flex items-center gap-1">
+                          <label class="label form-control">
+                            <span class="font-medium text-neutral-900">
+                              Номер кассы <span class="text-error">*</span>
+                            </span>
                           </label>
-                          <input name="date" type="date" class="mt-2 w-full input input-bordered" />
-                        </div>
-
-                        <div class="w-full form-control">
-                          <div class="flex items-center gap-1">
-                            <label class="label form-control">
-                              <span class="font-medium text-neutral-900">
-                                Номер кассы <span class="text-error">*</span>
-                              </span>
-                            </label>
-                            <button
-                              class="text-primary hover:text-primary-hover cursor-pointer"
-                              type="button"
-                              onclick="
+                          <button class="text-primary hover:text-primary-hover cursor-pointer" type="button" onclick="
                                 event.preventDefault();
                                 receiptCashboxExample.showModal();
                               ">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                class="size-6">
-                                <path
-                                  fill-rule="evenodd"
-                                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                  clip-rule="evenodd" />
-                              </svg>
-                            </button>
-                          </div>
-                          <dialog id="receiptCashboxExample" class="modal">
-                            <div class="modal-box">
-                              <button
-                                type="button"
-                                aria-label="Закрыть"
-                                class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
-                                onclick="receiptCashboxExample.close()">
-                                ✕
-                              </button>
-                              <img
-                                src="./img/receipts/receipt-cashbox-example.png"
-                                alt="Пример чека"
-                                class="w-full max-h-[570px] object-contain" />
-                            </div>
-                            <button
-                              type="button"
-                              class="modal-backdrop"
-                              aria-label="Закрыть"
-                              onclick="receiptCashboxExample.close()"></button>
-                          </dialog>
-                          <div class="flex gap-6 mt-2">
-                            <input
-                              name="cashboxNumber"
-                              type="text"
-                              class="w-full input input-bordered"
-                              placeholder="" />
-                          </div>
-                          <div class="mt-1 text-neutral-500 text-xs">0/0</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                              <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                                clip-rule="evenodd" />
+                            </svg>
+                          </button>
                         </div>
+                        <dialog id="receiptCashboxExample" class="modal">
+                          <div class="modal-box">
+                            <button type="button" aria-label="Закрыть" class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
+                              onclick="receiptCashboxExample.close()">
+                              ✕
+                            </button>
+                            <img src="./img/receipts/receipt-cashbox-example.png" alt="Пример чека" class="w-full max-h-[570px] object-contain" />
+                          </div>
+                          <button type="button" class="modal-backdrop" aria-label="Закрыть" onclick="receiptCashboxExample.close()"></button>
+                        </dialog>
+                        <div class="flex gap-6 mt-2">
+                          <input name="cashboxNumber" type="text" class="w-full input input-bordered" placeholder="" />
+                        </div>
+                        <div class="mt-1 text-neutral-500 text-xs">0/0</div>
+                      </div>
 
-                        <div class="w-full form-control">
-                          <div class="flex items-center gap-1">
-                            <label class="label form-control">
-                              <span class="font-medium text-neutral-900">
-                                Номер платежного документа <span class="text-error">*</span>
-                              </span>
-                            </label>
-                            <button
-                              class="text-primary hover:text-primary-hover cursor-pointer"
-                              type="button"
-                              onclick="
+                      <div class="w-full form-control">
+                        <div class="flex items-center gap-1">
+                          <label class="label form-control">
+                            <span class="font-medium text-neutral-900">
+                              Номер платежного документа <span class="text-error">*</span>
+                            </span>
+                          </label>
+                          <button class="text-primary hover:text-primary-hover cursor-pointer" type="button" onclick="
                                 event.preventDefault();
                                 receiptPaymentDocumentExample.showModal();
                               ">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                class="size-6">
-                                <path
-                                  fill-rule="evenodd"
-                                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                  clip-rule="evenodd" />
-                              </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                              <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                                clip-rule="evenodd" />
+                            </svg>
+                          </button>
+                        </div>
+                        <dialog id="receiptPaymentDocumentExample" class="modal">
+                          <div class="modal-box">
+                            <button type="button" aria-label="Закрыть" class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
+                              onclick="receiptPaymentDocumentExample.close()">
+                              ✕
                             </button>
+                            <img src="./img/receipts/receipt-payment-document-example.png" alt="Пример чека" class="w-full max-h-[570px] object-contain" />
                           </div>
-                          <dialog id="receiptPaymentDocumentExample" class="modal">
-                            <div class="modal-box">
-                              <button
-                                type="button"
-                                aria-label="Закрыть"
-                                class="top-2 right-2 absolute btn btn-sm btn-circle btn-ghost"
-                                onclick="receiptPaymentDocumentExample.close()">
-                                ✕
-                              </button>
-                              <img
-                                src="./img/receipts/receipt-payment-document-example.png"
-                                alt="Пример чека"
-                                class="w-full max-h-[570px] object-contain" />
-                            </div>
-                            <button
-                              type="button"
-                              class="modal-backdrop"
-                              aria-label="Закрыть"
-                              onclick="receiptPaymentDocumentExample.close()"></button>
-                          </dialog>
-                          <div class="flex gap-6 mt-2">
-                            <input
-                              name="paymentDocumentNumber"
-                              type="text"
-                              class="w-full input input-bordered"
-                              placeholder="" />
-                          </div>
-                          <div class="mt-1 text-neutral-500 text-xs">0/0</div>
+                          <button type="button" class="modal-backdrop" aria-label="Закрыть" onclick="receiptPaymentDocumentExample.close()"></button>
+                        </dialog>
+                        <div class="flex gap-6 mt-2">
+                          <input name="paymentDocumentNumber" type="text" class="w-full input input-bordered" placeholder="" />
                         </div>
-
-                        <div class="w-full form-control">
-                          <div class="flex items-center gap-1">
-                            <label class="label form-control">
-                              <span class="font-medium text-neutral-900">
-                                Сумма к оплате <span class="text-error">*</span>
-                              </span>
-                            </label>
-                          </div>
-                          <div class="flex gap-6 mt-2">
-                            <input
-                              name="paymentAmount"
-                              type="text"
-                              class="w-full input input-bordered"
-                              placeholder="" />
-                          </div>
-                        </div>
-
-                        <button type="submit" class="mx-auto btn btn-primary">Проверить чек</button>
+                        <div class="mt-1 text-neutral-500 text-xs">0/0</div>
                       </div>
-                    </form>
-                  </div>
+
+                      <div class="w-full form-control">
+                        <div class="flex items-center gap-1">
+                          <label class="label form-control">
+                            <span class="font-medium text-neutral-900">
+                              Сумма к оплате <span class="text-error">*</span>
+                            </span>
+                          </label>
+                        </div>
+                        <div class="flex gap-6 mt-2">
+                          <input name="paymentAmount" type="text" class="w-full input input-bordered" placeholder="" />
+                        </div>
+                      </div>
+
+                      <button type="submit" class="mx-auto btn btn-primary">Проверить чек</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section class="gap-6 hidden md:grid grid-cols-1 lg:grid-cols-2 mt-20">
-            <div class="bg-primary p-4 md:p-6 lg:p-8 rounded-2xl">
-              <h2 class="text-neutral-50 heading-1">Как проверить чек?</h2>
-              <div class="bg-neutral-50 mt-6 p-4 rounded-2xl text-neutral-900 text-sm">
-                <p>
-                  После получения кассового чека проверьте в режиме онлайн факт его передачи в систему контроля
-                  кассового оборудования, владельцем которой является Министерство по налогам и сборам Республики
-                  Беларусь.
-                </p>
-                <p class="mt-4">
-                  Проверить чек можно по уникальному идентификатору либо по номеру кассы и номеру платежного документа.
-                </p>
-                <p class="mt-4">
-                  Введите реквизиты чека в форму и нажмите «Проверить чек». Результат проверки сразу отобразится на
-                  экране.
-                </p>
+        <section class="hidden gap-6 md:grid grid-cols-1 lg:grid-cols-2 mt-20">
+          <div class="bg-primary p-4 md:p-6 lg:p-8 rounded-2xl">
+            <h2 class="text-neutral-50 heading-1">Как проверить чек?</h2>
+            <div class="bg-neutral-50 mt-6 p-4 rounded-2xl text-neutral-900 text-sm">
+              <p>
+                После получения кассового чека проверьте в режиме онлайн факт его передачи в систему контроля
+                кассового оборудования, владельцем которой является Министерство по налогам и сборам Республики
+                Беларусь.
+              </p>
+              <p class="mt-4">
+                Проверить чек можно по уникальному идентификатору либо по номеру кассы и номеру платежного документа.
+              </p>
+              <p class="mt-4">
+                Введите реквизиты чека в форму и нажмите «Проверить чек». Результат проверки сразу отобразится на
+                экране.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-col bg-neutral-200 p-4 md:p-6 lg:p-8 rounded-2xl h-full">
+            <h2 class="heading-2">Оставьте отзыв</h2>
+
+            <div class="flex flex-col flex-1">
+              <p class="mt-2 max-w-[500px] text-neutral-900 text-sm">
+                Оставьте отзыв, пожелание, или комментарий по работе сервиса «Проверка чека покупателем»
+              </p>
+              <div class="flex justify-between items-end mt-auto w-full">
+                <button class="btn btn-primary">Оставить отзыв</button>
+
+                <img class="max-w-[170px] max-h-[150px]" src="./img/review-section-img.png" alt="Отзывы" />
               </div>
             </div>
-
-            <div class="bg-neutral-200 p-4 md:p-6 lg:p-8 rounded-2xl flex flex-col h-full">
-              <h2 class="heading-2">Оставьте отзыв</h2>
-
-              <div class="flex flex-col flex-1">
-                <p class="mt-2 text-neutral-900 text-sm max-w-[500px]">
-                  Оставьте отзыв, пожелание, или комментарий по работе сервиса «Проверка чека покупателем»
-                </p>
-                <div class="mt-auto w-full flex justify-between items-end">
-                  <button class="btn btn-primary">Оставить отзыв</button>
-
-                  <img class="max-w-[170px] max-h-[150px]" src="./img/review-section-img.png" alt="Отзывы" />
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-      <footer class="bg-neutral-200 mb-14 md:mb-0">
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="bg-neutral-200 mb-14 md:mb-0">
   <div class="container">
     <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-3 py-10">
       <div class="flex items-center gap-3">
@@ -458,158 +361,147 @@
   </a>
 </nav>
 
-    </div>
+  </div>
 
-    <script src="js/qr-scanner.umd.min.js"></script>
-    <script src="js/script.js"></script>
+  <script src="js/html5-qrcode.min.js"></script>
+  <script src="js/script.js"></script>
 
-    <script>
-      (() => {
-        const roots = document.querySelectorAll('[data-tabs-root]');
+  <script>
+    (() => {
+      const roots = document.querySelectorAll('[data-tabs-root]');
 
-        roots.forEach((root) => {
-          const tablist = root.querySelector('[role="tablist"][data-tabs]');
-          if (!tablist) return;
+      roots.forEach((root) => {
+        const tablist = root.querySelector('[role="tablist"][data-tabs]');
+        if (!tablist) return;
 
-          const tabs = Array.from(tablist.querySelectorAll('[role="tab"][data-tab]'));
-          const panels = Array.from(root.querySelectorAll('[role="tabpanel"][data-tabpanel]'));
-          if (!tabs.length || !panels.length) return;
+        const tabs = Array.from(tablist.querySelectorAll('[role="tab"][data-tab]'));
+        const panels = Array.from(root.querySelectorAll('[role="tabpanel"][data-tabpanel]'));
+        if (!tabs.length || !panels.length) return;
 
-          const setActive = (name, { focus = false } = {}) => {
-            tabs.forEach((tab) => {
-              const isActive = tab.dataset.tab === name;
-              tab.classList.toggle('tab-active', isActive);
-              tab.setAttribute('aria-selected', String(isActive));
-              tab.tabIndex = isActive ? 0 : -1;
-              if (isActive && focus) tab.focus();
-            });
-
-            panels.forEach((panel) => {
-              panel.classList.toggle('hidden', panel.dataset.tabpanel !== name);
-            });
-          };
-
-          const defaultName = tabs.find((t) => t.classList.contains('tab-active'))?.dataset.tab ?? tabs[0].dataset.tab;
-          setActive(defaultName);
-
-          tablist.addEventListener('click', (e) => {
-            const tab = e.target.closest('[role="tab"][data-tab]');
-            if (!tab) return;
-            e.preventDefault();
-            setActive(tab.dataset.tab, { focus: true });
+        const setActive = (name, { focus = false } = {}) => {
+          tabs.forEach((tab) => {
+            const isActive = tab.dataset.tab === name;
+            tab.classList.toggle('tab-active', isActive);
+            tab.setAttribute('aria-selected', String(isActive));
+            tab.tabIndex = isActive ? 0 : -1;
+            if (isActive && focus) tab.focus();
           });
 
-
-        });
-      })();
-
-      (() => {
-        const modal = document.getElementById('qrScannerModal');
-        const videoEl = document.getElementById('qr-video');
-        const receiptInput = document.querySelector('input[name="receiptId"]');
-        const form = document.getElementById('scan-tab-uid');
-        const errorEl = document.getElementById('qr-scan-error');
-        const statusEl = document.getElementById('qr-scan-status');
-        const RECEIPT_ID_LENGTH = 24;
-        let qrScanner = null;
-
-        const setStatus = (text) => {
-          if (statusEl) statusEl.textContent = text;
-        };
-
-        const resetMessages = () => {
-          errorEl.classList.add('hidden');
-          errorEl.textContent = '';
-          setStatus('Ожидание запуска камеры...');
-        };
-
-        const stopScanner = () => {
-          if (qrScanner) {
-            const p = qrScanner.stop();
-            if (p && typeof p.catch === 'function') p.catch(() => {});
-            qrScanner.destroy();
-            qrScanner = null;
-          }
-        };
-
-        const closeQrScanner = () => {
-          stopScanner();
-          if (modal.open) {
-            modal.close();
-          }
-          resetMessages();
-        };
-
-        const openQrScanner = () => {
-          if (!window.QrScanner) {
-            errorEl.textContent = 'Библиотека сканера не загружена';
-            errorEl.classList.remove('hidden');
-            return;
-          }
-          resetMessages();
-          stopScanner();
-          qrScanner = new window.QrScanner(
-            videoEl,
-            (result) => {
-              const text = String(typeof result === 'string' ? result : (result?.data ?? '')).trim();
-              setStatus(`Распознан QR: ${text.length} символов`);
-              if (text.length !== RECEIPT_ID_LENGTH) {
-                errorEl.textContent = `Ожидается ${RECEIPT_ID_LENGTH} символов, получено ${text.length}`;
-                errorEl.classList.remove('hidden');
-                return;
-              }
-              if (!/^[a-zA-Z0-9]+$/.test(text)) {
-                errorEl.textContent = 'Код должен содержать только буквы и цифры';
-                errorEl.classList.remove('hidden');
-                return;
-              }
-              receiptInput.value = text;
-              setStatus('Код успешно считан');
-              closeQrScanner();
-            },
-            {
-              highlightScanRegion: true,
-              highlightCodeOutline: true,
-              preferredCamera: 'environment',
-              maxScansPerSecond: 10,
-              returnDetailedScanResult: true
-            }
-          );
-          modal.showModal();
-          setStatus('Запрос доступа к камере...');
-          qrScanner.start()
-            .then(() => {
-              setStatus('Камера запущена. Наведите на QR-код.');
-            })
-            .catch((err) => {
-              errorEl.textContent = 'Не удалось запустить камеру: ' + (err?.message || err);
-              errorEl.classList.remove('hidden');
-              setStatus('Ошибка запуска камеры');
-            });
-        };
-
-        document.querySelectorAll('[data-qr-scan-trigger]').forEach((btn) => {
-          btn.addEventListener('click', openQrScanner);
-        });
-        document.querySelectorAll('[data-qr-scan-close]').forEach((btn) => {
-          btn.addEventListener('click', closeQrScanner);
-        });
-        modal.addEventListener('close', () => {
-          stopScanner();
-          resetMessages();
-        });
-
-        const checkBtn = document.querySelector('[data-check-receipt-btn]');
-        if (checkBtn && form) {
-          checkBtn.addEventListener('click', () => {
-            if (receiptInput && receiptInput.value.trim()) {
-              form.requestSubmit();
-            } else {
-              openQrScanner();
-            }
+          panels.forEach((panel) => {
+            panel.classList.toggle('hidden', panel.dataset.tabpanel !== name);
           });
+        };
+
+        const defaultName = tabs.find((t) => t.classList.contains('tab-active'))?.dataset.tab ?? tabs[0].dataset.tab;
+        setActive(defaultName);
+
+        tablist.addEventListener('click', (e) => {
+          const tab = e.target.closest('[role="tab"][data-tab]');
+          if (!tab) return;
+          e.preventDefault();
+          setActive(tab.dataset.tab, { focus: true });
+        });
+
+
+      });
+    })();
+    (() => {
+      const modal = document.getElementById('qrScannerModal');
+      const readerEl = document.getElementById('qr-reader');
+      const receiptInput = document.querySelector('input[name="receiptId"]');
+      const form = document.getElementById('scan-tab-uid');
+      const errorEl = document.getElementById('qr-scan-error');
+      const statusEl = document.getElementById('qr-scan-status');
+      const RECEIPT_ID_LENGTH = 24;
+      let html5QrScanner = null;
+
+      const setStatus = (text) => {
+        if (statusEl) statusEl.textContent = text;
+      };
+
+      const resetMessages = () => {
+        errorEl.classList.add('hidden');
+        errorEl.textContent = '';
+        setStatus('');
+      };
+
+      const stopScanner = () => {
+        if (html5QrScanner) {
+          const p = html5QrScanner.clear();
+          if (p && typeof p.then === 'function') p.then(() => {}).catch(() => {});
+          html5QrScanner = null;
         }
-      })();
-    </script>
-  </body>
+        if (readerEl) readerEl.innerHTML = '';
+      };
+
+      const closeQrScanner = () => {
+        stopScanner();
+        if (modal.open) modal.close();
+        resetMessages();
+      };
+
+      const openQrScanner = () => {
+        const Html5QrcodeScanner = window.Html5QrcodeScanner || window.__Html5QrcodeLibrary__?.Html5QrcodeScanner;
+        if (!Html5QrcodeScanner) {
+          errorEl.textContent = 'Библиотека сканера не загружена';
+          errorEl.classList.remove('hidden');
+          return;
+        }
+        resetMessages();
+        stopScanner();
+        modal.showModal();
+        setStatus('Загрузка сканера...');
+        readerEl.innerHTML = '';
+        html5QrScanner = new Html5QrcodeScanner('qr-reader', {
+          fps: 10,
+          qrbox: { width: 250, height: 250 },
+        });
+        html5QrScanner.render(
+          (decodedText) => {
+            const text = String(decodedText || '').trim();
+            setStatus(`Распознан QR: ${text.length} символов`);
+            if (text.length !== RECEIPT_ID_LENGTH) {
+              errorEl.textContent = `Ожидается ${RECEIPT_ID_LENGTH} символов, получено ${text.length}`;
+              errorEl.classList.remove('hidden');
+              return;
+            }
+            if (!/^[a-zA-Z0-9]+$/.test(text)) {
+              errorEl.textContent = 'Код должен содержать только буквы и цифры';
+              errorEl.classList.remove('hidden');
+              return;
+            }
+            receiptInput.value = text;
+            setStatus('Код успешно считан');
+            closeQrScanner();
+          },
+          () => {}
+        );
+        setStatus('Камера запущена. Наведите на QR-код.');
+      };
+
+      document.querySelectorAll('[data-qr-scan-trigger]').forEach((btn) => {
+        btn.addEventListener('click', openQrScanner);
+      });
+      document.querySelectorAll('[data-qr-scan-close]').forEach((btn) => {
+        btn.addEventListener('click', closeQrScanner);
+      });
+      modal.addEventListener('close', () => {
+        stopScanner();
+        resetMessages();
+      });
+
+      const checkBtn = document.querySelector('[data-check-receipt-btn]');
+      if (checkBtn && form) {
+        checkBtn.addEventListener('click', () => {
+          if (receiptInput && receiptInput.value.trim()) {
+            form.requestSubmit();
+          } else {
+            openQrScanner();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+
 </html>
