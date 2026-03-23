@@ -558,6 +558,11 @@
                 errorEl.classList.remove('hidden');
                 return;
               }
+              if (!/^[a-zA-Z0-9]+$/.test(text)) {
+                errorEl.textContent = 'Код должен содержать только буквы и цифры';
+                errorEl.classList.remove('hidden');
+                return;
+              }
               receiptInput.value = text;
               setStatus('Код успешно считан');
               closeQrScanner();
