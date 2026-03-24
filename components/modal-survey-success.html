@@ -1,0 +1,42 @@
+<dialog id="surveySuccessModal" class="modal">
+  <div class="modal-box relative rounded-2xl">
+    <button
+      type="button"
+      aria-label="Закрыть"
+      class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 text-neutral-400
+        hover:text-neutral-600"
+      onclick="surveySuccessModal.close()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-5">
+        <path
+          fill-rule="evenodd"
+          d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+          clip-rule="evenodd" />
+      </svg>
+    </button>
+    <div class="flex flex-col items-center py-8 text-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-16 text-green-500">
+        <path
+          fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+          clip-rule="evenodd" />
+      </svg>
+      <h3 class="mt-4 text-lg font-semibold text-neutral-900">Спасибо за ответы!</h3>
+      <p class="mt-2 text-sm text-neutral-500">
+        Ваше мнение поможет нам сделать сервис лучше.
+      </p>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="modal-backdrop"
+    aria-label="Закрыть"
+    onclick="surveySuccessModal.close()"></button>
+</dialog>
