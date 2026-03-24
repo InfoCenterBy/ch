@@ -1,3 +1,38 @@
+/**
+ * Использование: await requestWithLoader(fetch('/api/endpoint', {...}))
+ * или: await requestWithLoader(async () => { ... })
+ */
+(function initLoader() {
+  const loader = document.getElementById('globalLoader');
+
+  window.showLoader = function () {
+    if (!loader) return;
+    loader.dataset.loading = 'true';
+    loader.style.opacity = '1';
+    loader.style.pointerEvents = 'auto';
+    loader.setAttribute('aria-hidden', 'false');
+  };
+
+  window.hideLoader = function () {
+    if (!loader) return;
+    loader.dataset.loading = 'false';
+    loader.style.opacity = '0';
+    loader.style.pointerEvents = 'none';
+    loader.setAttribute('aria-hidden', 'true');
+  };
+
+  window.requestWithLoader = async function (promiseOrFn) {
+    const promise = typeof promiseOrFn === 'function' ? promiseOrFn() : promiseOrFn;
+    showLoader();
+    try {
+      const result = await promise;
+      return result;
+    } finally {
+      hideLoader();
+    }
+  };
+})();
+
 document.querySelectorAll('[data-password-toggle]').forEach((btn) => {
   btn.addEventListener('click', () => {
     const wrapper = btn.closest('.password-input-wrapper');

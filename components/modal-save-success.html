@@ -1,11 +1,11 @@
-<dialog id="passwordSuccessModal" class="modal">
+<dialog id="updateProfileModal" class="modal">
   <div class="modal-box relative rounded-2xl">
     <button
       type="button"
       aria-label="Закрыть"
       class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 text-neutral-400
         hover:text-neutral-600"
-      onclick="passwordSuccessModal.close()">
+      onclick="updateProfileModal.close()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -28,13 +28,12 @@
           d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
           clip-rule="evenodd" />
       </svg>
-
-      <h3 class="mt-2 text-lg font-semibold text-neutral-900">Пароль успешно изменен</h3>
+      <h3 class="mt-4 text-lg font-semibold text-neutral-900">Данные успешно изменены</h3>
     </div>
   </div>
   <button
     type="button"
     class="modal-backdrop"
     aria-label="Закрыть"
-    onclick="passwordSuccessModal.close()"></button>
+    onclick="updateProfileModal.close()"></button>
 </dialog>

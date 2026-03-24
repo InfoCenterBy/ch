@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Восстановление пароля</title>
+  <title>Страница не найдена</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -14,7 +14,7 @@
 
 
   <body>
-    <div class="wrapper">
+    <div class="flex min-h-screen flex-col">
       <header class="border-b border-neutral-300">
   <div class="container">
     <div class="flex items-center justify-between gap-4 py-5">
@@ -64,70 +64,23 @@
 </header>
 
 
-      <main class="mt-10 mb-10 pb-24 md:mb-20 md:pb-0">
-        <div class="container py-10">
-          <div class="mx-auto max-w-[760px]">
-            <div class="card-border">
-              <div class="rounded-3xl bg-neutral-50 p-4 md:p-6">
-                <h1 class="heading-1 text-center">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h1>
-                <p class="mt-8 text-center text-neutral-500">
-                  Введите код для восстановления пароля, который был выслан на Ваш номер телефона
-                  <span class="text-primary font-medium" data-phone-display>+375(33) 113-23-13</span>
-                </p>
+      <main class="flex flex-1 flex-col items-center justify-center px-4 py-16">
+        <div class="flex flex-col items-center gap-8 text-center">
+          <img
+            src="./img/common/404.png"
+            alt="404 — Страница не найдена"
+            class="max-w-[280px] object-contain drop-shadow-md" />
 
-                <form class="mt-4 space-y-4" action="#" method="post" data-sms-form>
-                  <div class="form-control w-full">
-                    <div class="mx-auto text-center" for="recovery-sms-1">
-                      <span class="font-medium text-neutral-900">Код из SMS</span>
-                    </div>
-                    <div class="mt-2 flex justify-center gap-2" data-sms-inputs>
-                      <input
-                        id="recovery-sms-1"
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                        class="input input-bordered h-14 w-14 text-center text-lg"
-                        data-sms-digit
-                        autocomplete="one-time-code" />
-                      <input
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                        class="input input-bordered h-14 w-14 text-center text-lg"
-                        data-sms-digit
-                        autocomplete="one-time-code" />
-                      <input
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                        class="input input-bordered h-14 w-14 text-center text-lg"
-                        data-sms-digit
-                        autocomplete="one-time-code" />
-                      <input
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                        class="input input-bordered h-14 w-14 text-center text-lg"
-                        data-sms-digit
-                        autocomplete="one-time-code" />
-                    </div>
-                  </div>
-
-                  <div class="mt-10 flex justify-center">
-                    <button type="submit" class="btn btn-primary">Продолжить</button>
-                  </div>
-
-                  <div class="mt-10 space-y-1 text-center">
-                    <p class="text-neutral-900">Не получили код?</p>
-                    <p class="text-neutral-500" data-sms-timer>
-                      Вы сможете запросить код повторно через <span data-timer-value>120</span> сек.
-                    </p>
-                    <a href="#" class="link-primary">Выслать еще раз</a>
-                  </div>
-                </form>
-              </div>
-            </div>
+          <div class="space-y-2">
+            <p class="font-semibold text-neutral-900">
+              Мы не смогли найти страницу которую вы запрашиваете.
+            </p>
+            <p class="font-semibold text-neutral-900">
+              Возможно, она была удалена или вы ввели неверный адрес.
+            </p>
           </div>
+
+          <a href="index.html" class="btn btn-primary"> Вернуться на главную </a>
         </div>
       </main>
 
@@ -218,35 +171,5 @@
 
     <script src="js/script.js"></script>
 
-    <script>
-      (function () {
-        const params = new URLSearchParams(location.search);
-        const phone = params.get('phone');
-        const el = document.querySelector('[data-phone-display]');
-        if (el && phone) el.textContent = phone;
-
-        const inputs = document.querySelectorAll('[data-sms-digit]');
-        if (!inputs.length) return;
-
-        inputs.forEach((input, i) => {
-          input.addEventListener('input', (e) => {
-            const val = e.target.value.replace(/\D/g, '');
-            e.target.value = val.slice(-1);
-            if (val && inputs[i + 1]) inputs[i + 1].focus();
-          });
-          input.addEventListener('keydown', (e) => {
-            if (e.key === 'Backspace' && !e.target.value && inputs[i - 1]) inputs[i - 1].focus();
-          });
-          input.addEventListener('paste', (e) => {
-            e.preventDefault();
-            const paste = (e.clipboardData?.getData('text') || '').replace(/\D/g, '').slice(0, 4);
-            paste.split('').forEach((ch, j) => {
-              if (inputs[j]) inputs[j].value = ch;
-            });
-            inputs[Math.min(paste.length, inputs.length - 1)]?.focus();
-          });
-        });
-      })();
-    </script>
   </body>
 </html>
