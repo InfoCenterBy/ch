@@ -2390,6 +2390,9 @@
   .w-full {
     width: 100%;
   }
+  .max-w-14 {
+    max-width: calc(var(--spacing) * 14);
+  }
   .max-w-\[170px\] {
     max-width: 170px;
   }
@@ -2604,6 +2607,9 @@
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
+  }
+  .rounded-sm {
+    border-radius: var(--radius-sm);
   }
   .rounded-xl {
     border-radius: var(--radius-xl);
