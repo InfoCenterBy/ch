@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ru">
+  @@include('components/head.html', {"title": "Опрос о работе сервиса"})
+
+  <body>
+    <div class="wrapper">
+      @@include('components/header.html')
+
+      <main class="mt-10 mb-10 pb-24 md:mb-20 md:pb-0">
+        <div class="container py-10">
+          <div class="mx-auto max-w-[600px]">
+            <div class="card-border">
+              <div class="rounded-3xl bg-neutral-50 p-4 md:p-6">
+                <h1 class="heading-1 text-center">Опрос о работе сервиса</h1>
+                <p class="mt-4 text-center text-neutral-500">
+                  Помогите нам сделать сервис лучше. Ответьте на несколько вопросов.
+                </p>
+
+                <form id="surveyForm" class="mt-8 space-y-8" action="#" method="post">
+                  <div class="form-control" data-survey-question>
+                    <p class="mb-3 font-medium text-neutral-900">
+                      Как часто вы пользуетесь сервисом проверки чеков?
+                      <span class="text-error">*</span>
+                    </p>
+                    <div class="space-y-3">
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="frequency"
+                          value="rarely"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Редко (несколько раз в год)</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="frequency"
+                          value="sometimes"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Иногда (раз в месяц)</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="frequency"
+                          value="regularly"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Регулярно (несколько раз в месяц)</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="frequency"
+                          value="often"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Часто (еженедельно или чаще)</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-control" data-survey-question>
+                    <p class="mb-3 font-medium text-neutral-900">
+                      Насколько удобно вам пользоваться сервисом?
+                      <span class="text-error">*</span>
+                    </p>
+                    <div class="space-y-3">
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="convenience"
+                          value="very"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Очень удобно</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="convenience"
+                          value="yes"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Удобно</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="convenience"
+                          value="rather-not"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Скорее неудобно</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="convenience"
+                          value="no"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Неудобно</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-control" data-survey-question>
+                    <p class="mb-3 font-medium text-neutral-900">
+                      Оцените общее впечатление от сервиса
+                      <span class="text-error">*</span>
+                    </p>
+                    <div class="space-y-3">
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="impression"
+                          value="excellent"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Отличное</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="impression"
+                          value="good"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Хорошее</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="impression"
+                          value="average"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Нормальное</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-3">
+                        <input
+                          type="radio"
+                          name="impression"
+                          value="bad"
+                          class="radio radio-primary radio-sm" />
+                        <span class="text-neutral-900">Плохое</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-control">
+                    <p class="mb-3 font-medium text-neutral-900">
+                      Что бы вы хотели улучшить или добавить?
+                    </p>
+                    <textarea
+                      name="suggestions"
+                      rows="4"
+                      class="textarea textarea-bordered w-full resize-none"
+                      placeholder="Ваши пожелания и предложения..."></textarea>
+                  </div>
+
+                  <div class="flex justify-center pt-4">
+                    <button
+                      type="submit"
+                      id="surveySubmitBtn"
+                      class="btn btn-primary w-full sm:w-auto"
+                      disabled>
+                      Отправить ответы
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      @@include('components/footer.html') @@include('components/mobile-nav.html')
+      @@include('components/modal-survey-success.html')
+    </div>
+
+    @@include('components/script.html')
+    <script>
+      (function () {
+        const form = document.getElementById('surveyForm');
+        const submitBtn = document.getElementById('surveySubmitBtn');
+        const requiredNames = ['frequency', 'convenience', 'impression'];
+
+        function updateSubmitState() {
+          if (!form || !submitBtn) return;
+          const complete = requiredNames.every(
+            (name) => !!form.querySelector(`input[name="${name}"]:checked`),
+          );
+          submitBtn.disabled = !complete;
+        }
+
+        form?.querySelectorAll('input[type="radio"]').forEach((input) => {
+          input.addEventListener('change', updateSubmitState);
+        });
+        updateSubmitState();
+
+        form?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (submitBtn?.disabled) return;
+          surveySuccessModal.showModal();
+        });
+      })();
+    </script>
+  </body>
+</html>
