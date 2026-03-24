@@ -1,177 +1,234 @@
 <!doctype html>
 <html lang="en">
-@@include('components/head.html', {"title": "Мои чеки"})
+  @@include('components/head.html', {"title": "Мои чеки"})
 
-<body>
-  <div class="wrapper">
-    @@include('components/header.html')
+  <body>
+    <div class="wrapper">
+      @@include('components/header.html')
 
-    <main class="mt-10 mb-10 md:mb-20 pb-24 md:pb-0">
-      <div class="py-10 container">
-        <div class="flex flex-col items-start gap-6 md:gap-8">
-          <h1 class="heading-1">МОИ ЧЕКИ</h1>
-          <a href="index.html" class="btn btn-primary shrink-0">Проверить новый чек</a>
-        </div>
-
-        <div class="space-y-4 mt-8">
-          <a href="receipt-details.html"
-            class="group flex items-center gap-4 md:gap-6 bg-neutral-200 hover:shadow-md p-5 md:p-6 rounded-2xl max-w-[1280px] overflow-hidden transition-all card-status--success">
-            <div class="flex flex-wrap flex-1 items-center gap-x-6 gap-y-3 min-w-0">
-              <div class="flex items-center gap-4 md:min-w-[450px] shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10 text-green-500">
-                  <path fill-rule="evenodd"
-                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                    clip-rule="evenodd" />
-                </svg>
-                <div>
-                  <p class="text-neutral-500 text-xs">Результат проверки</p>
-                  <p class="font-semibold text-green-500">Чек найден</p>
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Дата:</span>
-                  <span>19.01.2022</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Время:</span>
-                  <span>08:35</span>
-                </span>
-                <span class="flex flex-col min-w-0 truncate">
-                  <span class="text-neutral-500 text-xs">Уник. ID:</span>
-                  <span class="truncate">e34953f614a8832b11e1de83</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">№ Кассы:</span>
-                  <span>110043680</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">№ Чека:</span>
-                  <span>1923405</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Сумма:</span>
-                  <span>120,67</span>
-                </span>
-              </div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-neutral-400 group-hover:text-primary shrink-0">
-              <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                clip-rule="evenodd" />
-            </svg>
-          </a>
-
-          <a href="receipt-details.html"
-            class="group flex items-center gap-4 md:gap-6 bg-neutral-200 hover:shadow-md p-5 md:p-6 rounded-2xl max-w-[1280px] overflow-hidden transition-all card-status--error">
-            <div class="flex flex-wrap flex-1 items-center gap-x-6 gap-y-3 min-w-0">
-              <div class="flex items-center gap-2 md:min-w-[450px] shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10 text-red-600">
-                  <path fill-rule="evenodd"
-                    d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                    clip-rule="evenodd" />
-                </svg>
-                <div>
-                  <p class="text-neutral-500 text-xs">Результат проверки</p>
-                  <p class="font-semibold text-red-600">Чек не найден (поиск окончен)</p>
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Дата:</span>
-                  <span>18.01.2022</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Время:</span>
-                  <span>14:22</span>
-                </span>
-                <span class="flex flex-col min-w-0 truncate">
-                  <span class="text-neutral-500 text-xs">Уник. ID:</span>
-                  <span class="truncate">a12b34c56d78e90f1234567</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">№ Кассы:</span>
-                  <span>110043681</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">№ Чека:</span>
-                  <span>1923406</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Сумма:</span>
-                  <span>89,50</span>
-                </span>
-              </div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-neutral-400 group-hover:text-primary shrink-0">
-              <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                clip-rule="evenodd" />
-            </svg>
-          </a>
-
-          <a href="receipt-details.html"
-            class="group flex items-center gap-4 md:gap-6 bg-neutral-200 hover:shadow-md p-5 md:p-6 rounded-2xl max-w-[1280px] overflow-hidden transition-all card-status--processing">
-            <div class="flex flex-wrap flex-1 items-center gap-x-6 gap-y-3 min-w-0">
-              <div class="flex items-center gap-2 md:min-w-[450px] shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10 text-primary">
-                  <path fill-rule="evenodd"
-                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                    clip-rule="evenodd" />
-                </svg>
-                <div>
-                  <p class="text-neutral-500 text-xs">Результат проверки</p>
-                  <p class="font-semibold text-primary">Чек находится в обработке</p>
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Дата:</span>
-                  <span>20.01.2022</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Время:</span>
-                  <span>09:15</span>
-                </span>
-                <span class="flex flex-col min-w-0 truncate">
-                  <span class="text-neutral-500 text-xs">Уник. ID:</span>
-                  <span class="truncate">f45963g725b9943c22f2ef94</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">№ Кассы:</span>
-                  <span>110043682</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">№ Чека:</span>
-                  <span>1923407</span>
-                </span>
-                <span class="flex flex-col">
-                  <span class="text-neutral-500 text-xs">Сумма:</span>
-                  <span>256,00</span>
-                </span>
-              </div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-neutral-400 group-hover:text-primary shrink-0">
-              <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-
-        <nav class="flex justify-center mt-10" aria-label="Пагинация">
-          <div class="join pagination-box">
-            <button class="join-item btn btn-active">1</button>
-            <button class="join-item btn">2</button>
-            <button class="join-item btn" disabled>...</button>
-            <button class="join-item btn">99</button>
-            <button class="join-item btn">100</button>
+      <main class="mt-10 mb-10 pb-24 md:mb-20 md:pb-0">
+        <div class="container py-10">
+          <div class="flex flex-col items-start gap-6 md:gap-8">
+            <h1 class="heading-1">МОИ ЧЕКИ</h1>
+            <a href="index.html" class="btn btn-primary shrink-0">Проверить новый чек</a>
           </div>
-        </nav>
-      </div>
-    </main>
 
-    @@include('components/footer.html') @@include('components/mobile-nav.html')
-  </div>
+          <div class="mt-8 space-y-4">
+            <a
+              href="receipt-details.html"
+              class="group card-status--success flex max-w-[1280px] items-center gap-4
+                overflow-hidden rounded-2xl bg-neutral-200 p-5 transition-all hover:shadow-md
+                md:gap-6 md:p-6">
+              <div class="flex min-w-0 flex-1 flex-wrap items-center gap-x-6 gap-y-3">
+                <div class="flex shrink-0 items-center gap-4 md:min-w-[450px]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="size-10 text-green-500">
+                    <path
+                      fill-rule="evenodd"
+                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <div>
+                    <p class="text-xs text-neutral-500">Результат проверки</p>
+                    <p class="font-semibold text-green-500">Чек найден</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Дата:</span>
+                    <span>19.01.2022</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Время:</span>
+                    <span>08:35</span>
+                  </span>
+                  <span class="flex min-w-0 flex-col truncate">
+                    <span class="text-xs text-neutral-500">Уник. ID:</span>
+                    <span class="truncate">e34953f614a8832b11e1de83</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">№ Кассы:</span>
+                    <span>110043680</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">№ Чека:</span>
+                    <span>1923405</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Сумма:</span>
+                    <span>120,67</span>
+                  </span>
+                </div>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="group-hover:text-primary size-5 shrink-0 text-neutral-400">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
 
-  @@include('components/script.html')
-</body>
+            <a
+              href="receipt-details.html"
+              class="group card-status--error flex max-w-[1280px] items-center gap-4 overflow-hidden
+                rounded-2xl bg-neutral-200 p-5 transition-all hover:shadow-md md:gap-6 md:p-6">
+              <div class="flex min-w-0 flex-1 flex-wrap items-center gap-x-6 gap-y-3">
+                <div class="flex shrink-0 items-center gap-2 md:min-w-[450px]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="size-10 text-red-600">
+                    <path
+                      fill-rule="evenodd"
+                      d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <div>
+                    <p class="text-xs text-neutral-500">Результат проверки</p>
+                    <p class="font-semibold text-red-600">Чек не найден (поиск окончен)</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Дата:</span>
+                    <span>18.01.2022</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Время:</span>
+                    <span>14:22</span>
+                  </span>
+                  <span class="flex min-w-0 flex-col truncate">
+                    <span class="text-xs text-neutral-500">Уник. ID:</span>
+                    <span class="truncate">a12b34c56d78e90f1234567</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">№ Кассы:</span>
+                    <span>110043681</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">№ Чека:</span>
+                    <span>1923406</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Сумма:</span>
+                    <span>89,50</span>
+                  </span>
+                </div>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="group-hover:text-primary size-5 shrink-0 text-neutral-400">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
 
+            <a
+              href="receipt-details.html"
+              class="group card-status--processing flex max-w-[1280px] items-center gap-4
+                overflow-hidden rounded-2xl bg-neutral-200 p-5 transition-all hover:shadow-md
+                md:gap-6 md:p-6">
+              <div class="flex min-w-0 flex-1 flex-wrap items-center gap-x-6 gap-y-3">
+                <div class="flex shrink-0 items-center gap-2 md:min-w-[450px]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="text-primary size-10">
+                    <path
+                      fill-rule="evenodd"
+                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <div>
+                    <p class="text-xs text-neutral-500">Результат проверки</p>
+                    <p class="text-primary font-semibold">Чек находится в обработке</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Дата:</span>
+                    <span>20.01.2022</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Время:</span>
+                    <span>09:15</span>
+                  </span>
+                  <span class="flex min-w-0 flex-col truncate">
+                    <span class="text-xs text-neutral-500">Уник. ID:</span>
+                    <span class="truncate">f45963g725b9943c22f2ef94</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">№ Кассы:</span>
+                    <span>110043682</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">№ Чека:</span>
+                    <span>1923407</span>
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="text-xs text-neutral-500">Сумма:</span>
+                    <span>256,00</span>
+                  </span>
+                </div>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="group-hover:text-primary size-5 shrink-0 text-neutral-400">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="mx-auto mt-10 flex flex-col items-center justify-center gap-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="text-primary size-14">
+              <path
+                fill-rule="evenodd"
+                d="M12 1.5c-1.921 0-3.816.111-5.68.327-1.497.174-2.57 1.46-2.57 2.93V21.75a.75.75 0 0 0 1.029.696l3.471-1.388 3.472 1.388a.75.75 0 0 0 .556 0l3.472-1.388 3.471 1.388a.75.75 0 0 0 1.029-.696V4.757c0-1.47-1.073-2.756-2.57-2.93A49.255 49.255 0 0 0 12 1.5Zm3.53 7.28a.75.75 0 0 0-1.06-1.06l-6 6a.75.75 0 1 0 1.06 1.06l6-6ZM8.625 9a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm5.625 3.375a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-center text-lg font-semibold"
+              >Вы еще не проверили ни одного чека</span
+            >
+            <button class="btn btn-primary">Проверить чек</button>
+          </div>
+
+          <nav class="mt-10 flex justify-center" aria-label="Пагинация">
+            <div class="join pagination-box">
+              <button class="join-item btn btn-active">1</button>
+              <button class="join-item btn">2</button>
+              <button class="join-item btn" disabled>...</button>
+              <button class="join-item btn">99</button>
+              <button class="join-item btn">100</button>
+            </div>
+          </nav>
+        </div>
+      </main>
+
+      @@include('components/footer.html') @@include('components/mobile-nav.html')
+    </div>
+
+    @@include('components/script.html')
+  </body>
 </html>

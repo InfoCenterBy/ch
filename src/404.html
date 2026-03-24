@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+  @@include('components/head.html', {"title": "Страница не найдена"})
+
+  <body>
+    <div class="flex min-h-screen flex-col">
+      @@include('components/header.html')
+
+      <main class="flex flex-1 flex-col items-center justify-center px-4 py-16">
+        <div class="flex flex-col items-center gap-8 text-center">
+          <img
+            src="./img/common/404.png"
+            alt="404 — Страница не найдена"
+            class="max-w-[280px] object-contain drop-shadow-md" />
+
+          <div class="space-y-2">
+            <p class="font-semibold text-neutral-900">
+              Мы не смогли найти страницу которую вы запрашиваете.
+            </p>
+            <p class="font-semibold text-neutral-900">
+              Возможно, она была удалена или вы ввели неверный адрес.
+            </p>
+          </div>
+
+          <a href="index.html" class="btn btn-primary"> Вернуться на главную </a>
+        </div>
+      </main>
+
+      @@include('components/footer.html') @@include('components/mobile-nav.html')
+    </div>
+
+    @@include('components/script.html')
+  </body>
+</html>

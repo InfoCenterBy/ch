@@ -1,0 +1,3 @@
+.modal-box {
+  @apply rounded-2xl bg-neutral-50;
+}

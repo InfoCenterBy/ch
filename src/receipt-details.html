@@ -25,16 +25,16 @@
                   clip-rule="evenodd" />
               </svg>
             </span>
-            <span class="group-hover:text-primary font-medium text-neutral-500 transition-colors">
+            <span class="group-hover:text-primary text-neutral-500 transition-colors">
               Все чеки
             </span>
           </a>
 
-          <div class="card-border mx-auto max-w-[760px]">
+          <div class="card-border mx-auto max-w-[626px]">
             <div class="rounded-3xl bg-neutral-50 p-4 md:p-6 lg:p-8">
               <h1 class="heading-1 text-center">ДЕТАЛИЗАЦИЯ ЧЕКА</h1>
 
-              <div class="mt-8 flex flex-col items-center gap-8">
+              <div class="mt-4 flex flex-col items-center gap-8">
                 <div class="flex flex-col items-center gap-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -47,66 +47,66 @@
                       clip-rule="evenodd" />
                   </svg>
 
-                  <p class="font-semibold text-shadow-neutral-900">Платежный документ найден</p>
+                  <p class="text-center text-lg font-semibold">Платежный документ найден</p>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-4">
+                <div
+                  class="grid grid-cols-2 justify-items-center gap-4 md:flex md:flex-wrap
+                    md:justify-center">
                   <button
                     type="button"
-                    class="flex w-[150px] cursor-pointer flex-col items-center gap-2 rounded-xl
-                      bg-neutral-200 p-4 transition-all hover:shadow-md md:p-5">
-                    <span class="text-primary flex size-10 items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class="size-6">
-                        <path
-                          fill-rule="evenodd"
-                          d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v2.25a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V16.5a.75.75 0 0 1 1.5 0v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V16.5a.75.75 0 0 1 .75-.75Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
+                    class="flex w-[120px] cursor-pointer flex-col items-center gap-2 rounded-xl
+                      bg-neutral-200 p-4 transition-all hover:shadow-md md:w-[150px] md:p-5">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="text-primary size-8 md:size-10">
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
+                        clip-rule="evenodd" />
+                    </svg>
+
                     <span class="text-center text-sm font-medium text-neutral-900"
                       >Скачать чек</span
                     >
                   </button>
                   <button
                     type="button"
-                    class="flex w-[150px] cursor-pointer flex-col items-center gap-2 rounded-xl
-                      bg-neutral-200 p-4 transition-all hover:shadow-md md:p-5">
-                    <span class="text-primary flex size-10 items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class="size-6">
-                        <path
-                          fill-rule="evenodd"
-                          d="M15.75 4.5a3 3 0 1 1 .825 2.066l-8.421 4.679a3.002 3.002 0 0 1 0 1.51l8.421 4.679a3 3 0 1 1-.729 1.31l-8.421-4.678a3 3 0 1 1 0-4.132l8.421-4.679a3 3 0 0 1-.096-.755Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
+                    class="flex w-[120px] cursor-pointer flex-col items-center gap-2 rounded-xl
+                      bg-neutral-200 p-4 transition-all hover:shadow-md md:w-[150px] md:p-5">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="text-primary size-8 md:size-10">
+                      <path
+                        fill-rule="evenodd"
+                        d="M15.75 4.5a3 3 0 1 1 .825 2.066l-8.421 4.679a3.002 3.002 0 0 1 0 1.51l8.421 4.679a3 3 0 1 1-.729 1.31l-8.421-4.678a3 3 0 1 1 0-4.132l8.421-4.679a3 3 0 0 1-.096-.755Z"
+                        clip-rule="evenodd" />
+                    </svg>
+
                     <span class="text-center text-sm font-medium text-neutral-900"
                       >Поделиться чеком</span
                     >
                   </button>
                   <button
                     type="button"
-                    class="flex w-[150px] cursor-pointer flex-col items-center gap-2 rounded-xl
-                      bg-neutral-200 p-4 transition-all hover:shadow-md md:p-5">
-                    <span class="text-primary flex size-10 items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class="size-6">
-                        <path
-                          d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
-                        <path
-                          d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
-                      </svg>
-                    </span>
+                    class="col-span-2 flex w-[120px] cursor-pointer flex-col items-center gap-2
+                      justify-self-center rounded-xl bg-neutral-200 p-4 transition-all
+                      hover:shadow-md md:col-span-1 md:w-[150px] md:justify-self-auto md:p-5"
+                    onclick="sendReceiptEmailModal.showModal()">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="text-primary size-8 md:size-10">
+                      <path
+                        d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                      <path
+                        d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                    </svg>
                     <span class="text-center text-sm font-medium text-neutral-900"
                       >Отправить по e-mail</span
                     >
@@ -114,75 +114,85 @@
                 </div>
 
                 <div
-                  class="w-full max-w-md rounded-lg border border-neutral-200 bg-white px-6 py-6
-                    shadow-sm">
-                  <h2 class="mb-4 text-center text-sm font-medium text-neutral-500">
+                  class="mx-auto w-full max-w-[320px] overflow-y-auto rounded-lg bg-neutral-50 px-6
+                    py-6 shadow-xl drop-shadow-xl">
+                  <h2 class="text-center font-semibold text-neutral-900">
                     Визуализация платежного документа
                   </h2>
-                  <p class="mb-6 text-center text-xs break-all text-neutral-500">
-                    e34953f614a8832b11e1de83f45963g725b99
+                  <p class="mt-2 text-center text-sm break-all text-neutral-900">
+                    УИ 12345678901234567890123
                   </p>
 
-                  <div class="space-y-2 border-b border-neutral-200 pb-4">
-                    <p class="font-bold text-neutral-900">ООО «Евроторг»</p>
-                    <p class="text-sm text-neutral-600">УНП 123456789</p>
-                    <p class="text-sm text-neutral-600">Магазин №123, г. Минск, ул. Примерная, 1</p>
+                  <div
+                    class="mt-6 space-y-2 border-b border-dashed border-neutral-300 pb-4
+                      text-center">
+                    <p class="text-2xl font-semibold text-neutral-900">ООО «Евроторг»</p>
+                    <p class="text-sm text-neutral-900">УНП 101168731</p>
                   </div>
 
-                  <div class="mt-4 space-y-2 border-b border-neutral-200 py-4 text-sm">
+                  <div class="space-y-2 border-b border-dashed border-neutral-300 py-4 text-center">
+                    <p class="font-semibold text-neutral-900">Магазин «Санта-270»</p>
+                    <p class="text-sm text-neutral-600">г. Минск, пр-т Дзержинского, 106-1</p>
+                  </div>
+
+                  <div
+                    class="mt-4 space-y-2 border-b border-dashed border-neutral-300 py-4 text-sm">
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Reg. No:</span>
-                      <span class="text-neutral-900">110043680</span>
+                      <span class="text-xs text-neutral-500">Рег. №:</span>
+                      <span class="text-neutral-900">110123456</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Doc No:</span>
-                      <span class="text-neutral-900">1923405</span>
+                      <span class="text-xs text-neutral-500">Зав. №:</span>
+                      <span class="text-neutral-900">ТБ0005386</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Кассир:</span>
-                      <span class="text-neutral-900">Иванова</span>
+                      <span class="text-xs text-neutral-500">Кассир:</span>
+                      <span class="text-neutral-900">Иванов Иван Иванович</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Валюта:</span>
+                      <span class="text-xs text-neutral-500">Валюта:</span>
                       <span class="text-neutral-900">BYN</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Дата/время:</span>
-                      <span class="text-neutral-900">19.01.2022 08:35</span>
+                      <span class="text-xs text-neutral-500">№ чека и время:</span>
+                      <span class="text-neutral-900">№123456 9 сентября 2022 20:41:59</span>
                     </div>
                   </div>
 
                   <div class="mt-4 overflow-x-auto">
                     <table class="w-full text-sm">
                       <thead>
-                        <tr class="border-b border-neutral-200 text-left text-neutral-500">
-                          <th class="pr-4 pb-2">№</th>
+                        <tr
+                          class="border-b border-dashed border-neutral-300 text-left text-[10px]
+                            font-semibold text-neutral-500">
+                          <th class="pr-4 pb-2">Товар</th>
                           <th class="pr-4 pb-2">Кол-во</th>
-                          <th class="pr-4 pb-2">Цена</th>
-                          <th class="pb-2">Скидка</th>
+                          <th class="pr-4 pb-2">Сумма продажи</th>
+                          <th class="pb-2">Сумма скидки/наценки</th>
                         </tr>
                       </thead>
                       <tbody class="text-neutral-900">
-                        <tr class="border-b border-neutral-100">
+                        <tr class="border-b border-dashed border-neutral-100">
+                          <td class="py-2 pr-4 text-xs">1234567890123</td>
                           <td class="py-2 pr-4">1</td>
-                          <td class="py-2 pr-4">2</td>
-                          <td class="py-2 pr-4">1,50</td>
-                          <td class="py-2">0,00</td>
+                          <td class="py-2 pr-4">2,29</td>
+                          <td class="py-2">0</td>
                         </tr>
-                        <tr class="border-b border-neutral-100">
-                          <td class="py-2 pr-4">2</td>
+                        <tr class="border-b border-dashed border-neutral-100">
+                          <td class="py-2 pr-4 text-xs">1234567890123</td>
                           <td class="py-2 pr-4">1</td>
-                          <td class="py-2 pr-4">3,08</td>
-                          <td class="py-2">0,00</td>
+                          <td class="py-2 pr-4">2,29</td>
+                          <td class="py-2">0</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
 
-                  <div class="mt-4 space-y-2 border-t border-neutral-200 pt-4 text-sm">
+                  <div
+                    class="mt-4 space-y-2 border-t border-dashed border-neutral-300 pt-4 text-sm">
                     <div class="flex justify-between">
                       <span class="text-neutral-500">Итого:</span>
-                      <span class="text-success font-bold">4,58</span>
+                      <span class="font-bold text-green-500">4,58</span>
                     </div>
                     <div class="flex justify-between">
                       <span class="text-neutral-500">Размер скидки:</span>
@@ -209,6 +219,8 @@
       </main>
 
       @@include('components/footer.html') @@include('components/mobile-nav.html')
+      @@include('components/modal-send-receipt-email.html')
+      @@include('components/modal-send-receipt-success.html')
     </div>
 
     @@include('components/script.html')

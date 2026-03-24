@@ -17,6 +17,7 @@ let path = {
     html: [source_folder + '/**/*.html'],
     css: source_folder + '/css/tailwind.css',
     js: source_folder + '/js/script.js',
+    jsLibs: source_folder + '/js/libs/**/*.js',
     img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
     fonts: [
       source_folder + '/fonts/*.ttf',
@@ -126,18 +127,8 @@ function js() {
     .pipe(browsersync.stream());
 }
 
-function jsVendor() {
-  return src(
-    ['node_modules/qr-scanner/qr-scanner.umd.min.js', 'node_modules/qr-scanner/qr-scanner-worker.min.js'],
-    { base: 'node_modules/qr-scanner' },
-  )
-    .pipe(
-      rename((p) => {
-        p.dirname = '';
-      }),
-    )
-    .pipe(dest(path.build.js))
-    .pipe(browsersync.stream());
+function jsLibs() {
+  return src(path.src.jsLibs).pipe(dest(path.build.js)).pipe(browsersync.stream());
 }
 
 function images() {
@@ -200,7 +191,7 @@ function cb() {}
 function watchFiles(params) {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
-  gulp.watch([path.watch.js], js);
+  gulp.watch([path.watch.js], gulp.parallel(js, jsLibs));
   gulp.watch([path.watch.img], images);
   gulp.watch([path.watch.audio], audio);
 }
@@ -269,7 +260,7 @@ function deployTask(done) {
 function watchFilesLorem(params) {
   gulp.watch([path.watch.html], loremGenerate);
   gulp.watch([path.watch.css], css);
-  gulp.watch([path.watch.js], js);
+  gulp.watch([path.watch.js], gulp.parallel(js, jsLibs));
   gulp.watch([path.watch.img], images);
   gulp.watch([path.watch.audio], audio);
 }
@@ -346,7 +337,7 @@ function loremGenerate() {
   );
 }
 
-let build = gulp.series(clean, gulp.parallel(js, jsVendor, css, html, images, fonts, audio));
+let build = gulp.series(clean, gulp.parallel(js, jsLibs, css, html, images, fonts, audio));
 let lorem = gulp.series(build, loremGenerate, gulp.parallel(watchFilesLorem, browserSync));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
@@ -354,6 +345,7 @@ exports.fonts = fonts;
 exports.images = images;
 exports.audio = audio;
 exports.js = js;
+exports.jsLibs = jsLibs;
 exports.css = css;
 exports.html = html;
 exports.lorem = lorem;

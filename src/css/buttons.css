@@ -1,5 +1,13 @@
 .btn-primary {
-  @apply hover:bg-primary-hover h-[46px] w-full rounded-lg border-none px-6 py-4 text-base font-normal text-white shadow-none sm:w-auto;
+  @apply hover:bg-primary-hover h-[46px] w-full rounded-lg border-none px-6 py-4 text-base font-normal text-neutral-50 shadow-none sm:w-auto;
+}
+
+.btn-primary-outline {
+  @apply hover:bg-primary-hover text-primary border-primary h-[46px] w-full rounded-lg border bg-neutral-50 px-6 py-4 text-base font-normal shadow-none hover:text-neutral-50 sm:w-auto;
+}
+
+.btn-primary-outline--icon {
+  @apply text-primary border-primary hover:bg-primary/5 hover:border-primary-hover hover:text-primary-hover h-[54px] w-full items-center justify-between rounded-xl border bg-transparent p-4 text-base font-normal shadow-none transition-colors;
 }
 
 .btn-icon {

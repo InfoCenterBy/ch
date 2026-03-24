@@ -1,0 +1,137 @@
+<dialog id="receiptSuccessModal" class="modal">
+  <div class="modal-box relative max-h-[90vh] rounded-2xl">
+    <button
+      type="button"
+      aria-label="Закрыть"
+      class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 text-neutral-400
+        hover:text-neutral-600"
+      onclick="receiptSuccessModal.close()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-5">
+        <path
+          fill-rule="evenodd"
+          d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+          clip-rule="evenodd" />
+      </svg>
+    </button>
+    <div class="flex flex-col items-center pb-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-16 text-green-500">
+        <path
+          fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+          clip-rule="evenodd" />
+      </svg>
+      <h3 class="mt-4 text-center text-lg font-semibold text-neutral-900">
+        Проверка чека прошла успешно!
+      </h3>
+
+      <div
+        class="mx-auto mt-6 w-full max-w-[320px] overflow-y-auto rounded-lg bg-neutral-50 px-6 py-6
+          shadow-xl drop-shadow-xl">
+        <h2 class="text-center font-semibold text-neutral-900">
+          Визуализация платежного документа
+        </h2>
+        <p class="mt-2 text-center text-sm break-all text-neutral-900">
+          УИ 12345678901234567890123
+        </p>
+
+        <div class="mt-6 space-y-2 border-b border-dashed border-neutral-300 pb-4 text-center">
+          <p class="text-2xl font-semibold text-neutral-900">ООО «Евроторг»</p>
+          <p class="text-sm text-neutral-900">УНП 101168731</p>
+        </div>
+
+        <div class="space-y-2 border-b border-dashed border-neutral-300 py-4 text-center">
+          <p class="font-semibold text-neutral-900">Магазин «Санта-270»</p>
+          <p class="text-sm text-neutral-600">г. Минск, пр-т Дзержинского, 106-1</p>
+        </div>
+
+        <div class="mt-4 space-y-2 border-b border-dashed border-neutral-300 py-4 text-sm">
+          <div class="flex justify-between">
+            <span class="text-xs text-neutral-500">Рег. №:</span>
+            <span class="text-neutral-900">110123456</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-xs text-neutral-500">Зав. №:</span>
+            <span class="text-neutral-900">ТБ0005386</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-xs text-neutral-500">Кассир:</span>
+            <span class="text-neutral-900">Иванов Иван Иванович</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-xs text-neutral-500">Валюта:</span>
+            <span class="text-neutral-900">BYN</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-xs text-neutral-500">№ чека и время:</span>
+            <span class="text-neutral-900">№123456 9 сентября 2022 20:41:59</span>
+          </div>
+        </div>
+
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr
+                class="border-b border-dashed border-neutral-300 text-left text-[10px] font-semibold
+                  text-neutral-500">
+                <th class="pr-4 pb-2">Товар</th>
+                <th class="pr-4 pb-2">Кол-во</th>
+                <th class="pr-4 pb-2">Сумма продажи</th>
+                <th class="pb-2">Сумма скидки/наценки</th>
+              </tr>
+            </thead>
+            <tbody class="text-neutral-900">
+              <tr class="border-b border-dashed border-neutral-100">
+                <td class="py-2 pr-4 text-xs">1234567890123</td>
+                <td class="py-2 pr-4">1</td>
+                <td class="py-2 pr-4">2,29</td>
+                <td class="py-2">0</td>
+              </tr>
+              <tr class="border-b border-dashed border-neutral-100">
+                <td class="py-2 pr-4 text-xs">1234567890123</td>
+                <td class="py-2 pr-4">1</td>
+                <td class="py-2 pr-4">2,29</td>
+                <td class="py-2">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 space-y-2 border-t border-dashed border-neutral-300 pt-4 text-sm">
+          <div class="flex justify-between">
+            <span class="text-neutral-500">Итого:</span>
+            <span class="font-bold text-green-500">4,58</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-neutral-500">Размер скидки:</span>
+            <span class="text-neutral-900">0,00</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-neutral-500">Итого к оплате:</span>
+            <span class="font-medium text-neutral-900">4,58</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-neutral-500">Наличными:</span>
+            <span class="text-neutral-900">4,58</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-neutral-500">Безналичными:</span>
+            <span class="text-neutral-900">0,00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="modal-backdrop"
+    aria-label="Закрыть"
+    onclick="receiptSuccessModal.close()"></button>
+</dialog>
