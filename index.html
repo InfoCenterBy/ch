@@ -189,9 +189,34 @@
                                 data-qr-scan-close>
                                 ✕
                               </button>
-                              <h3 class="text-lg font-bold">Сканирование QR-кода</h3>
-                              <div class="mt-4 overflow-hidden rounded-lg bg-black">
+                              <h3 class="text-center text-lg font-bold">
+                                Отсканируйте QR-код на чеке
+                              </h3>
+                              <div class="relative mt-4 overflow-hidden rounded-lg bg-black">
                                 <video id="qr-video" class="max-h-[300px] w-full"></video>
+                                <button
+                                  type="button"
+                                  aria-label="Сменить камеру"
+                                  class="btn btn-icon absolute right-3 bottom-3 size-12 rounded-xl"
+                                  data-qr-scan-switch-camera>
+                                  <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2023_1951)">
+                                      <path
+                                        d="M24 3.5625V8.71875H18.8438V6.84375H20.7198C18.9203 3.78058 15.6493 1.875 12 1.875C6.41709 1.875 1.875 6.41709 1.875 12H0C0 8.79473 1.24823 5.78119 3.51471 3.51471C5.78119 1.24823 8.79473 0 12 0C14.4652 0 16.8338 0.741942 18.85 2.14599C20.1687 3.06427 21.2763 4.22113 22.125 5.55394V3.5625H24ZM12.0469 22.125C8.39756 22.125 5.12677 20.2194 3.32703 17.1562H5.15625V15.2812H0V20.4375H1.875V18.3721C2.72955 19.7362 3.85382 20.9187 5.19689 21.854C7.21308 23.2581 9.58172 24 12.0469 24C15.2503 24 18.2562 22.751 20.5107 20.4833C22.7607 18.2199 24 15.2073 24 12H22.125C22.125 17.5829 17.604 22.125 12.0469 22.125ZM8.47158 16.779C7.36725 16.779 6.46875 15.8805 6.46875 14.7763V10.581C6.46875 9.47663 7.36725 8.57812 8.47158 8.57812H9.282L9.57145 7.94695C9.79997 7.44891 10.3017 7.1272 10.8497 7.1272H13.4178C13.9657 7.1272 14.4674 7.44891 14.6959 7.94695L14.9855 8.57812H15.7159C16.8202 8.57812 17.7188 9.47663 17.7188 10.581V14.7763C17.7188 15.8807 16.8202 16.779 15.7159 16.779H8.47158ZM8.47158 14.904H15.7159C15.7864 14.904 15.8438 14.8467 15.8438 14.7763V10.581C15.8438 10.5105 15.7864 10.4531 15.7159 10.4531H14.6849C14.137 10.4531 13.6353 10.1314 13.4068 9.63356L13.1171 9.0022H11.1502L10.8607 9.63338C10.632 10.1314 10.1303 10.4531 9.58247 10.4531H8.47158C8.40108 10.4531 8.34375 10.5105 8.34375 10.581V14.7763C8.34375 14.8467 8.40108 14.904 8.47158 14.904ZM12.0938 13.7812C12.8705 13.7812 13.5 13.1517 13.5 12.375C13.5 11.5983 12.8705 10.9688 12.0938 10.9688C11.317 10.9688 10.6875 11.5983 10.6875 12.375C10.6875 13.1517 11.317 13.7812 12.0938 13.7812Z"
+                                        fill="#FAFAFA" />
+                                    </g>
+                                    <defs>
+                                      <clipPath id="clip0_2023_1951">
+                                        <rect width="24" height="24" fill="white" />
+                                      </clipPath>
+                                    </defs>
+                                  </svg>
+                                </button>
                               </div>
                               <p id="qr-scan-status" class="text-base-content/70 mt-2 text-xs"></p>
                               <p id="qr-scan-error" class="text-error mt-2 hidden text-sm"></p>
@@ -861,6 +886,7 @@
         const statusEl = document.getElementById('qr-scan-status');
         const RECEIPT_ID_LENGTH = 24;
         let qrScanner = null;
+        let currentCamera = 'environment';
 
         const setStatus = (text) => {
           if (statusEl) statusEl.textContent = text;
@@ -890,6 +916,7 @@
         };
 
         const openQrScanner = () => {
+          currentCamera = 'environment';
           if (!window.QrScanner) {
             errorEl.textContent = 'Библиотека сканера не загружена';
             errorEl.classList.remove('hidden');
@@ -946,6 +973,21 @@
         });
         document.querySelectorAll('[data-qr-scan-close]').forEach((btn) => {
           btn.addEventListener('click', closeQrScanner);
+        });
+
+        document.querySelectorAll('[data-qr-scan-switch-camera]').forEach((btn) => {
+          btn.addEventListener('click', async () => {
+            if (!qrScanner) return;
+            currentCamera = currentCamera === 'environment' ? 'user' : 'environment';
+            setStatus('Переключение камеры...');
+            try {
+              await qrScanner.setCamera(currentCamera);
+              setStatus('Камера запущена. Наведите на QR-код.');
+            } catch (err) {
+              errorEl.textContent = 'Не удалось переключить камеру: ' + (err?.message || err);
+              errorEl.classList.remove('hidden');
+            }
+          });
         });
         modal.addEventListener('close', () => {
           stopScanner();
