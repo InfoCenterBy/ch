@@ -1,5 +1,5 @@
 <dialog id="receiptSuccessModal" class="modal">
-  <div class="modal-box relative rounded-2xl">
+  <div class="modal-box relative max-h-[90vh] rounded-2xl">
     <button
       type="button"
       aria-label="Закрыть"
@@ -33,41 +33,44 @@
       </h3>
 
       <div
-        class="mt-6 max-h-[50vh] w-full overflow-y-auto rounded-lg border border-neutral-200
-          bg-neutral-50 px-6 py-6 shadow-sm">
-        <h2 class="mb-4 text-center text-sm font-medium text-neutral-500">
+        class="mx-auto mt-6 w-full max-w-[320px] overflow-y-auto rounded-lg bg-neutral-50 px-6 py-6
+          shadow-xl drop-shadow-xl">
+        <h2 class="text-center font-semibold text-neutral-900">
           Визуализация платежного документа
         </h2>
-        <p class="mb-6 text-center text-xs break-all text-neutral-500">
+        <p class="mt-2 text-center text-sm break-all text-neutral-900">
           УИ 12345678901234567890123
         </p>
 
-        <div class="space-y-2 border-b border-neutral-200 pb-4">
-          <p class="font-bold text-neutral-900">ООО «Евроторг»</p>
-          <p class="text-sm text-neutral-600">УНП 101168731</p>
-          <p class="text-sm text-neutral-600">Магазин «Санта-270»</p>
+        <div class="mt-6 space-y-2 border-b border-dashed border-neutral-300 pb-4 text-center">
+          <p class="text-2xl font-semibold text-neutral-900">ООО «Евроторг»</p>
+          <p class="text-sm text-neutral-900">УНП 101168731</p>
+        </div>
+
+        <div class="space-y-2 border-b border-dashed border-neutral-300 py-4 text-center">
+          <p class="font-semibold text-neutral-900">Магазин «Санта-270»</p>
           <p class="text-sm text-neutral-600">г. Минск, пр-т Дзержинского, 106-1</p>
         </div>
 
-        <div class="mt-4 space-y-2 border-b border-neutral-200 py-4 text-sm">
+        <div class="mt-4 space-y-2 border-b border-dashed border-neutral-300 py-4 text-sm">
           <div class="flex justify-between">
-            <span class="text-neutral-500">Рег. №:</span>
+            <span class="text-xs text-neutral-500">Рег. №:</span>
             <span class="text-neutral-900">110123456</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-neutral-500">Зав. №:</span>
+            <span class="text-xs text-neutral-500">Зав. №:</span>
             <span class="text-neutral-900">ТБ0005386</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-neutral-500">Кассир:</span>
+            <span class="text-xs text-neutral-500">Кассир:</span>
             <span class="text-neutral-900">Иванов Иван Иванович</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-neutral-500">Валюта:</span>
+            <span class="text-xs text-neutral-500">Валюта:</span>
             <span class="text-neutral-900">BYN</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-neutral-500">№ чека и время:</span>
+            <span class="text-xs text-neutral-500">№ чека и время:</span>
             <span class="text-neutral-900">№123456 9 сентября 2022 20:41:59</span>
           </div>
         </div>
@@ -75,7 +78,9 @@
         <div class="mt-4 overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
-              <tr class="border-b border-neutral-200 text-left text-neutral-500">
+              <tr
+                class="border-b border-dashed border-neutral-300 text-left text-[10px] font-semibold
+                  text-neutral-500">
                 <th class="pr-4 pb-2">Товар</th>
                 <th class="pr-4 pb-2">Кол-во</th>
                 <th class="pr-4 pb-2">Сумма продажи</th>
@@ -83,13 +88,13 @@
               </tr>
             </thead>
             <tbody class="text-neutral-900">
-              <tr class="border-b border-neutral-100">
+              <tr class="border-b border-dashed border-neutral-100">
                 <td class="py-2 pr-4 text-xs">1234567890123</td>
                 <td class="py-2 pr-4">1</td>
                 <td class="py-2 pr-4">2,29</td>
                 <td class="py-2">0</td>
               </tr>
-              <tr class="border-b border-neutral-100">
+              <tr class="border-b border-dashed border-neutral-100">
                 <td class="py-2 pr-4 text-xs">1234567890123</td>
                 <td class="py-2 pr-4">1</td>
                 <td class="py-2 pr-4">2,29</td>
@@ -99,7 +104,7 @@
           </table>
         </div>
 
-        <div class="mt-4 space-y-2 border-t border-neutral-200 pt-4 text-sm">
+        <div class="mt-4 space-y-2 border-t border-dashed border-neutral-300 pt-4 text-sm">
           <div class="flex justify-between">
             <span class="text-neutral-500">Итого:</span>
             <span class="font-bold text-green-500">4,58</span>

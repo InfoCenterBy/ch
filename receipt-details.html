@@ -105,16 +105,16 @@
                       clip-rule="evenodd" />
                   </svg>
 
-                  <p class="text-lg font-semibold text-shadow-neutral-900">
-                    Платежный документ найден
-                  </p>
+                  <p class="text-center text-lg font-semibold">Платежный документ найден</p>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-4">
+                <div
+                  class="grid grid-cols-2 justify-items-center gap-4 md:flex md:flex-wrap
+                    md:justify-center">
                   <button
                     type="button"
-                    class="flex w-[150px] cursor-pointer flex-col items-center gap-2 rounded-xl
-                      bg-neutral-200 p-4 transition-all hover:shadow-md md:p-5">
+                    class="flex w-[120px] cursor-pointer flex-col items-center gap-2 rounded-xl
+                      bg-neutral-200 p-4 transition-all hover:shadow-md md:w-[150px] md:p-5">
                     <span class="text-primary flex size-10 items-center justify-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -133,8 +133,8 @@
                   </button>
                   <button
                     type="button"
-                    class="flex w-[150px] cursor-pointer flex-col items-center gap-2 rounded-xl
-                      bg-neutral-200 p-4 transition-all hover:shadow-md md:p-5">
+                    class="flex w-[120px] cursor-pointer flex-col items-center gap-2 rounded-xl
+                      bg-neutral-200 p-4 transition-all hover:shadow-md md:w-[150px] md:p-5">
                     <span class="text-primary flex size-10 items-center justify-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -153,8 +153,9 @@
                   </button>
                   <button
                     type="button"
-                    class="flex w-[150px] cursor-pointer flex-col items-center gap-2 rounded-xl
-                      bg-neutral-200 p-4 transition-all hover:shadow-md md:p-5"
+                    class="col-span-2 flex w-[120px] cursor-pointer flex-col items-center gap-2
+                      justify-self-center rounded-xl bg-neutral-200 p-4 transition-all
+                      hover:shadow-md md:col-span-1 md:w-[150px] md:justify-self-auto md:p-5"
                     onclick="sendReceiptEmailModal.showModal()">
                     <span class="text-primary flex size-10 items-center justify-center">
                       <svg
@@ -175,75 +176,85 @@
                 </div>
 
                 <div
-                  class="w-full max-w-md rounded-lg border border-neutral-200 bg-white px-6 py-6
-                    shadow-sm">
-                  <h2 class="mb-4 text-center text-sm font-medium text-neutral-500">
+                  class="mx-auto mt-6 w-full max-w-[320px] overflow-y-auto rounded-lg bg-neutral-50
+                    px-6 py-6 shadow-xl drop-shadow-xl">
+                  <h2 class="text-center font-semibold text-neutral-900">
                     Визуализация платежного документа
                   </h2>
-                  <p class="mb-6 text-center text-xs break-all text-neutral-500">
-                    e34953f614a8832b11e1de83f45963g725b99
+                  <p class="mt-2 text-center text-sm break-all text-neutral-900">
+                    УИ 12345678901234567890123
                   </p>
 
-                  <div class="space-y-2 border-b border-neutral-200 pb-4">
-                    <p class="font-bold text-neutral-900">ООО «Евроторг»</p>
-                    <p class="text-sm text-neutral-600">УНП 123456789</p>
-                    <p class="text-sm text-neutral-600">Магазин №123, г. Минск, ул. Примерная, 1</p>
+                  <div
+                    class="mt-6 space-y-2 border-b border-dashed border-neutral-300 pb-4
+                      text-center">
+                    <p class="text-2xl font-semibold text-neutral-900">ООО «Евроторг»</p>
+                    <p class="text-sm text-neutral-900">УНП 101168731</p>
                   </div>
 
-                  <div class="mt-4 space-y-2 border-b border-neutral-200 py-4 text-sm">
+                  <div class="space-y-2 border-b border-dashed border-neutral-300 py-4 text-center">
+                    <p class="font-semibold text-neutral-900">Магазин «Санта-270»</p>
+                    <p class="text-sm text-neutral-600">г. Минск, пр-т Дзержинского, 106-1</p>
+                  </div>
+
+                  <div
+                    class="mt-4 space-y-2 border-b border-dashed border-neutral-300 py-4 text-sm">
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Reg. No:</span>
-                      <span class="text-neutral-900">110043680</span>
+                      <span class="text-xs text-neutral-500">Рег. №:</span>
+                      <span class="text-neutral-900">110123456</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Doc No:</span>
-                      <span class="text-neutral-900">1923405</span>
+                      <span class="text-xs text-neutral-500">Зав. №:</span>
+                      <span class="text-neutral-900">ТБ0005386</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Кассир:</span>
-                      <span class="text-neutral-900">Иванова</span>
+                      <span class="text-xs text-neutral-500">Кассир:</span>
+                      <span class="text-neutral-900">Иванов Иван Иванович</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Валюта:</span>
+                      <span class="text-xs text-neutral-500">Валюта:</span>
                       <span class="text-neutral-900">BYN</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-neutral-500">Дата/время:</span>
-                      <span class="text-neutral-900">19.01.2022 08:35</span>
+                      <span class="text-xs text-neutral-500">№ чека и время:</span>
+                      <span class="text-neutral-900">№123456 9 сентября 2022 20:41:59</span>
                     </div>
                   </div>
 
                   <div class="mt-4 overflow-x-auto">
                     <table class="w-full text-sm">
                       <thead>
-                        <tr class="border-b border-neutral-200 text-left text-neutral-500">
-                          <th class="pr-4 pb-2">№</th>
+                        <tr
+                          class="border-b border-dashed border-neutral-300 text-left text-[10px]
+                            font-semibold text-neutral-500">
+                          <th class="pr-4 pb-2">Товар</th>
                           <th class="pr-4 pb-2">Кол-во</th>
-                          <th class="pr-4 pb-2">Цена</th>
-                          <th class="pb-2">Скидка</th>
+                          <th class="pr-4 pb-2">Сумма продажи</th>
+                          <th class="pb-2">Сумма скидки/наценки</th>
                         </tr>
                       </thead>
                       <tbody class="text-neutral-900">
-                        <tr class="border-b border-neutral-100">
+                        <tr class="border-b border-dashed border-neutral-100">
+                          <td class="py-2 pr-4 text-xs">1234567890123</td>
                           <td class="py-2 pr-4">1</td>
-                          <td class="py-2 pr-4">2</td>
-                          <td class="py-2 pr-4">1,50</td>
-                          <td class="py-2">0,00</td>
+                          <td class="py-2 pr-4">2,29</td>
+                          <td class="py-2">0</td>
                         </tr>
-                        <tr class="border-b border-neutral-100">
-                          <td class="py-2 pr-4">2</td>
+                        <tr class="border-b border-dashed border-neutral-100">
+                          <td class="py-2 pr-4 text-xs">1234567890123</td>
                           <td class="py-2 pr-4">1</td>
-                          <td class="py-2 pr-4">3,08</td>
-                          <td class="py-2">0,00</td>
+                          <td class="py-2 pr-4">2,29</td>
+                          <td class="py-2">0</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
 
-                  <div class="mt-4 space-y-2 border-t border-neutral-200 pt-4 text-sm">
+                  <div
+                    class="mt-4 space-y-2 border-t border-dashed border-neutral-300 pt-4 text-sm">
                     <div class="flex justify-between">
                       <span class="text-neutral-500">Итого:</span>
-                      <span class="text-success font-bold">4,58</span>
+                      <span class="font-bold text-green-500">4,58</span>
                     </div>
                     <div class="flex justify-between">
                       <span class="text-neutral-500">Размер скидки:</span>
