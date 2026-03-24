@@ -1,5 +1,50 @@
-let project_folder = require('path').basename(__dirname);
+let nodePath = require('path');
+let { spawn, spawnSync } = require('child_process');
+let project_folder = nodePath.basename(__dirname);
 let source_folder = 'src';
+
+let tailwindInput = nodePath.join(__dirname, source_folder, 'css', 'tailwind.css');
+let tailwindOutput = nodePath.join(__dirname, source_folder, 'css', 'style.css');
+let tailwindWatchProc = null;
+
+function tailwindCliArgs(extraFlags) {
+  return ['@tailwindcss/cli', '-i', tailwindInput, '-o', tailwindOutput, ...extraFlags];
+}
+
+function tailwindBuild(done) {
+  let r = spawnSync('npx', tailwindCliArgs(['--minify']), {
+    cwd: __dirname,
+    stdio: 'inherit',
+    shell: true,
+  });
+  if (r.error) return done(r.error);
+  if (r.status !== 0) return done(new Error('Tailwind CLI exited with code ' + r.status));
+  done();
+}
+
+function tailwindWatch(done) {
+  tailwindWatchProc = spawn('npx', tailwindCliArgs(['--watch', '--minify']), {
+    cwd: __dirname,
+    stdio: 'inherit',
+    shell: true,
+  });
+  tailwindWatchProc.on('error', (err) => console.error('Tailwind watch:', err));
+  done();
+}
+
+function killTailwindWatch() {
+  if (tailwindWatchProc && !tailwindWatchProc.killed) {
+    tailwindWatchProc.kill('SIGTERM');
+    tailwindWatchProc = null;
+  }
+}
+
+process.once('exit', killTailwindWatch);
+['SIGINT', 'SIGTERM'].forEach((sig) => {
+  process.on(sig, () => {
+    killTailwindWatch();
+  });
+});
 
 let path = {
   build: {
@@ -41,9 +86,7 @@ let { src, dest } = require('gulp'),
   rename = require('gulp-rename'),
   terser = require('gulp-terser');
 
-((imagemin = require('gulp-imagemin')),
-  (svgSprite = require('gulp-svg-sprite')),
-  (ttf2woff = require('gulp-ttf2woff')),
+((ttf2woff = require('gulp-ttf2woff')),
   (ttf2woff2 = require('gulp-ttf2woff2')),
   (fonter = require('gulp-fonter')),
   (deploy = require('gulp-gh-pages')));
@@ -56,6 +99,7 @@ function browserSync(done) {
     port: 3000,
     notify: false,
   });
+  done();
 }
 
 function html() {
@@ -136,8 +180,12 @@ function clean(params) {
   return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, jsLibs, css, html, images, fonts, audio));
-let watch = gulp.parallel(build, watchFiles, browserSync);
+let build = gulp.series(
+  tailwindBuild,
+  clean,
+  gulp.parallel(js, jsLibs, css, html, images, fonts, audio),
+);
+let watch = gulp.parallel(build, watchFiles, browserSync, tailwindWatch);
 
 exports.fonts = fonts;
 exports.images = images;
@@ -146,6 +194,7 @@ exports.js = js;
 exports.jsLibs = jsLibs;
 exports.css = css;
 exports.html = html;
+exports.tailwindBuild = tailwindBuild;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;

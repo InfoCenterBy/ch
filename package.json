@@ -5,50 +5,34 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d ch",
-    "tailwind:watch": "npx @tailwindcss/cli -i ./src/css/tailwind.css -o ./src/css/style.css --watch"
+    "dev": "gulp watch",
+    "build": "gulp build",
+    "tailwind:watch": "npx @tailwindcss/cli -i ./src/css/tailwind.css -o ./src/css/style.css --watch --minify",
+    "tailwind:build": "npx @tailwindcss/cli -i ./src/css/tailwind.css -o ./src/css/style.css --minify"
   },
   "author": "",
   "license": "ISC",
   "description": "ch",
   "devDependencies": {
-    "autoprefixer": "^10.4.27",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
     "gh-pages": "^4.0.0",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.2.2",
     "gulp-fonter": "^0.3.0",
     "gulp-gh-pages": "^0.5.4",
-    "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-lightningcss": "^1.0.0",
-    "gulp-postcss": "^10.0.0",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-svg-sprite": "^1.5.0",
     "gulp-terser": "^2.1.0",
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^3.0.0",
-    "gulp-uglify-es": "^2.0.0",
-    "postcss": "^8.5.8",
-    "postcss-css-variables": "^0.19.0",
     "prettier": "^3.8.1",
     "prettier-plugin-classnames": "^0.9.0",
     "prettier-plugin-merge": "^0.10.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "sass": "^1.56.1",
     "tailwindcss": "^4.2.1"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.2.1",
-    "cssnano": "^7.0.6",
-    "daisyui": "^5.5.19",
-    "gulp-cheerio": "^1.0.0",
-    "gulp-replace": "^1.1.4",
-    "html5-qrcode": "^2.3.8",
-    "qr-scanner": "^1.4.2"
+    "daisyui": "^5.5.19"
   }
 }
