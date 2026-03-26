@@ -1,5 +1,5 @@
 .card-border {
-  @apply bg-primary rounded-3xl p-4 md:p-6 lg:p-8;
+  @apply bg-primary rounded-2xl p-2 md:rounded-3xl md:p-6 lg:p-8;
 }
 
 .card-status--success {

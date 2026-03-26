@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+  @@include('components/head.html', {"title": "Добавить автомобильного перевозчика"})
+
+  <body>
+    <div class="wrapper bg-neutral-100">
+      @@include('components/header.html')
+      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
+        <div class="container py-6 md:py-10">
+          <a
+            href="car-carrier-check.html"
+            class="group inline-flex items-center gap-3 transition-colors">
+            <span
+              class="btn-icon bg-primary flex size-10 shrink-0 items-center justify-center
+                text-neutral-50">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-5">
+                <path
+                  fill-rule="evenodd"
+                  d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06l-6.97 6.97 6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </span>
+            <span class="group-hover:text-primary text-neutral-500 transition-colors">
+              Проверка автомобильного перевозчика
+            </span>
+          </a>
+
+          <div class="mx-auto mt-6 w-full max-w-[760px] md:mt-8">
+            <div class="card-border">
+              <div class="rounded-2xl bg-neutral-50 p-4 md:rounded-3xl md:p-6">
+                <form action="car-carrier-check-add-transport.html" method="get" class="space-y-4">
+                  <div class="form-control w-full">
+                    <label class="label" for="carrier-unp">
+                      <span class="font-medium">
+                        УНП автомобильного перевозчика <span class="text-error">*</span>
+                      </span>
+                    </label>
+                    <input
+                      id="carrier-unp"
+                      type="text"
+                      name="carrierUnp"
+                      inputmode="numeric"
+                      class="input input-bordered mt-2 w-full" />
+                  </div>
+
+                  <div class="form-control w-full">
+                    <label class="label" for="car-number">
+                      <span class="font-medium">
+                        Номер автомобиля <span class="text-error">*</span>
+                      </span>
+                    </label>
+                    <input
+                      id="car-number"
+                      type="text"
+                      name="carNumber"
+                      class="input input-bordered mt-2 w-full"
+                      placeholder=""
+                      autocomplete="off" />
+                    <p class="mt-2 text-xs text-neutral-500">
+                      7 символов латиницей без пробелов и тире
+                    </p>
+                  </div>
+
+                  <div class="form-control w-full">
+                    <label class="label" for="full-name">
+                      <span class="font-medium">ФИО <span class="text-error">*</span></span>
+                    </label>
+                    <input
+                      id="full-name"
+                      type="text"
+                      name="fullName"
+                      class="input input-bordered mt-2 w-full"
+                      autocomplete="name" />
+                  </div>
+
+                  <div class="form-control w-full">
+                    <label class="label" for="position">
+                      <span class="font-medium"> Должность <span class="text-error">*</span> </span>
+                    </label>
+                    <input
+                      id="position"
+                      type="text"
+                      name="position"
+                      class="input input-bordered mt-2 w-full"
+                      autocomplete="organization-title" />
+                  </div>
+
+                  <div class="form-control w-full">
+                    <label class="label" for="phone">
+                      <span class="font-medium">Номер мобильного телефона</span>
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      name="phone"
+                      class="input input-bordered mt-2 w-full"
+                      placeholder="+375 (__) ___-__-__"
+                      autocomplete="tel"
+                      data-phone-mask />
+                  </div>
+
+                  <div class="pt-2 text-center">
+                    <button type="submit" class="btn btn-primary px-8">Далее</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      @@include('components/footer.html') @@include('components/mobile-nav.html')
+    </div>
+    @@include('components/script.html')
+  </body>
+</html>

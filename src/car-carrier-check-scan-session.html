@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+  @@include('components/head.html', {"title": "Результаты сканирования чеков"})
+
+  <body>
+    <div class="wrapper bg-neutral-100">
+      @@include('components/header.html')
+      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
+        <div class="container py-6 md:py-10">
+          <a
+            href="car-carrier-check-add-check.html"
+            class="group inline-flex items-center gap-3 text-neutral-900 transition-colors">
+            <span
+              class="btn-icon bg-primary flex size-10 shrink-0 items-center justify-center
+                text-neutral-50">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-5">
+                <path
+                  fill-rule="evenodd"
+                  d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06l-6.97 6.97 6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </span>
+            <span class="group-hover:text-primary text-neutral-500 transition-colors">
+              Проверка автомобильного перевозчика
+            </span>
+          </a>
+
+          <div class="mx-auto mt-6 w-full max-w-[760px] md:mt-8">
+            <div class="card-border">
+              <div class="rounded-2xl bg-neutral-50 p-4 md:rounded-3xl md:p-6">
+                <div class="rounded-2xl bg-neutral-200 p-4 md:p-5">
+                  <div class="grid grid-cols-2 gap-3 md:gap-6">
+                    <div>
+                      <p class="text-sm font-semibold whitespace-nowrap md:text-base">УНП</p>
+                      <p class="mt-1 text-sm md:text-base" data-session-unp>128456789</p>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold md:text-base">Дата</p>
+                      <p class="mt-1 text-sm md:text-base" data-session-date>12.09.2026</p>
+                    </div>
+                    <div class="col-span-2">
+                      <p class="text-sm font-semibold md:text-base">ФИО водителя</p>
+                      <p class="mt-1 text-sm md:text-base" data-session-driver>
+                        Иванов Иван Иванович
+                      </p>
+                    </div>
+                    <div class="col-span-2 rounded-xl bg-neutral-50 px-3 py-2">
+                      <div class="flex items-center justify-between gap-3">
+                        <p class="text-sm font-semibold md:text-base">Номер автомобиля</p>
+                        <p class="text-sm md:text-base" data-session-vehicle>1111AB5</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-4 flex items-center justify-between rounded-xl border border-green-200
+                    bg-green-200 px-4 py-2">
+                  <span class="text-sm font-semibold text-green-900 md:text-base"
+                    >Отсканировано чеков</span
+                  >
+                  <span
+                    class="inline-flex min-w-10 items-center justify-center rounded-lg bg-neutral-50
+                      px-3 py-1 text-sm font-semibold text-neutral-900"
+                    data-checks-count>
+                    0
+                  </span>
+                </div>
+
+                <div class="mt-4">
+                  <a href="car-carrier-check-add-check.html" class="btn btn-primary-outline w-full">
+                    Добавить новый чек
+                  </a>
+                </div>
+
+                <div class="mt-4 space-y-3" data-checks-list></div>
+
+                <div class="mt-6 grid gap-3">
+                  <button type="button" class="btn btn-primary mx-auto" data-send-checks-btn>
+                    Отправить чеки
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      @@include('components/footer.html') @@include('components/mobile-nav.html')
+      @@include('components/modal-checks-sent-success.html')
+    </div>
+    @@include('components/script.html')
+    <script>
+      (() => {
+        const SESSION_KEY = 'carrierCheckScanSession';
+        const raw = sessionStorage.getItem(SESSION_KEY);
+        if (!raw) {
+          window.location.href = 'car-carrier-check-add-transport.html';
+          return;
+        }
+
+        let session = null;
+        try {
+          session = JSON.parse(raw);
+        } catch {
+          sessionStorage.removeItem(SESSION_KEY);
+          window.location.href = 'car-carrier-check-add-transport.html';
+          return;
+        }
+
+        const unpEl = document.querySelector('[data-session-unp]');
+        const dateEl = document.querySelector('[data-session-date]');
+        const driverEl = document.querySelector('[data-session-driver]');
+        const vehicleEl = document.querySelector('[data-session-vehicle]');
+        const countEl = document.querySelector('[data-checks-count]');
+        const listEl = document.querySelector('[data-checks-list]');
+        const sendBtn = document.querySelector('[data-send-checks-btn]');
+
+        if (unpEl) unpEl.textContent = session?.carrier?.unp || '-';
+        if (dateEl) dateEl.textContent = session?.carrier?.date || '-';
+        if (driverEl) driverEl.textContent = session?.carrier?.driverFio || '-';
+        if (vehicleEl) vehicleEl.textContent = session?.carrier?.vehicle || '-';
+
+        const checks = Array.isArray(session?.checks) ? session.checks : [];
+        const checksNewestFirst = [...checks].reverse();
+        if (countEl) countEl.textContent = String(checks.length);
+
+        if (listEl) {
+          listEl.innerHTML = '';
+          checksNewestFirst.forEach((check) => {
+            const isFound = check.status === 'found';
+            const item = document.createElement('article');
+            item.className = isFound
+              ? 'rounded-xl border-l-4 border-green-500 bg-neutral-200 p-4'
+              : 'rounded-xl border-l-4 border-red-500 bg-neutral-200 p-4';
+            item.innerHTML = `
+              <div class="flex items-start gap-3">
+                <span class="${isFound ? 'bg-green-500' : 'bg-red-500'} mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full text-white">
+                  i
+                </span>
+                <div class="min-w-0">
+                  <p class="text-xs text-neutral-500">Результат проверки</p>
+                  <p class="${isFound ? 'text-green-600' : 'text-red-600'} text-lg font-semibold">${isFound ? 'Чек найден' : 'Чек не найден'}</p>
+                  <p class="mt-1 text-xs text-neutral-500">Уникальный идентификатор</p>
+                  <p class="text-sm break-all text-neutral-900">${check.uniqueId || '-'}</p>
+                </div>
+              </div>
+            `;
+            listEl.appendChild(item);
+          });
+        }
+
+        sendBtn?.addEventListener('click', () => {
+          const modal = document.getElementById('checksSentSuccessModal');
+          sessionStorage.removeItem(SESSION_KEY);
+          if (!modal) {
+            window.location.href = 'car-carrier-check-add-transport.html';
+            return;
+          }
+
+          const redirectToTransport = () => {
+            window.location.href = 'car-carrier-check-add-transport.html';
+          };
+
+          modal.addEventListener('close', redirectToTransport, { once: true });
+          modal.showModal();
+        });
+      })();
+    </script>
+  </body>
+</html>

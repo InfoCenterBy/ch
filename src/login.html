@@ -6,12 +6,12 @@
     <div class="wrapper">
       @@include('components/header.html')
 
-      <main class="mt-10 mb-10 md:mb-20 pb-24 md:pb-0">
+      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
         <div class="container py-10">
-          <div class="max-w-[760px] mx-auto">
+          <div class="mx-auto max-w-[760px]">
             <div class="card-border">
-              <div class="bg-neutral-50 rounded-3xl p-4 md:p-6">
-                <h1 class="text-center heading-1">АВТОРИЗАЦИЯ</h1>
+              <div class="rounded-2xl bg-neutral-50 p-4 md:rounded-3xl md:p-6">
+                <h1 class="heading-1 text-center">АВТОРИЗАЦИЯ</h1>
 
                 <form class="mt-8 space-y-4" action="#" method="post">
                   <div class="form-control w-full">
@@ -24,7 +24,7 @@
                       id="login-phone"
                       type="tel"
                       name="phone"
-                      class="input input-bordered w-full mt-2"
+                      class="input input-bordered mt-2 w-full"
                       placeholder="+375(__)___-__-__"
                       autocomplete="tel"
                       data-phone-mask />
@@ -36,7 +36,7 @@
                         >Пароль <span class="text-error">*</span></span
                       >
                     </label>
-                    <div class="password-input-wrapper mt-2 relative">
+                    <div class="password-input-wrapper relative mt-2">
                       <input
                         id="login-password"
                         type="password"
@@ -46,7 +46,7 @@
                       <button
                         type="button"
                         data-password-toggle
-                        class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
+                        class="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer"
                         aria-label="Показать пароль">
                         <svg
                           class="password-icon-crossed size-5 text-neutral-500"
@@ -84,7 +84,7 @@
                     <button type="submit" class="btn btn-primary">Войти</button>
                   </div>
 
-                  <p class="text-center text-neutral-900 mt-6 md:mt-8">
+                  <p class="mt-6 text-center text-neutral-900 md:mt-8">
                     Еще нет аккаунта?
                     <a class="link-primary" href="register.html">Зарегистрируйтесь</a>
                   </p>
