@@ -60,9 +60,9 @@
                 <div
                   class="mt-4 flex items-center justify-between rounded-xl border border-green-200
                     bg-green-200 px-4 py-2">
-                  <span class="text-sm font-semibold text-green-900 md:text-base"
-                    >Отсканировано чеков</span
-                  >
+                  <span class="text-sm font-semibold text-green-900 md:text-base">
+                    Отсканировано чеков
+                  </span>
                   <span
                     class="inline-flex min-w-10 items-center justify-center rounded-lg bg-neutral-50
                       px-3 py-1 text-sm font-semibold text-neutral-900"
@@ -71,8 +71,10 @@
                   </span>
                 </div>
 
-                <div class="mt-4">
-                  <a href="car-carrier-check-add-check.html" class="btn btn-primary-outline w-full">
+                <div class="mt-4 flex items-center justify-center">
+                  <a
+                    href="car-carrier-check-add-check.html"
+                    class="btn btn-primary-outline mx-auto">
                     Добавить новый чек
                   </a>
                 </div>
@@ -96,6 +98,12 @@
     <script>
       (() => {
         const SESSION_KEY = 'carrierCheckScanSession';
+        // Backend migration notes:
+        // 1) GET /api/carrier-check/sessions/:id -> get session + checks list
+        // 2) POST /api/carrier-check/sessions/:id/send -> finalize and send checks
+        // 3) Redirect after successful send response from API.
+        // Example finalize request:
+        // await fetch(`/api/carrier-check/sessions/${sessionId}/send`, { method: 'POST' });
         const raw = sessionStorage.getItem(SESSION_KEY);
         if (!raw) {
           window.location.href = 'car-carrier-check-add-transport.html';

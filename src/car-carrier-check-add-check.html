@@ -385,6 +385,12 @@
     <script>
       (() => {
         const SESSION_KEY = 'carrierCheckScanSession';
+        // Backend migration notes:
+        // 1) GET /api/carrier-check/sessions/:id -> fetch header/session info
+        // 2) Keep sessionId in query string (?sessionId=...)
+        // Example request:
+        // const res = await fetch(`/api/carrier-check/sessions/${sessionId}`);
+        // const session = await res.json();
         const qs = new URLSearchParams(window.location.search);
         const vehicleFromQuery = qs.get('vehicle');
         const fallback = {
@@ -455,6 +461,15 @@
 
       (() => {
         const SESSION_KEY = 'carrierCheckScanSession';
+        // Backend migration notes:
+        // 1) POST /api/carrier-check/sessions/:id/checks -> add one scanned check
+        // 2) Server returns normalized check with status (found/not_found)
+        // Example request:
+        // await fetch(`/api/carrier-check/sessions/${sessionId}/checks`, {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ uniqueId }),
+        // });
         document.querySelectorAll('[data-char-counter]').forEach((el) => {
           const name = el.dataset.inputName;
           const max = Number(el.dataset.max || 0);

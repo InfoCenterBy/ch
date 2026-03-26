@@ -112,6 +112,20 @@
     <script>
       (() => {
         const SESSION_KEY = 'carrierCheckScanSession';
+        // Backend migration notes:
+        // 1) POST /api/carrier-check/sessions -> create scan session
+        // 2) Save returned sessionId and pass it to next screen (?sessionId=...)
+        // Example request:
+        // const res = await fetch('/api/carrier-check/sessions', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({
+        //     carrierUnp: '128456789',
+        //     driverFio: 'Иванов Иван Иванович',
+        //     vehicle: btn.dataset.vehicle,
+        //   }),
+        // });
+        // const { sessionId } = await res.json();
         const buttons = document.querySelectorAll('[data-start-scan-session]');
         if (!buttons.length) return;
         buttons.forEach((btn) => {
