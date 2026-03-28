@@ -4,7 +4,7 @@ let project_folder = nodePath.basename(__dirname);
 let source_folder = 'src';
 
 let tailwindInput = nodePath.join(__dirname, source_folder, 'css', 'tailwind.css');
-let tailwindOutput = nodePath.join(__dirname, source_folder, 'css', 'style.css');
+let tailwindOutput = nodePath.join(__dirname, project_folder, 'css', 'style.css');
 let tailwindWatchProc = null;
 
 function tailwindCliArgs(extraFlags) {
@@ -70,7 +70,6 @@ let path = {
   },
   watch: {
     html: source_folder + '/**/*.html',
-    css: source_folder + '/css/**/*.css',
     js: source_folder + '/js/**/*.js',
     img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
     audio: source_folder + '/audio/*.mp3',
@@ -106,13 +105,6 @@ function html() {
   return src(path.src.html)
     .pipe(fileinclude())
     .pipe(dest(path.build.html))
-    .pipe(browsersync.stream());
-}
-
-function css() {
-  return src(path.src.css)
-    .pipe(rename({ basename: 'style', extname: '.css' }))
-    .pipe(dest(path.build.css))
     .pipe(browsersync.stream());
 }
 
@@ -170,7 +162,10 @@ function cb() {}
 
 function watchFiles(params) {
   gulp.watch([path.watch.html], html);
-  gulp.watch([path.watch.css], css);
+  gulp.watch([project_folder + '/css/**/*.css'], (done) => {
+    browsersync.reload();
+    done();
+  });
   gulp.watch([path.watch.js], gulp.parallel(js, jsLibs));
   gulp.watch([path.watch.img], images);
   gulp.watch([path.watch.audio], audio);
@@ -181,18 +176,19 @@ function clean(params) {
 }
 
 let build = gulp.series(
-  tailwindBuild,
   clean,
-  gulp.parallel(js, jsLibs, css, html, images, fonts, audio),
+  gulp.parallel(tailwindBuild, js, jsLibs, html, images, fonts, audio),
 );
-let watch = gulp.parallel(build, watchFiles, browserSync, tailwindWatch);
+let watch = gulp.series(
+  build,
+  gulp.parallel(watchFiles, browserSync, tailwindWatch),
+);
 
 exports.fonts = fonts;
 exports.images = images;
 exports.audio = audio;
 exports.js = js;
 exports.jsLibs = jsLibs;
-exports.css = css;
 exports.html = html;
 exports.tailwindBuild = tailwindBuild;
 exports.build = build;

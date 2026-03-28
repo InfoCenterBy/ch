@@ -7,8 +7,8 @@
     "deploy": "gh-pages -d ch",
     "dev": "gulp watch",
     "build": "gulp build",
-    "tailwind:watch": "npx @tailwindcss/cli -i ./src/css/tailwind.css -o ./src/css/style.css --watch --minify",
-    "tailwind:build": "npx @tailwindcss/cli -i ./src/css/tailwind.css -o ./src/css/style.css --minify"
+    "tailwind:watch": "npx @tailwindcss/cli -i ./src/css/tailwind.css -o ./ch/css/style.css --watch --minify",
+    "tailwind:build": "npx @tailwindcss/cli -i ./src/css/tailwind.css -o ./ch/css/style.css --minify"
   },
   "author": "",
   "license": "ISC",
