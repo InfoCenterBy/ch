@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-  <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Добавление автотранспорта</title>
@@ -13,9 +13,9 @@
 </head>
 
 
-  <body>
-    <div class="wrapper bg-neutral-100">
-      <header class="border-b border-neutral-300">
+<body>
+  <div class="wrapper">
+    <header class="border-b border-neutral-300">
   <div class="container">
     <div class="flex items-center justify-between gap-4 py-5">
       <div class="flex items-center gap-3">
@@ -63,108 +63,86 @@
   </div>
 </header>
 
-      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
-        <div class="container py-6 md:py-10">
-          <a
-            href="car-carrier-check.html"
-            class="group inline-flex items-center gap-3 text-neutral-900 transition-colors">
-            <span
-              class="btn-icon bg-primary flex size-10 shrink-0 items-center justify-center
-                text-neutral-50">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-5">
-                <path
-                  fill-rule="evenodd"
-                  d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06l-6.97 6.97 6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
-                  clip-rule="evenodd" />
-              </svg>
-            </span>
-            <span class="group-hover:text-primary text-neutral-500 transition-colors">
-              Проверка автомобильного перевозчика
-            </span>
-          </a>
+    <main class="mt-4 md:mt-10 mb-10 md:mb-20">
+      <div class="py-6 md:py-10 container">
+        <a href="car-carrier-check.html" class="group inline-flex items-center gap-3 text-neutral-900 transition-colors">
+          <span class="flex justify-center items-center bg-primary size-10 text-neutral-50 btn-icon shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+              <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06l-6.97 6.97 6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+          <span class="text-neutral-500 group-hover:text-primary transition-colors">
+            Проверка автомобильного перевозчика
+          </span>
+        </a>
 
-          <div class="mx-auto mt-6 w-full max-w-[760px] md:mt-8">
-            <div class="card-border">
-              <div class="rounded-2xl bg-neutral-50 p-4 md:rounded-3xl md:p-6">
-                <div class="rounded-2xl bg-neutral-200 p-4 md:p-5">
-                  <div
-                    class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between
-                      md:gap-6">
-                    <div class="grid grid-cols-2 gap-3 md:gap-6">
+        <div class="mx-auto mt-6 md:mt-8 w-full max-w-[760px]">
+          <div class="card-border">
+            <div class="bg-neutral-50 p-4 md:p-6 rounded-2xl md:rounded-3xl">
+              <div class="bg-neutral-200 p-4 md:p-5 rounded-2xl">
+                <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-3 md:gap-6">
+                  <div class="gap-3 md:gap-6 grid grid-cols-2">
+                    <div>
+                      <p class="font-semibold text-sm md:text-base whitespace-nowrap">
+                        УНП перевозчика
+                      </p>
+                      <p class="mt-1 text-sm md:text-base">128456789</p>
+                    </div>
+                    <div class="pl-2">
+                      <p class="font-semibold text-sm md:text-base">Дата</p>
+                      <p class="mt-1 text-sm md:text-base">12.09.2026</p>
+                    </div>
+                    <div class="col-span-2">
+                      <p class="font-semibold text-sm md:text-base">ФИО водителя</p>
+                      <p class="mt-1 text-sm md:text-base">Иванов Иван Иванович</p>
+                    </div>
+                  </div>
+                  <p class="inline-block bg-neutral-50 px-3 py-2 rounded-xl w-full md:w-auto md:min-w-max font-semibold text-primary text-sm md:text-lg whitespace-nowrap">
+                    Общее кол-во чеков: 19
+                  </p>
+                </div>
+
+                <div class="space-y-3 mt-4">
+                  <div class="bg-neutral-50 p-3 md:p-4 rounded-xl">
+                    <div class="flex flex-wrap justify-between items-center gap-3">
                       <div>
-                        <p class="text-sm font-semibold whitespace-nowrap md:text-base">
-                          УНП перевозчика
-                        </p>
-                        <p class="mt-1 text-sm md:text-base">128456789</p>
+                        <p class="font-semibold text-sm md:text-base">Номер автомобиля</p>
+                        <p class="mt-1 text-sm md:text-base">1111AB5</p>
                       </div>
-                      <div class="pl-2">
-                        <p class="text-sm font-semibold md:text-base">Дата</p>
-                        <p class="mt-1 text-sm md:text-base">12.09.2026</p>
-                      </div>
-                      <div class="col-span-2">
-                        <p class="text-sm font-semibold md:text-base">ФИО водителя</p>
-                        <p class="mt-1 text-sm md:text-base">Иванов Иван Иванович</p>
-                      </div>
+                      <p class="font-semibold text-sm md:text-base">12 чеков</p>
+                      <a href="car-carrier-check-add-check.html?vehicle=1111AB5" class="btn btn-primary" data-start-scan-session data-vehicle="1111AB5">
+                        Добавить чек
+                      </a>
                     </div>
-                    <p
-                      class="text-primary inline-block w-full rounded-xl bg-neutral-50 px-3 py-2
-                        text-sm font-semibold whitespace-nowrap md:w-auto md:min-w-max md:text-lg">
-                      Общее кол-во чеков: 19
-                    </p>
                   </div>
 
-                  <div class="mt-4 space-y-3">
-                    <div class="rounded-xl bg-neutral-50 p-3 md:p-4">
-                      <div class="flex flex-wrap items-center justify-between gap-3">
-                        <div>
-                          <p class="text-sm font-semibold md:text-base">Номер автомобиля</p>
-                          <p class="mt-1 text-sm md:text-base">1111AB5</p>
-                        </div>
-                        <p class="text-sm font-semibold md:text-base">12 чеков</p>
-                        <a
-                          href="car-carrier-check-add-check.html?vehicle=1111AB5"
-                          class="btn btn-primary"
-                          data-start-scan-session
-                          data-vehicle="1111AB5">
-                          Добавить чек
-                        </a>
+                  <div class="bg-neutral-50 p-3 md:p-4 rounded-xl">
+                    <div class="flex flex-wrap justify-between items-center gap-3">
+                      <div>
+                        <p class="font-semibold text-sm md:text-base">Номер автомобиля</p>
+                        <p class="mt-1 text-sm md:text-base">2222BC5</p>
                       </div>
-                    </div>
-
-                    <div class="rounded-xl bg-neutral-50 p-3 md:p-4">
-                      <div class="flex flex-wrap items-center justify-between gap-3">
-                        <div>
-                          <p class="text-sm font-semibold md:text-base">Номер автомобиля</p>
-                          <p class="mt-1 text-sm md:text-base">2222BC5</p>
-                        </div>
-                        <p class="text-sm font-semibold md:text-base">7 чеков</p>
-                        <a
-                          href="car-carrier-check-add-check.html?vehicle=2222BC5"
-                          class="btn btn-primary"
-                          data-start-scan-session
-                          data-vehicle="2222BC5">
-                          Добавить чек
-                        </a>
-                      </div>
+                      <p class="font-semibold text-sm md:text-base">7 чеков</p>
+                      <a href="car-carrier-check-add-check.html?vehicle=2222BC5" class="btn btn-primary" data-start-scan-session data-vehicle="2222BC5">
+                        Добавить чек
+                      </a>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="mt-6 text-center">
-                  <a href="car-carrier-check-add-new-transport.html" class="btn btn-primary px-8">
-                    Добавить новый транспорт
-                  </a>
-                </div>
+              <div class="mt-6 text-center">
+                <a href="car-carrier-check-add-new-transport.html" class="px-8 btn btn-primary">
+                  Добавить новый транспорт
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </main>
-      <footer class="bg-neutral-200 mb-14 md:mb-0">
+      </div>
+    </main>
+    <footer class="bg-neutral-200 mb-14 md:mb-0">
   <div class="container">
     <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-3 py-10">
       <div class="flex items-center gap-3">
@@ -247,44 +225,45 @@
   </a>
 </nav>
 
-    </div>
-    <script src="js/script.js"></script>
+  </div>
+  <script src="js/script.js"></script>
 
-    <script>
-      (() => {
-        const SESSION_KEY = 'carrierCheckScanSession';
-        // Backend migration notes:
-        // 1) POST /api/carrier-check/sessions -> create scan session
-        // 2) Save returned sessionId and pass it to next screen (?sessionId=...)
-        // Example request:
-        // const res = await fetch('/api/carrier-check/sessions', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({
-        //     carrierUnp: '128456789',
-        //     driverFio: 'Иванов Иван Иванович',
-        //     vehicle: btn.dataset.vehicle,
-        //   }),
-        // });
-        // const { sessionId } = await res.json();
-        const buttons = document.querySelectorAll('[data-start-scan-session]');
-        if (!buttons.length) return;
-        buttons.forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const session = {
-              startedAt: Date.now(),
-              carrier: {
-                unp: '128456789',
-                date: '12.09.2026',
-                driverFio: 'Иванов Иван Иванович',
-                vehicle: btn.dataset.vehicle || '1111AB5',
-              },
-              checks: [],
-            };
-            sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
-          });
+  <script>
+    (() => {
+      const SESSION_KEY = 'carrierCheckScanSession';
+      // Backend migration notes:
+      // 1) POST /api/carrier-check/sessions -> create scan session
+      // 2) Save returned sessionId and pass it to next screen (?sessionId=...)
+      // Example request:
+      // const res = await fetch('/api/carrier-check/sessions', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     carrierUnp: '128456789',
+      //     driverFio: 'Иванов Иван Иванович',
+      //     vehicle: btn.dataset.vehicle,
+      //   }),
+      // });
+      // const { sessionId } = await res.json();
+      const buttons = document.querySelectorAll('[data-start-scan-session]');
+      if (!buttons.length) return;
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const session = {
+            startedAt: Date.now(),
+            carrier: {
+              unp: '128456789',
+              date: '12.09.2026',
+              driverFio: 'Иванов Иван Иванович',
+              vehicle: btn.dataset.vehicle || '1111AB5',
+            },
+            checks: [],
+          };
+          sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
         });
-      })();
-    </script>
-  </body>
+      });
+    })();
+  </script>
+</body>
+
 </html>

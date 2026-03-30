@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-  <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Добавить автомобильного перевозчика</title>
@@ -13,9 +13,9 @@
 </head>
 
 
-  <body>
-    <div class="wrapper bg-neutral-100">
-      <header class="border-b border-neutral-300">
+<body>
+  <div class="wrapper">
+    <header class="border-b border-neutral-300">
   <div class="container">
     <div class="flex items-center justify-between gap-4 py-5">
       <div class="flex items-center gap-3">
@@ -63,118 +63,79 @@
   </div>
 </header>
 
-      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
-        <div class="container py-6 md:py-10">
-          <a
-            href="car-carrier-check.html"
-            class="group inline-flex items-center gap-3 transition-colors">
-            <span
-              class="btn-icon bg-primary flex size-10 shrink-0 items-center justify-center
-                text-neutral-50">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-5">
-                <path
-                  fill-rule="evenodd"
-                  d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06l-6.97 6.97 6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
-                  clip-rule="evenodd" />
-              </svg>
-            </span>
-            <span class="group-hover:text-primary text-neutral-500 transition-colors">
-              Проверка автомобильного перевозчика
-            </span>
-          </a>
+    <main class="mt-4 md:mt-10 mb-10 md:mb-20">
+      <div class="py-6 md:py-10 container">
+        <a href="car-carrier-check.html" class="group inline-flex items-center gap-3 transition-colors">
+          <span class="flex justify-center items-center bg-primary size-10 text-neutral-50 btn-icon shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+              <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06l-6.97 6.97 6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+          <span class="text-neutral-500 group-hover:text-primary transition-colors">
+            Проверка автомобильного перевозчика
+          </span>
+        </a>
 
-          <div class="mx-auto mt-6 w-full max-w-[760px] md:mt-8">
-            <div class="card-border">
-              <div class="rounded-2xl bg-neutral-50 p-4 md:rounded-3xl md:p-6">
-                <form action="car-carrier-check-add-transport.html" method="get" class="space-y-4">
-                  <div class="form-control w-full">
-                    <label class="label" for="carrier-unp">
-                      <span class="font-medium text-neutral-900">
-                        УНП автомобильного перевозчика <span class="text-error">*</span>
-                      </span>
-                    </label>
-                    <input
-                      id="carrier-unp"
-                      type="text"
-                      name="carrierUnp"
-                      inputmode="numeric"
-                      class="input input-bordered mt-2 w-full" />
-                  </div>
+        <div class="mx-auto mt-6 md:mt-8 w-full max-w-[760px]">
+          <div class="card-border">
+            <div class="bg-neutral-50 p-4 md:p-6 rounded-2xl md:rounded-3xl">
+              <form action="car-carrier-check-add-transport.html" method="get" class="space-y-4">
+                <div class="w-full form-control">
+                  <label class="label" for="carrier-unp">
+                    <span class="font-medium text-neutral-900">
+                      УНП автомобильного перевозчика <span class="text-error">*</span>
+                    </span>
+                  </label>
+                  <input id="carrier-unp" type="text" name="carrierUnp" inputmode="numeric" class="mt-2 w-full input input-bordered" />
+                </div>
 
-                  <div class="form-control w-full">
-                    <label class="label" for="car-number">
-                      <span class="font-medium text-neutral-900">
-                        Номер автомобиля <span class="text-error">*</span>
-                      </span>
-                    </label>
-                    <input
-                      id="car-number"
-                      type="text"
-                      name="carNumber"
-                      class="input input-bordered mt-2 w-full"
-                      placeholder=""
-                      autocomplete="off" />
-                    <p class="mt-2 text-xs text-neutral-500">
-                      7 символов латиницей без пробелов и тире
-                    </p>
-                  </div>
+                <div class="w-full form-control">
+                  <label class="label" for="car-number">
+                    <span class="font-medium text-neutral-900">
+                      Номер автомобиля <span class="text-error">*</span>
+                    </span>
+                  </label>
+                  <input id="car-number" type="text" name="carNumber" class="mt-2 w-full input input-bordered" placeholder="" autocomplete="off" />
+                  <p class="mt-2 text-neutral-500 text-xs">
+                    7 символов латиницей без пробелов и тире
+                  </p>
+                </div>
 
-                  <div class="form-control w-full">
-                    <label class="label" for="full-name">
-                      <span class="font-medium text-neutral-900"
-                        >ФИО <span class="text-error">*</span></span
-                      >
-                    </label>
-                    <input
-                      id="full-name"
-                      type="text"
-                      name="fullName"
-                      class="input input-bordered mt-2 w-full"
-                      autocomplete="name" />
-                  </div>
+                <div class="w-full form-control">
+                  <label class="label" for="full-name">
+                    <span class="font-medium text-neutral-900">ФИО <span class="text-error">*</span></span>
+                  </label>
+                  <input id="full-name" type="text" name="fullName" class="mt-2 w-full input input-bordered" autocomplete="name" />
+                </div>
 
-                  <div class="form-control w-full">
-                    <label class="label" for="position">
-                      <span class="font-medium text-neutral-900">
-                        Должность <span class="text-error">*</span>
-                      </span>
-                    </label>
-                    <input
-                      id="position"
-                      type="text"
-                      name="position"
-                      class="input input-bordered mt-2 w-full"
-                      autocomplete="organization-title" />
-                  </div>
+                <div class="w-full form-control">
+                  <label class="label" for="position">
+                    <span class="font-medium text-neutral-900">
+                      Должность <span class="text-error">*</span>
+                    </span>
+                  </label>
+                  <input id="position" type="text" name="position" class="mt-2 w-full input input-bordered" autocomplete="organization-title" />
+                </div>
 
-                  <div class="form-control w-full">
-                    <label class="label" for="phone">
-                      <span class="font-medium text-neutral-900">Номер мобильного телефона</span>
-                    </label>
-                    <input
-                      id="phone"
-                      type="tel"
-                      name="phone"
-                      class="input input-bordered mt-2 w-full"
-                      placeholder="+375 (__) ___-__-__"
-                      autocomplete="tel"
-                      data-phone-mask />
-                  </div>
+                <div class="w-full form-control">
+                  <label class="label" for="phone">
+                    <span class="font-medium text-neutral-900">Номер мобильного телефона</span>
+                  </label>
+                  <input id="phone" type="tel" name="phone" class="mt-2 w-full input input-bordered" placeholder="+375 (__) ___-__-__" autocomplete="tel"
+                    data-phone-mask />
+                </div>
 
-                  <div class="pt-2 text-center">
-                    <button type="submit" class="btn btn-primary px-8">Далее</button>
-                  </div>
-                </form>
-              </div>
+                <div class="pt-2 text-center">
+                  <button type="submit" class="px-8 btn btn-primary">Далее</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </main>
-      <footer class="bg-neutral-200 mb-14 md:mb-0">
+      </div>
+    </main>
+    <footer class="bg-neutral-200 mb-14 md:mb-0">
   <div class="container">
     <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-3 py-10">
       <div class="flex items-center gap-3">
@@ -257,8 +218,9 @@
   </a>
 </nav>
 
-    </div>
-    <script src="js/script.js"></script>
+  </div>
+  <script src="js/script.js"></script>
 
-  </body>
+</body>
+
 </html>
