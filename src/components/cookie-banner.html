@@ -1,0 +1,37 @@
+<div
+  id="cookieBanner"
+  class="fixed right-2 bottom-3 left-2 z-40 container rounded-xl border border-neutral-100
+    bg-neutral-50 shadow-md md:right-4 md:left-4">
+  <div
+    class="flex flex-col gap-3 p-3 md:flex-row md:items-center md:justify-between md:gap-4 md:p-4">
+    <div class="flex items-start gap-3">
+      <img
+        src="./img/common/cookie.png"
+        alt="Cookie"
+        class="mt-1 h-8 w-8 shrink-0"
+        onerror="this.style.display = 'none'" />
+      <div class="text-xs leading-4 text-neutral-900 md:text-sm md:leading-5">
+        Мы используем файлы cookie для улучшения работы сайта. Подробную информацию вы найдете в
+        <a href="#" class="text-primary hover:text-primary-hover underline"
+          >Политике обработки cookie</a
+        >.
+        <br />
+        <a href="#" class="text-primary hover:text-primary-hover underline">Настроить cookies</a>
+      </div>
+    </div>
+    <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+      <button
+        type="button"
+        class="btn btn-primary w-full sm:w-auto"
+        onclick="cookieBanner.remove()">
+        Принять все
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary-outline w-full sm:w-auto"
+        onclick="cookieBanner.remove()">
+        Сохранить настройки
+      </button>
+    </div>
+  </div>
+</div>

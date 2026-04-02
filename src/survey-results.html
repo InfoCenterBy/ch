@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ru">
+  @@include('components/head.html', {"title": "Результаты опроса"})
+
+  <body>
+    <div class="wrapper">
+      @@include('components/header.html')
+
+      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
+        <div class="container py-10">
+          <div class="rounded-2xl bg-neutral-50 md:rounded-3xl">
+            <h1 class="heading-1">Результаты опроса</h1>
+            <p class="mt-4 text-neutral-500">Выберите период и посмотрите ответы пользователей.</p>
+
+            <div
+              class="mt-10 grid grid-cols-1 items-end gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
+              <div class="w-full">
+                <label class="label" for="dateFrom">
+                  <span class="font-medium text-neutral-900">Дата опроса от</span>
+                </label>
+                <div
+                  class="mt-2 cursor-pointer"
+                  onclick="this.querySelector('input')?.showPicker?.()">
+                  <input
+                    id="dateFrom"
+                    type="text"
+                    class="input input-bordered w-full"
+                    placeholder="01.01.2026"
+                    onfocus="
+                      this.type = 'date';
+                      this.showPicker?.();
+                    "
+                    onblur="if (!this.value) this.type = 'text';" />
+                </div>
+              </div>
+
+              <div class="w-full">
+                <label class="label" for="dateTo">
+                  <span class="font-medium text-neutral-900">Дата опроса до</span>
+                </label>
+                <div
+                  class="mt-2 cursor-pointer"
+                  onclick="this.querySelector('input')?.showPicker?.()">
+                  <input
+                    id="dateTo"
+                    type="text"
+                    class="input input-bordered w-full"
+                    placeholder="01.01.2026"
+                    onfocus="
+                      this.type = 'date';
+                      this.showPicker?.();
+                    "
+                    onblur="if (!this.value) this.type = 'text';" />
+                </div>
+              </div>
+
+              <div class="w-full">
+                <button id="surveyResultsShowBtn" type="button" class="btn btn-primary">
+                  Показать
+                </button>
+              </div>
+
+              <div class="flex justify-end">
+                <button
+                  id="surveyResultsDownloadExcelBtn"
+                  type="button"
+                  class="btn btn-primary-outline self-end"
+                  disabled>
+                  Скачать Excel
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-8 overflow-x-auto md:overflow-x-visible">
+              <table class="w-full text-sm md:table-fixed">
+                <thead>
+                  <tr
+                    class="border-b border-neutral-300 text-left text-[12px] font-semibold
+                      md:text-base">
+                    <th class="pr-4 pb-2 md:w-[56px]">№</th>
+                    <th class="pr-4 pb-2 wrap-break-word">Частота использования</th>
+                    <th class="pr-4 pb-2 wrap-break-word">Удобство</th>
+                    <th class="pr-4 pb-2 wrap-break-word">Общее впечатление</th>
+                    <th class="min-w-[200px] pb-2 wrap-break-word">Открытый вопрос</th>
+                  </tr>
+                </thead>
+                <tbody id="surveyResultsTbody" class="text-neutral-900"></tbody>
+              </table>
+
+              <div id="surveyResultsEmpty" class="mt-6 hidden text-center text-neutral-500">
+                Нет данных за выбранный период.
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      @@include('components/footer.html') @@include('components/mobile-nav.html')
+      @@include('components/loader.html')
+    </div>
+
+    @@include('components/script.html')
+    <script>
+      (() => {
+        const showBtn = document.getElementById('surveyResultsShowBtn');
+        const downloadBtn = document.getElementById('surveyResultsDownloadExcelBtn');
+        const tbodyEl = document.getElementById('surveyResultsTbody');
+        const emptyEl = document.getElementById('surveyResultsEmpty');
+        const dateFromInput = document.getElementById('dateFrom');
+        const dateToInput = document.getElementById('dateTo');
+        if (!showBtn || !downloadBtn || !tbodyEl || !emptyEl) return;
+
+        /** @type {Array<{frequency: string, convenience: string, impression: string, suggestions: string}>} */
+        let currentRows = [];
+
+        function setButtonsDisabled(disabled) {
+          showBtn.disabled = disabled;
+          downloadBtn.disabled = disabled || currentRows.length === 0;
+        }
+
+        function escapeCsvCell(value) {
+          const str = String(value ?? '');
+          // Excel (RU) удобнее с `;`, а кавычки экранируем удвоением.
+          const escaped = str.replace(/"/g, '""');
+          return `"${escaped}"`;
+        }
+
+        function downloadCsv(rows) {
+          const headers = [
+            '№',
+            'Частота использования',
+            'Удобство',
+            'Общее впечатление',
+            'Открытый вопрос',
+          ];
+
+          const lines = [
+            headers.map(escapeCsvCell).join(';'),
+            ...rows.map((row, idx) =>
+              [idx + 1, row.frequency, row.convenience, row.impression, row.suggestions]
+                .map(escapeCsvCell)
+                .join(';'),
+            ),
+          ];
+
+          const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'survey-results.csv';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        }
+
+        const valueLabels = {
+          rarely: 'Редко (несколько раз в год)',
+          sometimes: 'Иногда (раз в месяц)',
+          regularly: 'Регулярно (несколько раз в месяц)',
+          often: 'Часто (еженедельно или чаще)',
+          very: 'Очень удобно',
+          yes: 'Удобно',
+          'rather-not': 'Скорее неудобно',
+          no: 'Неудобно',
+          excellent: 'Отличное',
+          good: 'Хорошее',
+          average: 'Нормальное',
+          bad: 'Плохое',
+        };
+
+        function buildMockRows() {
+          const mock = [
+            {
+              frequency: valueLabels.rarely,
+              convenience: valueLabels.very,
+              impression: valueLabels.excellent,
+              suggestions: '-',
+            },
+            {
+              frequency: valueLabels.sometimes,
+              convenience: valueLabels.yes,
+              impression: valueLabels.good,
+              suggestions:
+                'Очень классно у вас все работает. Здоровски прям. Очень классно у вас все работает.',
+            },
+            {
+              frequency: valueLabels.regularly,
+              convenience: valueLabels['rather-not'],
+              impression: valueLabels.average,
+              suggestions: '-',
+            },
+          ];
+          return mock;
+        }
+
+        function renderRows(rows) {
+          currentRows = rows;
+          tbodyEl.innerHTML = '';
+
+          if (!rows.length) {
+            emptyEl.classList.remove('hidden');
+            downloadBtn.disabled = true;
+            return;
+          }
+
+          emptyEl.classList.add('hidden');
+
+          rows.forEach((row, idx) => {
+            const tr = document.createElement('tr');
+            tr.className = 'border-b border-dashed border-neutral-100';
+
+            tr.innerHTML = `
+              <td class="py-2 pr-4 text-xs">${idx + 1}</td>
+              <td class="py-2 pr-4 wrap-break-word">${row.frequency}</td>
+              <td class="py-2 pr-4 wrap-break-word">${row.convenience}</td>
+              <td class="py-2 pr-4 wrap-break-word">${row.impression}</td>
+              <td class="py-2 wrap-break-word">${row.suggestions}</td>
+            `;
+
+            tbodyEl.appendChild(tr);
+          });
+
+          downloadBtn.disabled = rows.length === 0;
+        }
+
+        async function loadResults() {
+          const dateFrom = dateFromInput?.value?.trim() || '';
+          const dateTo = dateToInput?.value?.trim() || '';
+
+          // Backend migration example:
+          // const params = new URLSearchParams({ dateFrom, dateTo });
+          // const rows = await requestWithLoader(() =>
+          //   fetch(`/api/survey/results?${params}`).then((r) => r.json()),
+          // );
+
+          setButtonsDisabled(true);
+          await requestWithLoader(() => new Promise((r) => setTimeout(r, 700)));
+
+          // Пока рендерим mock-данные. Позже подставим реальный результат с API.
+          const rows = buildMockRows();
+          renderRows(rows);
+          setButtonsDisabled(false);
+        }
+
+        showBtn.addEventListener('click', loadResults);
+
+        downloadBtn.addEventListener('click', () => {
+          if (!currentRows.length) return;
+          downloadCsv(currentRows);
+        });
+
+        // По умолчанию загружаем все доступные результаты при открытии страницы.
+        loadResults();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+  @@include('components/head.html', {"title": "Графики опроса"})
+
+  <body>
+    <div class="wrapper">
+      @@include('components/header.html')
+
+      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
+        <div class="container py-10">
+          <div class="rounded-2xl bg-neutral-50 md:rounded-3xl">
+            <h1 class="heading-1">Графики опроса</h1>
+            <p class="mt-4 text-neutral-500">Сводная статистика по оценкам за выбранный период.</p>
+
+            <div
+              class="mt-10 grid grid-cols-1 items-end gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
+              <div class="w-full">
+                <label class="label" for="surveyChartsDateFrom">
+                  <span class="font-medium text-neutral-900">Дата опроса от</span>
+                </label>
+                <div
+                  class="mt-2 cursor-pointer"
+                  onclick="this.querySelector('input')?.showPicker?.()">
+                  <input
+                    id="surveyChartsDateFrom"
+                    type="text"
+                    class="input input-bordered w-full"
+                    placeholder="01.01.2026"
+                    onfocus="
+                      this.type = 'date';
+                      this.showPicker?.();
+                    "
+                    onblur="if (!this.value) this.type = 'text';" />
+                </div>
+              </div>
+
+              <div class="w-full">
+                <label class="label" for="surveyChartsDateTo">
+                  <span class="font-medium text-neutral-900">Дата опроса до</span>
+                </label>
+                <div
+                  class="mt-2 cursor-pointer"
+                  onclick="this.querySelector('input')?.showPicker?.()">
+                  <input
+                    id="surveyChartsDateTo"
+                    type="text"
+                    class="input input-bordered w-full"
+                    placeholder="01.01.2026"
+                    onfocus="
+                      this.type = 'date';
+                      this.showPicker?.();
+                    "
+                    onblur="if (!this.value) this.type = 'text';" />
+                </div>
+              </div>
+
+              <div class="w-full sm:col-span-2 md:col-span-1">
+                <button
+                  id="surveyChartsShowBtn"
+                  type="button"
+                  class="btn btn-primary w-full sm:w-auto">
+                  Показать
+                </button>
+              </div>
+            </div>
+
+            <div id="graphsGrid" class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2"></div>
+          </div>
+        </div>
+      </main>
+
+      @@include('components/footer.html') @@include('components/mobile-nav.html')
+      @@include('components/loader.html')
+    </div>
+
+    @@include('components/script.html')
+    <script src="js/chart.umd.min.js"></script>
+    <script>
+      (() => {
+        const gridEl = document.getElementById('graphsGrid');
+        const showBtn = document.getElementById('surveyChartsShowBtn');
+        const dateFromInput = document.getElementById('surveyChartsDateFrom');
+        const dateToInput = document.getElementById('surveyChartsDateTo');
+
+        if (!gridEl || !showBtn || typeof Chart === 'undefined') return;
+
+        Chart.defaults.font.family = "'Noto Sans', system-ui, sans-serif";
+        Chart.defaults.color = '#737373';
+
+        const BAR_COLORS = ['#e5e5e5', '#fbddc6', '#f5af7a', '#ef822e'];
+
+        let chartInstances = [];
+
+        function buildMockApiPayload() {
+          return {
+            stats: {
+              frequency: { ratings: [14, 26, 34, 26], total: 100 },
+              convenience: { ratings: [9, 18, 41, 32], total: 100 },
+              impression: { ratings: [7, 19, 36, 38], total: 100 },
+            },
+          };
+        }
+
+        /** @param {ReturnType<typeof buildMockApiPayload>} raw */
+        function surveyDataFromApi(raw) {
+          const s = raw.stats;
+          return {
+            frequency: {
+              question: 'Как часто вы пользуетесь сервисом проверки чеков?',
+              labels: ['Редко', 'Иногда', 'Регулярно', 'Часто'],
+              values: s.frequency.ratings.slice(),
+              colors: BAR_COLORS.slice(0, 4),
+            },
+            convenience: {
+              question: 'Насколько удобно вам пользоваться сервисом?',
+              labels: ['Неудобно', 'Скорее неудобно', 'Удобно', 'Очень удобно'],
+              values: s.convenience.ratings.slice(),
+              colors: BAR_COLORS.slice(0, 4),
+            },
+            impression: {
+              question: 'Оцените общее впечатление от сервиса',
+              labels: ['Плохое', 'Нормальное', 'Хорошее', 'Отличное'],
+              values: s.impression.ratings.slice(),
+              colors: BAR_COLORS.slice(0, 4),
+            },
+          };
+        }
+
+        function calculateStats(data) {
+          /** @type {Record<string, any>} */
+          const out = {};
+          for (const [key, value] of Object.entries(data)) {
+            const total = value.values.reduce((a, b) => a + b, 0);
+            const weightedSum = value.values.reduce(
+              (sum, count, index) => sum + count * (index + 1),
+              0,
+            );
+            const average = total ? (weightedSum / total).toFixed(2) : '0.00';
+            const percentages = value.values.map((v) =>
+              total ? ((v / total) * 100).toFixed(1) : '0.0',
+            );
+            out[key] = { ...value, total, average, percentages };
+          }
+          return out;
+        }
+
+        function destroyChartsAndClearDom() {
+          chartInstances.forEach((c) => {
+            try {
+              c.destroy();
+            } catch (_) {}
+          });
+          chartInstances = [];
+          gridEl.innerHTML = '';
+        }
+
+        function createCharts(stats) {
+          const charts = [
+            { key: 'frequency', title: 'Как часто вы пользуетесь сервисом проверки чеков?' },
+            { key: 'convenience', title: 'Насколько удобно вам пользоваться сервисом?' },
+            { key: 'impression', title: 'Оцените общее впечатление от сервиса' },
+          ];
+
+          charts.forEach((chart) => {
+            const data = stats[chart.key];
+            const wrap = document.createElement('div');
+            wrap.className =
+              'rounded-2xl border border-neutral-300 bg-neutral-50 p-4 md:rounded-3xl md:p-6';
+            const canvasId = `chart-${chart.key}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+            wrap.innerHTML = `
+              <h2 class="text-lg font-semibold text-neutral-900">${chart.title}</h2>
+              <div class="relative mt-4 h-64 w-full min-h-[240px]">
+                <canvas id="${canvasId}"></canvas>
+              </div>
+              `;
+            gridEl.appendChild(wrap);
+
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            const ch = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: data.labels,
+                datasets: [
+                  {
+                    label: 'Кол-во ответов',
+                    data: data.values,
+                    backgroundColor: data.colors,
+                    borderColor: data.colors.map((c) => c),
+                    borderWidth: 1,
+                    borderRadius: 6,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: { display: false },
+                  tooltip: {
+                    callbacks: {
+                      label(context) {
+                        const value = context.raw;
+                        const percentage = data.percentages[context.dataIndex];
+                        return [`Ответов: ${value}`, `${percentage}% от всех`];
+                      },
+                    },
+                  },
+                },
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    grid: { color: '#f0f0f0' },
+                    ticks: { color: '#737373' },
+                    title: {
+                      display: true,
+                      text: 'Кол-во ответов',
+                      color: '#525252',
+                    },
+                  },
+                  x: {
+                    grid: { display: false },
+                    ticks: { color: '#525252' },
+                  },
+                },
+              },
+            });
+            chartInstances.push(ch);
+          });
+        }
+
+        async function loadSurveyCharts() {
+          await requestWithLoader(async () => {
+            // const qs = new URLSearchParams();
+            // if (dateFromInput?.value) qs.set('dateFrom', dateFromInput.value);
+            // if (dateToInput?.value) qs.set('dateTo', dateToInput.value);
+            // const response = await fetch(`/api/survey-stats?${qs}`);
+            // if (!response.ok) throw new Error('survey-stats failed');
+            // const payload = await response.json();
+
+            await new Promise((r) => setTimeout(r, 450));
+            const payload = buildMockApiPayload();
+
+            const surveyData = surveyDataFromApi(payload);
+            const computed = calculateStats(surveyData);
+            destroyChartsAndClearDom();
+            createCharts(computed);
+          });
+        }
+
+        showBtn.addEventListener('click', () => {
+          loadSurveyCharts();
+        });
+
+        loadSurveyCharts();
+      })();
+    </script>
+  </body>
+</html>

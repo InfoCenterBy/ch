@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.2.1",
+    "chart.js": "^4.5.1",
     "daisyui": "^5.5.19"
   }
 }
