@@ -1,0 +1,5 @@
+#cookieSettingsModal .collapse-arrow > .collapse-title::after {
+  width: 0.75rem;
+  height: 0.75rem;
+  box-shadow: 1.5px 1.5px 0 currentColor;
+}

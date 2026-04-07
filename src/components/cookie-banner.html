@@ -1,23 +1,32 @@
-<div id="cookieBanner" class="right-0 bottom-20 md:bottom-4 left-0 z-40 fixed flex justify-center px-4">
-  <div class="bg-neutral-50 shadow-md border border-neutral-100 rounded-xl w-full max-w-[1536px]">
-    <div class="flex xl:flex-row flex-col md:justify-between xl:items-center gap-3 md:gap-4 p-3 md:px-7 md:py-5">
-      <div class="flex items-center gap-3 max-w-[840px]">
-        <img src="./img/common/cookie.png" alt="Cookie" class="w-[80px] h-[67px] shrink-0" onerror="this.style.display = 'none'" />
-        <div class="flex flex-col gap-2 text-neutral-900 text-sm md:text-base leading-4 md:leading-5">
+<div
+  id="cookieBanner"
+  class="fixed right-0 bottom-20 left-0 z-40 flex justify-center px-4 md:bottom-4">
+  <div class="w-full max-w-[1536px] rounded-xl border border-neutral-100 bg-neutral-50 shadow-md">
+    <div class="flex flex-wrap items-center justify-between gap-3 p-3 md:gap-4 md:px-7 md:py-5">
+      <div class="flex max-w-[840px] items-center gap-3">
+        <img
+          src="./img/common/cookie.png"
+          alt="Cookie"
+          class="h-[67px] w-[80px] shrink-0"
+          onerror="this.style.display = 'none'" />
+        <div class="flex flex-col gap-2">
           <span>
             Мы используем файлы cookie для улучшения работы сайта. Подробную информацию вы найдете в
             <a href="#" class="link-primary">Политике обработки cookie</a>
           </span>
-          <button id="openCookieSettings" type="button" class="font-medium text-left link-primary">
+          <button id="openCookieSettings" type="button" class="link-primary text-left font-medium">
             Настроить cookies
           </button>
         </div>
       </div>
-      <div class="flex sm:flex-row flex-col gap-4 w-full sm:w-auto">
-        <button id="acceptAllCookies" type="button" class="w-full sm:w-auto btn btn-primary">
+      <div class="flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
+        <button id="acceptAllCookies" type="button" class="btn btn-primary w-full sm:w-auto">
           Принять все
         </button>
-        <button id="saveCookieSettings" type="button" class="btn-primary-outline w-full sm:w-auto btn">
+        <button
+          id="saveCookieSettings"
+          type="button"
+          class="btn-primary-outline btn w-full sm:w-auto">
           Сохранить настройки
         </button>
       </div>
@@ -25,95 +34,137 @@
   </div>
 </div>
 
-<div id="cookieSettingsModal" class="hidden z-50 fixed inset-0 justify-center items-center bg-black/40 px-4">
-  <div class="bg-neutral-50 shadow-xl rounded-2xl w-full max-w-[620px]">
-    <div class="flex justify-between items-start gap-4 px-5 md:px-6 py-4">
-      <div>
-        <h3 class="font-semibold text-neutral-900 text-xl">Настроить cookies</h3>
-        <p class="mt-2 text-neutral-700 text-sm md:text-base">
-          Мы используем файлы cookies, которые повышают удобство работы с нашим сайтом, и помогают нам анализировать производительность и использование сайта.
-        </p>
+<dialog id="cookieSettingsModal" class="modal">
+  <div class="modal-box p-0">
+    <button
+      type="button"
+      aria-label="Закрыть"
+      class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 z-10 text-neutral-400
+        hover:text-neutral-600"
+      onclick="cookieSettingsModal.close()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-5">
+        <path
+          fill-rule="evenodd"
+          d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+          clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <div class="px-5 pt-5 pr-14 pb-4 md:px-6 md:pt-6">
+      <h3 class="text-xl font-semibold text-neutral-900">Настроить cookies</h3>
+      <p class="mt-2 text-sm text-neutral-700 md:text-base">
+        Мы используем файлы cookies, которые повышают удобство работы с нашим сайтом, и помогают нам
+        анализировать производительность и использование сайта.
+      </p>
+    </div>
+
+    <div class="space-y-3 p-5 pt-0 md:p-6 md:pt-0">
+      <div
+        class="collapse-arrow [&>input:checked~.collapse-title]:text-primary collapse rounded-xl
+          border border-neutral-200 bg-neutral-200">
+        <input type="checkbox" />
+        <div class="collapse-title px-4 py-3 transition-colors">
+          <div class="flex flex-wrap items-center justify-between gap-1 pr-8 md:gap-3">
+            <span class="text-lg font-semibold">Необходимые</span>
+            <span class="text-primary font-medium">Всегда активно</span>
+          </div>
+        </div>
+        <div class="collapse-content px-4">
+          <p class="mt-1 text-sm md:text-base">
+            Обеспечивают корректную работу сайта, позволяют посетителям передвигаться по сайту
+            и использовать его возможности. Эти файлы не идентифицируют посетителей как личность.
+            Если посетитель не согласен использовать данный тип файлов, это может оказать влияние нa
+            производительность сайта‚ или его компонентов.
+          </p>
+        </div>
       </div>
-      <button id="closeCookieSettings" type="button" class="text-neutral-500 hover:text-neutral-800 text-xl leading-none" aria-label="Закрыть">
-        &times;
+
+      <div
+        class="collapse-arrow [&>input:checked~.collapse-title]:text-primary collapse rounded-xl
+          border border-neutral-200 bg-neutral-200">
+        <input type="checkbox" />
+        <div class="collapse-title px-4 py-3 text-neutral-900 transition-colors">
+          <div class="flex items-center justify-between gap-3 pr-8">
+            <span class="text-lg font-semibold">Функциональные</span>
+            <input
+              type="checkbox"
+              class="cookie-toggle toggle toggle-primary relative z-10"
+              id="functionalCookies" />
+          </div>
+        </div>
+        <div class="collapse-content px-4">
+          <p class="mt-1 text-sm md:text-base">
+            Позволяют обеспечить индивидуальный опыт использования сайта и устанавливаются в ответ
+            на действия субъекта персональных данных. Функциональные куки позволяют индивидуально
+            подбирать содержание сайта для посетителей. Если посетитель блокирует этот тип файлов,
+            то это может повлиять на производительность и функциональность сайта и может ограничить
+            доступ к контенту на сайте.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="collapse-arrow [&>input:checked~.collapse-title]:text-primary collapse rounded-xl
+          border border-neutral-200 bg-neutral-200">
+        <input type="checkbox" />
+        <div class="collapse-title px-4 py-3 text-neutral-900 transition-colors">
+          <div class="flex items-center justify-between gap-3 pr-8">
+            <span class="text-lg font-semibold">Статистические</span>
+            <input
+              type="checkbox"
+              class="cookie-toggle toggle toggle-primary relative z-10"
+              id="statisticalCookies" />
+          </div>
+        </div>
+        <div class="collapse-content px-4">
+          <p class="mt-1 text-sm md:text-base">
+            Позволяют хранить историю посещений страниц сайта в целях повышения качества
+            его функционирования, чтобы определить наиболее и наименее популярные страницы.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col gap-3 border-t border-neutral-200 p-5 md:flex-row md:justify-between
+        md:p-6">
+      <button id="acceptAllCookiesModal" type="button" class="btn btn-primary w-full md:w-auto">
+        Принять все
+      </button>
+      <button
+        id="saveCookieSettingsModal"
+        type="button"
+        class="btn-primary-outline btn w-full md:w-auto">
+        Сохранить настройки
       </button>
     </div>
-
-    <div class="space-y-3 p-5 md:p-6">
-      <div class="collapse collapse-arrow bg-white border border-neutral-200 rounded-xl">
-        <input type="checkbox" checked="checked" />
-        <div class="collapse-title px-4 py-3">
-          <div class="flex justify-between items-center gap-3 pr-8">
-            <span class="font-semibold text-neutral-900">Необходимые</span>
-            <span class="font-medium text-orange-500 text-sm">Всегда активно</span>
-          </div>
-        </div>
-        <div class="collapse-content px-4 pb-4 text-neutral-700 text-sm">
-          <p class="font-semibold text-orange-500">Необходимые</p>
-          <p class="mt-1">
-            Обеспечивают корректную работу сайта, позволяют посетителям передвигаться по сайту и использовать его возможности.
-            Эти файлы не идентифицируют посетителей как личность.
-          </p>
-        </div>
-      </div>
-
-      <div class="collapse collapse-arrow bg-white border border-neutral-200 rounded-xl">
-        <input type="checkbox" />
-        <div class="collapse-title px-4 py-3">
-          <div class="flex justify-between items-center gap-3 pr-8">
-            <span class="font-semibold text-neutral-900">Функциональные</span>
-            <input type="checkbox" class="cookie-toggle z-10 relative toggle toggle-warning" id="functionalCookies" />
-          </div>
-        </div>
-        <div class="collapse-content px-4 pb-4 text-neutral-700 text-sm">
-          <p class="font-semibold text-orange-500">Функциональные</p>
-          <p class="mt-1">
-            Позволяют обеспечить индивидуальный опыт использования сайта и устанавливаются в ответ на действия субъекта персональных данных.
-          </p>
-        </div>
-      </div>
-
-      <div class="collapse collapse-arrow bg-white border border-neutral-200 rounded-xl">
-        <input type="checkbox" />
-        <div class="collapse-title px-4 py-3">
-          <div class="flex justify-between items-center gap-3 pr-8">
-            <span class="font-semibold text-neutral-900">Статистические</span>
-            <input type="checkbox" class="cookie-toggle z-10 relative toggle toggle-warning" id="statisticalCookies" />
-          </div>
-        </div>
-        <div class="collapse-content px-4 pb-4 text-neutral-700 text-sm">
-          <p class="font-semibold text-orange-500">Статистические</p>
-          <p class="mt-1">
-            Позволяют хранить историю посещения страниц сайта для повышения качества его функционирования и определения наиболее популярных страниц.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex md:flex-row flex-col md:justify-between gap-3 p-5 md:p-6 border-neutral-200 border-t">
-      <button id="acceptAllCookiesModal" type="button" class="w-full md:w-auto btn btn-primary">Принять все</button>
-      <button id="saveCookieSettingsModal" type="button" class="btn-primary-outline w-full md:w-auto btn">Сохранить настройки</button>
-    </div>
   </div>
-</div>
+  <button
+    type="button"
+    class="modal-backdrop"
+    aria-label="Закрыть"
+    onclick="cookieSettingsModal.close()"></button>
+</dialog>
 
 <script>
   (function () {
-    var banner = document.getElementById("cookieBanner");
-    var modal = document.getElementById("cookieSettingsModal");
-    var openBtn = document.getElementById("openCookieSettings");
-    var closeBtn = document.getElementById("closeCookieSettings");
-    var acceptAllBtn = document.getElementById("acceptAllCookies");
-    var saveBtn = document.getElementById("saveCookieSettings");
-    var acceptAllModalBtn = document.getElementById("acceptAllCookiesModal");
-    var saveModalBtn = document.getElementById("saveCookieSettingsModal");
-    var functionalCheckbox = document.getElementById("functionalCookies");
-    var statisticalCheckbox = document.getElementById("statisticalCookies");
+    var banner = document.getElementById('cookieBanner');
+    var modal = document.getElementById('cookieSettingsModal');
+    var openBtn = document.getElementById('openCookieSettings');
+    var acceptAllBtn = document.getElementById('acceptAllCookies');
+    var saveBtn = document.getElementById('saveCookieSettings');
+    var acceptAllModalBtn = document.getElementById('acceptAllCookiesModal');
+    var saveModalBtn = document.getElementById('saveCookieSettingsModal');
+    var functionalCheckbox = document.getElementById('functionalCookies');
+    var statisticalCheckbox = document.getElementById('statisticalCookies');
 
     function closeAll() {
-      if (modal) {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
+      if (modal && typeof modal.close === 'function') {
+        modal.close();
       }
       if (banner) {
         banner.remove();
@@ -121,15 +172,10 @@
     }
 
     function openModal() {
-      if (!modal) return;
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-    }
-
-    function closeModal() {
-      if (!modal) return;
-      modal.classList.add("hidden");
-      modal.classList.remove("flex");
+      if (!modal || typeof modal.showModal !== 'function') return;
+      if (!modal.open) {
+        modal.showModal();
+      }
     }
 
     function setAllCookies(enabled) {
@@ -138,45 +184,34 @@
     }
 
     if (openBtn) {
-      openBtn.addEventListener("click", openModal);
-    }
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closeModal);
+      openBtn.addEventListener('click', openModal);
     }
     if (acceptAllBtn) {
-      acceptAllBtn.addEventListener("click", function () {
+      acceptAllBtn.addEventListener('click', function () {
         setAllCookies(true);
         closeAll();
       });
     }
     if (saveBtn) {
-      saveBtn.addEventListener("click", closeAll);
+      saveBtn.addEventListener('click', closeAll);
     }
     if (acceptAllModalBtn) {
-      acceptAllModalBtn.addEventListener("click", function () {
+      acceptAllModalBtn.addEventListener('click', function () {
         setAllCookies(true);
         closeAll();
       });
     }
     if (saveModalBtn) {
-      saveModalBtn.addEventListener("click", closeAll);
-    }
-    if (modal) {
-      modal.addEventListener("click", function (event) {
-        if (event.target === modal) {
-          closeModal();
-        }
-      });
+      saveModalBtn.addEventListener('click', closeAll);
     }
 
-    document.querySelectorAll(".cookie-toggle").forEach(function (toggle) {
-      toggle.addEventListener("click", function (event) {
+    document.querySelectorAll('.cookie-toggle').forEach(function (toggle) {
+      toggle.addEventListener('click', function (event) {
         event.stopPropagation();
       });
-      toggle.addEventListener("keydown", function (event) {
+      toggle.addEventListener('keydown', function (event) {
         event.stopPropagation();
       });
     });
-
   })();
 </script>
