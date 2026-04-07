@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="ru">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Новый пароль</title>
+  <title>Статистика опроса</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -13,9 +13,9 @@
 </head>
 
 
-  <body>
-    <div class="wrapper">
-      <header class="border-b border-neutral-300">
+<body>
+  <div class="wrapper">
+    <header class="border-b border-neutral-300">
   <div class="container">
     <div class="flex items-center justify-between gap-4 py-5">
       <div class="flex items-center gap-3">
@@ -63,131 +63,103 @@
   </div>
 </header>
 
+    <main class="mt-4 md:mt-10 mb-10 md:mb-20">
+      <div class="py-10 container">
 
-      <main class="mt-4 mb-10 md:mt-10 md:mb-20">
-        <div class="container py-10">
-          <div class="mx-auto max-w-[760px]">
-            <div class="card-border">
-              <div class="rounded-2xl bg-neutral-50 p-4 md:rounded-3xl md:p-6">
-                <h1 class="heading-1 text-center">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h1>
-                <p class="mt-4 text-center text-neutral-500 md:mt-8">
-                  Введите новый пароль для вашего аккаунта
-                </p>
+        <h1 class="mt-6 heading-1">Статистика опроса</h1>
 
-                <form
-                  class="mt-4 space-y-4 md:mt-8"
-                  action="#"
-                  method="post"
-                  data-new-password-form>
-                  <div class="form-control w-full">
-                    <label class="label" for="password">
-                      <span class="font-medium text-neutral-900">
-                        Новый пароль <span class="text-error">*</span>
-                      </span>
-                    </label>
-                    <div class="password-input-wrapper relative mt-2">
-                      <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        class="input input-bordered w-full pr-12"
-                        required
-                        autocomplete="new-password" />
-                      <button
-                        type="button"
-                        data-password-toggle
-                        class="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer"
-                        aria-label="Показать пароль">
-                        <svg
-                          class="password-icon-crossed size-5 text-neutral-500"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor">
-                          <path
-                            d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
-                          <path
-                            d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
-                          <path
-                            d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
-                        </svg>
-                        <svg
-                          class="password-icon-normal hidden size-5 text-neutral-500"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor">
-                          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                          <path
-                            fill-rule="evenodd"
-                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
-                            clip-rule="evenodd" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="form-control w-full">
-                    <label class="label" for="password-repeat">
-                      <span class="font-medium text-neutral-900">
-                        Повторите новый пароль <span class="text-error">*</span>
-                      </span>
-                    </label>
-                    <div class="password-input-wrapper relative mt-2">
-                      <input
-                        id="password-repeat"
-                        type="password"
-                        name="passwordRepeat"
-                        class="input input-bordered w-full pr-12"
-                        required
-                        autocomplete="new-password" />
-                      <button
-                        type="button"
-                        data-password-toggle
-                        class="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer"
-                        aria-label="Показать пароль">
-                        <svg
-                          class="password-icon-crossed size-5 text-neutral-500"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor">
-                          <path
-                            d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
-                          <path
-                            d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
-                          <path
-                            d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
-                        </svg>
-                        <svg
-                          class="password-icon-normal hidden size-5 text-neutral-500"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor">
-                          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                          <path
-                            fill-rule="evenodd"
-                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
-                            clip-rule="evenodd" />
-                        </svg>
-                      </button>
-                    </div>
-                    <p
-                      class="text-error mt-2 hidden text-sm"
-                      data-password-mismatch-msg
-                      role="alert">
-                      Пароли не совпадают
-                    </p>
-                  </div>
-
-                  <div class="mt-4 flex justify-center md:mt-10">
-                    <button type="submit" class="btn btn-primary">Продолжить</button>
-                  </div>
-                </form>
-              </div>
+        <div class="flex md:flex-row flex-col md:items-end gap-4 md:gap-4 mt-6">
+          <div class="w-full md:max-w-xs">
+            <label class="label">
+              <span class="font-medium text-neutral-900">Дата опроса от</span>
+            </label>
+            <div class="mt-2 cursor-pointer" onclick="this.querySelector('input')?.showPicker?.()">
+              <input id="dateFrom" name="date_from" type="text" class="w-full input input-bordered" onfocus="this.type = 'date'; this.showPicker?.();"
+                onblur="if (!this.value) this.type = 'text';" placeholder="01.01.2026" />
             </div>
           </div>
-        </div>
-      </main>
 
-      <footer class="bg-neutral-200 mb-14 md:mb-0">
+          <div class="w-full md:max-w-xs">
+            <label class="label">
+              <span class="font-medium text-neutral-900">Дата опроса до</span>
+            </label>
+            <div class="mt-2 cursor-pointer" onclick="this.querySelector('input')?.showPicker?.()">
+              <input id="dateTo" name="date_to" type="text" class="w-full input input-bordered" onfocus="this.type = 'date'; this.showPicker?.();"
+                onblur="if (!this.value) this.type = 'text';" placeholder="01.01.2026" />
+            </div>
+          </div>
+
+          <button class="w-full md:w-48 btn btn-primary">Показать</button>
+          <button id="exportToExcel" class="md:ml-auto btn-outline w-full md:w-56 btn">Скачать Excel</button>
+        </div>
+
+        <div class="bg-white mt-8 border border-neutral-200 rounded-2xl overflow-x-auto">
+          <table class="table table-zebra" id="dataTable">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Общее впечатление</th>
+                <th>Полезность материалов</th>
+                <th>Доступность информации</th>
+                <th>Довольство интерфейсом</th>
+                <th>Открытый вопрос</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>5</td>
+                <td>5</td>
+                <td>4</td>
+                <td>4</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>3</td>
+                <td>5</td>
+                <td>5</td>
+                <td>Очень классно у вас все работает. Здоровски прям.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>5</td>
+                <td>3</td>
+                <td>4</td>
+                <td>3</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>3</td>
+                <td>4</td>
+                <td>3</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>5</td>
+                <td>3</td>
+                <td>4</td>
+                <td>3</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>5</td>
+                <td>3</td>
+                <td>4</td>
+                <td>3</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-neutral-200 mb-14 md:mb-0">
   <div class="container">
     <div class="flex md:flex-row flex-col md:justify-between md:items-center gap-3 py-10">
       <div class="flex items-center gap-3">
@@ -204,7 +176,8 @@
       </div>
     </div>
   </div>
-</footer> <nav
+</footer>
+    <nav
   class="fixed right-0 bottom-0 left-0 z-50 flex items-start justify-between border-t
     border-neutral-200 bg-neutral-50 py-2 pb-[env(safe-area-inset-bottom)] md:hidden"
   aria-label="Мобильное меню">
@@ -269,43 +242,95 @@
   </a>
 </nav>
 
-    </div>
+  </div>
+  <script src="js/script.js"></script>
 
-    <script src="js/script.js"></script>
 
-    <script>
-      (function () {
-        const form = document.querySelector('[data-new-password-form]');
-        if (!form) return;
-        const pwd = form.querySelector('#password');
-        const pwdRepeat = form.querySelector('#password-repeat');
-        const msg = form.querySelector('[data-password-mismatch-msg]');
+  <script>
+    function exportToExcel() {
+      var table = document.getElementById("dataTable");
 
-        function clearMismatch() {
-          msg?.classList.add('hidden');
+      if (!table) {
+        alert("Таблица не найдена");
+        return;
+      }
+
+      var rows = table.querySelectorAll("tr");
+      if (!rows.length) {
+        alert("Нет данных для экспорта");
+        return;
+      }
+
+      var headers = [];
+      rows[0].querySelectorAll("th, td").forEach(function (cell) {
+        headers.push(cell.textContent.trim());
+      });
+
+      var excelData = [];
+      for (var i = 1; i < rows.length; i += 1) {
+        var row = rows[i];
+        var cells = row.querySelectorAll("td");
+
+        if (cells.length === 1 && cells[0].hasAttribute("colspan")) {
+          continue;
         }
 
-        function passwordsMatch() {
-          return pwd.value === pwdRepeat.value;
+        if (cells.length) {
+          var rowData = {};
+          cells.forEach(function (cell, index) {
+            rowData[headers[index] || "Колонка " + (index + 1)] = cell.textContent.trim();
+          });
+          excelData.push(rowData);
         }
+      }
 
-        form.addEventListener('submit', function (e) {
-          if (!passwordsMatch()) {
-            e.preventDefault();
-            msg?.classList.remove('hidden');
-            pwdRepeat.focus();
-            return;
-          }
-          clearMismatch();
-        });
+      if (!excelData.length) {
+        alert("Нет данных для экспорта");
+        return;
+      }
 
-        function maybeClearMismatch() {
-          if (passwordsMatch()) clearMismatch();
-        }
+      var csvContent = [
+        headers.join(";"),
+        ...excelData.map(function (row) {
+          return headers
+            .map(function (header) {
+              var value = row[header];
+              if (value === null || value === undefined) return "";
+              if (typeof value === "string" && (value.includes(";") || value.includes('"'))) {
+                return '"' + value.replace(/"/g, '""') + '"';
+              }
+              return value;
+            })
+            .join(";");
+        }),
+      ].join("\n");
 
-        pwd.addEventListener('input', maybeClearMismatch);
-        pwdRepeat.addEventListener('input', maybeClearMismatch);
-      })();
-    </script>
-  </body>
+      var blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+      var link = document.createElement("a");
+      var url = URL.createObjectURL(blob);
+      var date = new Date();
+      var dateStr =
+        date.getFullYear() +
+        "-" +
+        String(date.getMonth() + 1).padStart(2, "0") +
+        "-" +
+        String(date.getDate()).padStart(2, "0");
+
+      link.href = url;
+      link.setAttribute("download", "survey_stats_" + dateStr + ".csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var exportBtn = document.getElementById("exportToExcel");
+      if (exportBtn) {
+        exportBtn.addEventListener("click", exportToExcel);
+      }
+    });
+  </script>
+</body>
+
 </html>
