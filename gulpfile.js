@@ -53,7 +53,6 @@ let path = {
     js: project_folder + '/js/',
     img: project_folder + '/img/',
     fonts: project_folder + '/fonts/',
-    audio: project_folder + '/audio/',
   },
   src: {
     html: [source_folder + '/**/*.html'],
@@ -66,13 +65,11 @@ let path = {
       source_folder + '/fonts/*.woff',
       source_folder + '/fonts/*.woff2',
     ],
-    audio: source_folder + '/audio/*.mp3',
   },
   watch: {
     html: source_folder + '/**/*.html',
     js: source_folder + '/js/**/*.js',
     img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
-    audio: source_folder + '/audio/*.mp3',
   },
   clean: './' + project_folder + '/',
 };
@@ -135,10 +132,6 @@ function images() {
   return src(path.src.img).pipe(dest(path.build.img)).pipe(browsersync.stream());
 }
 
-function audio() {
-  return src(path.src.audio).pipe(dest(path.build.audio)).pipe(browsersync.stream());
-}
-
 function fonts() {
   src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts));
   return src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts));
@@ -155,10 +148,8 @@ gulp.task('otf2ttf', function () {
 });
 
 gulp.task('deploy', function () {
-  return gulp.src('./skko-redesign/**/*').pipe(deploy());
+  return gulp.src('./ch/**/*').pipe(deploy());
 });
-
-function cb() {}
 
 function watchFiles(params) {
   gulp.watch([path.watch.html], html);
@@ -168,25 +159,17 @@ function watchFiles(params) {
   });
   gulp.watch([path.watch.js], gulp.parallel(js, jsLibs));
   gulp.watch([path.watch.img], images);
-  gulp.watch([path.watch.audio], audio);
 }
 
 function clean(params) {
   return del(path.clean);
 }
 
-let build = gulp.series(
-  clean,
-  gulp.parallel(tailwindBuild, js, jsLibs, html, images, fonts, audio),
-);
-let watch = gulp.series(
-  build,
-  gulp.parallel(watchFiles, browserSync, tailwindWatch),
-);
+let build = gulp.series(clean, gulp.parallel(tailwindBuild, js, jsLibs, html, images, fonts));
+let watch = gulp.series(build, gulp.parallel(watchFiles, browserSync, tailwindWatch));
 
 exports.fonts = fonts;
 exports.images = images;
-exports.audio = audio;
 exports.js = js;
 exports.jsLibs = jsLibs;
 exports.html = html;
