@@ -41,8 +41,10 @@ function killTailwindWatch() {
 
 process.once('exit', killTailwindWatch);
 ['SIGINT', 'SIGTERM'].forEach((sig) => {
-  process.on(sig, () => {
+  process.once(sig, () => {
     killTailwindWatch();
+    // Re-emit the original signal so gulp can shut down gracefully.
+    process.kill(process.pid, sig);
   });
 });
 
