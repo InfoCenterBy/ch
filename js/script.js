@@ -65,6 +65,28 @@
   });
 })();
 
+(function initDatePickers() {
+  if (typeof flatpickr !== 'function') return;
+
+  document.querySelectorAll('[data-date-picker]').forEach((input) => {
+    const instance = flatpickr(input, {
+      locale: 'ru',
+      dateFormat: 'd.m.Y',
+      allowInput: false,
+      clickOpens: true,
+      disableMobile: true,
+    });
+
+    const wrapper = input.closest('[data-date-picker-wrap]');
+    if (!wrapper) return;
+    wrapper.addEventListener('click', (event) => {
+      if (event.target !== input) {
+        instance.open();
+      }
+    });
+  });
+})();
+
 document.querySelectorAll('[data-password-toggle]').forEach((btn) => {
   btn.addEventListener('click', () => {
     const wrapper = btn.closest('.password-input-wrapper');

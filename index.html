@@ -118,18 +118,12 @@
                               >Дата <span class="text-red-600">*</span></span
                             >
                           </label>
-                          <div
-                            class="mt-2 cursor-pointer"
-                            onclick="this.querySelector('input')?.showPicker?.()">
+                          <div class="mt-2 cursor-pointer" data-date-picker-wrap>
                             <input
                               name="date"
                               type="text"
                               class="input input-bordered w-full"
-                              onfocus="
-                                this.type = 'date';
-                                this.showPicker?.();
-                              "
-                              onblur="if (!this.value) this.type = 'text';"
+                              data-date-picker
                               placeholder="Выберите дату" />
                           </div>
                         </div>
@@ -273,18 +267,12 @@
                               >Дата <span class="text-red-600">*</span></span
                             >
                           </label>
-                          <div
-                            class="mt-2 cursor-pointer"
-                            onclick="this.querySelector('input')?.showPicker?.()">
+                          <div class="mt-2 cursor-pointer" data-date-picker-wrap>
                             <input
                               name="date"
                               type="text"
                               class="input input-bordered w-full"
-                              onfocus="
-                                this.type = 'date';
-                                this.showPicker?.();
-                              "
-                              onblur="if (!this.value) this.type = 'text';"
+                              data-date-picker
                               placeholder="Выберите дату" />
                           </div>
                         </div>
@@ -1046,7 +1034,9 @@
     </div>
 
     <script src="js/qr-scanner.umd.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/flatpickr.min.js"></script>
+<script src="js/ru.js"></script>
+<script src="js/script.js"></script>
 
     <script>
       (() => {
