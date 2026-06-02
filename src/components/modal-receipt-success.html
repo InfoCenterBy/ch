@@ -3,14 +3,9 @@
     <button
       type="button"
       aria-label="Закрыть"
-      class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 text-neutral-400
-        hover:text-neutral-600"
+      class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 text-neutral-400 hover:text-neutral-600"
       onclick="receiptSuccessModal.close()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-5">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
         <path
           fill-rule="evenodd"
           d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
@@ -18,29 +13,18 @@
       </svg>
     </button>
     <div class="flex flex-col items-center pb-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-16 text-green-500">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-16 text-green-500">
         <path
           fill-rule="evenodd"
           d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
           clip-rule="evenodd" />
       </svg>
-      <h3 class="mt-4 text-center text-lg font-semibold text-neutral-900">
-        Проверка чека прошла успешно!
-      </h3>
+      <h3 class="mt-4 text-center text-lg font-semibold text-neutral-900">Проверка чека прошла успешно!</h3>
 
       <div
-        class="mx-auto mt-6 w-full max-w-[320px] overflow-y-auto rounded-lg bg-neutral-50 px-6 py-6
-          shadow-xl drop-shadow-xl">
-        <h2 class="text-center font-semibold text-neutral-900">
-          Визуализация платежного документа
-        </h2>
-        <p class="mt-2 text-center text-sm break-all text-neutral-900">
-          УИ 12345678901234567890123
-        </p>
+        class="mx-auto mt-6 w-full max-w-[320px] overflow-y-auto rounded-lg bg-neutral-50 px-6 py-6 shadow-xl drop-shadow-xl">
+        <h2 class="text-center font-semibold text-neutral-900">Визуализация платежного документа</h2>
+        <p class="mt-2 text-center text-sm break-all text-neutral-900">УИ 12345678901234567890123</p>
 
         <div class="mt-6 space-y-2 border-b border-dashed border-neutral-300 pb-4 text-center">
           <p class="text-2xl font-semibold text-neutral-900">ООО «Евроторг»</p>
@@ -67,11 +51,11 @@
           </div>
           <div class="flex justify-between">
             <span class="text-xs text-neutral-500">Валюта:</span>
-            <span class="text-neutral-900">BYN</span>
+            <i class="nbrb-icon not-italic text-neutral-900 text-xl">BYN</i>
           </div>
           <div class="flex justify-between">
             <span class="text-xs text-neutral-500">№ чека и время:</span>
-            <span class="text-neutral-900">№123456 9 сентября 2022 20:41:59</span>
+            <span class="text-neutral-900 text-right">№123456 9 сентября 2022 20:41:59</span>
           </div>
         </div>
 
@@ -79,8 +63,7 @@
           <table class="w-full text-sm">
             <thead>
               <tr
-                class="border-b border-dashed border-neutral-300 text-left text-[10px] font-semibold
-                  text-neutral-500">
+                class="border-b border-dashed border-neutral-300 text-left text-[10px] font-semibold text-neutral-500">
                 <th class="pr-4 pb-2">Товар</th>
                 <th class="pr-4 pb-2">Кол-во</th>
                 <th class="pr-4 pb-2">Сумма продажи</th>
@@ -129,9 +112,5 @@
       </div>
     </div>
   </div>
-  <button
-    type="button"
-    class="modal-backdrop"
-    aria-label="Закрыть"
-    onclick="receiptSuccessModal.close()"></button>
+  <button type="button" class="modal-backdrop" aria-label="Закрыть" onclick="receiptSuccessModal.close()"></button>
 </dialog>

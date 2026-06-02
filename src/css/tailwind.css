@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'flatpickr/dist/flatpickr.min.css';
 @plugin 'daisyui' {
   themes: light --default;
 }
@@ -23,6 +24,7 @@
 @import './mobile-nav.css';
 @import './pagination.css';
 @import './modals.css';
+@import './nbrb.css';
 
 html,
 body {

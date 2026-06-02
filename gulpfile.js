@@ -60,7 +60,11 @@ let path = {
     html: [source_folder + '/**/*.html'],
     css: source_folder + '/css/style.css',
     js: source_folder + '/js/script.js',
-    jsLibs: source_folder + '/js/libs/**/*.js',
+    jsLibs: [
+      source_folder + '/js/libs/**/*.js',
+      'node_modules/flatpickr/dist/flatpickr.min.js',
+      'node_modules/flatpickr/dist/l10n/ru.js',
+    ],
     img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
     fonts: [
       source_folder + '/fonts/*.ttf',
