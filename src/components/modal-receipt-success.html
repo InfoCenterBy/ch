@@ -1,5 +1,5 @@
 <dialog id="receiptSuccessModal" class="modal">
-  <div class="modal-box relative max-h-[85vh] rounded-2xl">
+  <div class="modal-box relative rounded-2xl">
     <button
       type="button"
       aria-label="Закрыть"
@@ -21,8 +21,7 @@
       </svg>
       <h3 class="mt-4 text-center text-lg font-semibold text-neutral-900">Проверка чека прошла успешно!</h3>
 
-      <div
-        class="mx-auto mt-6 w-full max-w-[320px] overflow-y-auto rounded-lg bg-neutral-50 px-6 py-6 shadow-xl drop-shadow-xl">
+      <div class="mx-auto mt-6 w-full max-w-[320px] rounded-lg bg-neutral-50 px-6 py-6 shadow-xl drop-shadow-xl">
         <h2 class="text-center font-semibold text-neutral-900">Визуализация платежного документа</h2>
         <p class="mt-2 text-center text-sm break-all text-neutral-900">УИ 12345678901234567890123</p>
 
@@ -59,32 +58,16 @@
           </div>
         </div>
 
-        <div class="mt-4 overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr
-                class="border-b border-dashed border-neutral-300 text-left text-[10px] font-semibold text-neutral-500">
-                <th class="pr-4 pb-2">Товар</th>
-                <th class="pr-4 pb-2">Кол-во</th>
-                <th class="pr-4 pb-2">Сумма продажи</th>
-                <th class="pb-2">Сумма скидки/наценки</th>
-              </tr>
-            </thead>
-            <tbody class="text-neutral-900">
-              <tr class="border-b border-dashed border-neutral-100">
-                <td class="py-2 pr-4 text-xs">1234567890123</td>
-                <td class="py-2 pr-4">1</td>
-                <td class="py-2 pr-4">2,29</td>
-                <td class="py-2">0</td>
-              </tr>
-              <tr class="border-b border-dashed border-neutral-100">
-                <td class="py-2 pr-4 text-xs">1234567890123</td>
-                <td class="py-2 pr-4">1</td>
-                <td class="py-2 pr-4">2,29</td>
-                <td class="py-2">0</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="receipt-positions-wrap mt-4">
+          <div class="receipt-positions-grid">
+            <div class="receipt-positions-row receipt-positions-row--head">
+              <span class="receipt-positions-cell receipt-positions-cell--name">Товар</span>
+              <span class="receipt-positions-cell receipt-positions-cell--num">Кол-во</span>
+              <span class="receipt-positions-cell receipt-positions-cell--num">Сумма</span>
+              <span class="receipt-positions-cell receipt-positions-cell--num">Скидка</span>
+            </div>
+            <div id="receipt-positions" class="receipt-positions-body"></div>
+          </div>
         </div>
 
         <div class="mt-4 space-y-2 border-t border-dashed border-neutral-300 pt-4 text-sm">

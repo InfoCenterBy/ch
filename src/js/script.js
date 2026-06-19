@@ -71,7 +71,10 @@
   document.querySelectorAll('[data-date-picker]').forEach((input) => {
     const instance = flatpickr(input, {
       locale: 'ru',
-      dateFormat: 'd.m.Y',
+      dateFormat: 'Y-m-d',
+      altInput: true,
+      altFormat: 'd.m.Y',
+      altInputClass: input.className,
       allowInput: false,
       clickOpens: true,
       disableMobile: true,
@@ -80,7 +83,8 @@
     const wrapper = input.closest('[data-date-picker-wrap]');
     if (!wrapper) return;
     wrapper.addEventListener('click', (event) => {
-      if (event.target !== input) {
+      const visibleInput = instance.altInput ?? input;
+      if (event.target !== visibleInput) {
         instance.open();
       }
     });
